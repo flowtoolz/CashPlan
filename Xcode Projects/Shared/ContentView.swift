@@ -15,7 +15,7 @@ struct ContentView: View {
                     HStack {
                         Label("Initial Investment", systemImage: "banknote")
                             .fixedSize(horizontal: true, vertical: false)
-                        TextField("Cash", text: $startCashString)
+                        TextField("Initial", text: $startCashString)
                             .keyboardType(.numberPad)
                             .multilineTextAlignment(.trailing)
                             .font(.system(.body, design: .monospaced))
@@ -23,15 +23,15 @@ struct ContentView: View {
                     HStack {
                         Label("Monthly Investment", systemImage: "calendar")
                             .fixedSize(horizontal: true, vertical: false)
-                        TextField("Monthly Investment", text: $monthlyInvestmentString)
+                        TextField("Monthly", text: $monthlyInvestmentString)
                             .keyboardType(.numberPad)
                             .multilineTextAlignment(.trailing)
                             .font(.system(.body, design: .monospaced))
                     }
                     HStack {
-                        Label("Annual Growth", systemImage: "percent")
+                        Label("Expected Return", systemImage: "percent")
                             .fixedSize(horizontal: true, vertical: false)
-                        TextField("Annual Growth ", text: $growthPercentString)
+                        TextField("Return", text: $growthPercentString)
                             .keyboardType(.decimalPad)
                             .multilineTextAlignment(.trailing)
                             .font(.system(.body, design: .monospaced))
@@ -80,7 +80,7 @@ struct ContentView: View {
         guard let growthPerYearInPercent = double(from: growthPercentString),
               let startCapital = double(from: startCashString),
               let investmentPerMonth = double(from: monthlyInvestmentString),
-              let years = Int(yearsString) else {
+              let years = integer(from: yearsString) else {
             return nil
         }
         
@@ -91,12 +91,12 @@ struct ContentView: View {
         
         var resultingCapital = startCapital
         
-        for _ in 1 ... months {
+        for _ in 0 ..< months {
             resultingCapital *= growthPerMonth
             resultingCapital += investmentPerMonth
         }
         
-        print("after \(years) years:")
+//        print("after \(years) years:")
         
 //        print(String(format: "%.3f", resultingCapital / 1000000) + " million cash")
         
@@ -117,6 +117,10 @@ struct ContentView: View {
     @State private var monthlyInvestmentString: String = "1000"
     @State private var growthPercentString: String = "8.5"
     @State private var yearsString: String = "5"
+    
+    private func integer(from string: String) -> Int? {
+        string.isEmpty ? 0 : Int(string)
+    }
     
     private func double(from string: String) -> Double? {
         string.isEmpty ? 0.0 : Double(string.replacingOccurrences(of: ",", with: "."))
