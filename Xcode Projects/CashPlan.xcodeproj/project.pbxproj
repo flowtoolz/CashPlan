@@ -3,18 +3,26 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		967B192426AF1A4700214F29 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B192326AF1A4700214F29 /* Helpers.swift */; };
+		967B192526AF1A4700214F29 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B192326AF1A4700214F29 /* Helpers.swift */; };
+		967B192826AF2FB900214F29 /* SwiftyToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 967B192726AF2FB900214F29 /* SwiftyToolz */; };
+		967B192B26AF324F00214F29 /* FoundationToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 967B192A26AF324F00214F29 /* FoundationToolz */; };
 		96F9674A26AD991100A1258E /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F9674926AD991100A1258E /* Tests_iOS.swift */; };
 		96F9675526AD991100A1258E /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F9675426AD991100A1258E /* Tests_macOS.swift */; };
-		96F9675726AD991100A1258E /* Cashflow_CalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F9672E26AD991000A1258E /* Cashflow_CalculatorApp.swift */; };
-		96F9675826AD991100A1258E /* Cashflow_CalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F9672E26AD991000A1258E /* Cashflow_CalculatorApp.swift */; };
+		96F9675726AD991100A1258E /* CashPlanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F9672E26AD991000A1258E /* CashPlanApp.swift */; };
+		96F9675826AD991100A1258E /* CashPlanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F9672E26AD991000A1258E /* CashPlanApp.swift */; };
 		96F9675926AD991100A1258E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F9672F26AD991000A1258E /* ContentView.swift */; };
 		96F9675A26AD991100A1258E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F9672F26AD991000A1258E /* ContentView.swift */; };
 		96F9675B26AD991100A1258E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96F9673026AD991100A1258E /* Assets.xcassets */; };
 		96F9675C26AD991100A1258E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96F9673026AD991100A1258E /* Assets.xcassets */; };
+		96FE3C5026AE99E800B7C230 /* PortfolioSimulatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FE3C4F26AE99E800B7C230 /* PortfolioSimulatorView.swift */; };
+		96FE3C5126AE99E800B7C230 /* PortfolioSimulatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FE3C4F26AE99E800B7C230 /* PortfolioSimulatorView.swift */; };
+		96FE3C5326AE9A7500B7C230 /* CashflowCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FE3C5226AE9A7500B7C230 /* CashflowCalculatorView.swift */; };
+		96FE3C5426AE9A7500B7C230 /* CashflowCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FE3C5226AE9A7500B7C230 /* CashflowCalculatorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		96F9672E26AD991000A1258E /* Cashflow_CalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cashflow_CalculatorApp.swift; sourceTree = "<group>"; };
+		967B192326AF1A4700214F29 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		96F9672E26AD991000A1258E /* CashPlanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashPlanApp.swift; sourceTree = "<group>"; };
 		96F9672F26AD991000A1258E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		96F9673026AD991100A1258E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96F9673526AD991100A1258E /* Cashflow Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cashflow Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +58,8 @@
 		96F9675026AD991100A1258E /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96F9675426AD991100A1258E /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		96F9675626AD991100A1258E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96FE3C4F26AE99E800B7C230 /* PortfolioSimulatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioSimulatorView.swift; sourceTree = "<group>"; };
+		96FE3C5226AE9A7500B7C230 /* CashflowCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashflowCalculatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +67,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				967B192B26AF324F00214F29 /* FoundationToolz in Frameworks */,
+				967B192826AF2FB900214F29 /* SwiftyToolz in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,8 +111,11 @@
 		96F9672D26AD991000A1258E /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				96F9672E26AD991000A1258E /* Cashflow_CalculatorApp.swift */,
+				96F9672E26AD991000A1258E /* CashPlanApp.swift */,
 				96F9672F26AD991000A1258E /* ContentView.swift */,
+				967B192326AF1A4700214F29 /* Helpers.swift */,
+				96FE3C5226AE9A7500B7C230 /* CashflowCalculatorView.swift */,
+				96FE3C4F26AE99E800B7C230 /* PortfolioSimulatorView.swift */,
 				96F9673026AD991100A1258E /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -167,6 +183,10 @@
 			dependencies = (
 			);
 			name = "Cashflow Calculator (iOS)";
+			packageProductDependencies = (
+				967B192726AF2FB900214F29 /* SwiftyToolz */,
+				967B192A26AF324F00214F29 /* FoundationToolz */,
+			);
 			productName = "Cashflow Calculator (iOS)";
 			productReference = 96F9673526AD991100A1258E /* Cashflow Calculator.app */;
 			productType = "com.apple.product-type.application";
@@ -258,6 +278,10 @@
 				Base,
 			);
 			mainGroup = 96F9672826AD991000A1258E;
+			packageReferences = (
+				967B192626AF2FB900214F29 /* XCRemoteSwiftPackageReference "SwiftyToolz" */,
+				967B192926AF324F00214F29 /* XCRemoteSwiftPackageReference "FoundationToolz" */,
+			);
 			productRefGroup = 96F9673626AD991100A1258E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -309,7 +333,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				96F9675926AD991100A1258E /* ContentView.swift in Sources */,
-				96F9675726AD991100A1258E /* Cashflow_CalculatorApp.swift in Sources */,
+				96FE3C5026AE99E800B7C230 /* PortfolioSimulatorView.swift in Sources */,
+				96F9675726AD991100A1258E /* CashPlanApp.swift in Sources */,
+				967B192426AF1A4700214F29 /* Helpers.swift in Sources */,
+				96FE3C5326AE9A7500B7C230 /* CashflowCalculatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +345,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				96F9675A26AD991100A1258E /* ContentView.swift in Sources */,
-				96F9675826AD991100A1258E /* Cashflow_CalculatorApp.swift in Sources */,
+				96FE3C5126AE99E800B7C230 /* PortfolioSimulatorView.swift in Sources */,
+				96F9675826AD991100A1258E /* CashPlanApp.swift in Sources */,
+				967B192526AF1A4700214F29 /* Helpers.swift in Sources */,
+				96FE3C5426AE9A7500B7C230 /* CashflowCalculatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,6 +730,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		967B192626AF2FB900214F29 /* XCRemoteSwiftPackageReference "SwiftyToolz" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/flowtoolz/SwiftyToolz";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		967B192926AF324F00214F29 /* XCRemoteSwiftPackageReference "FoundationToolz" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/flowtoolz/FoundationToolz";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		967B192726AF2FB900214F29 /* SwiftyToolz */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 967B192626AF2FB900214F29 /* XCRemoteSwiftPackageReference "SwiftyToolz" */;
+			productName = SwiftyToolz;
+		};
+		967B192A26AF324F00214F29 /* FoundationToolz */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 967B192926AF324F00214F29 /* XCRemoteSwiftPackageReference "FoundationToolz" */;
+			productName = FoundationToolz;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 96F9672926AD991000A1258E /* Project object */;
 }
