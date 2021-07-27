@@ -15,14 +15,23 @@ struct PortfolioSimulatorView: View {
                 PositionView(position: position)
             }
             .onDelete(perform: delete)
+            Button {
+                isPresentingAddPositionView = true
+            } label: {
+                HStack {
+                    Image(systemName: "plus")
+                    Text("Add")
+                    Spacer()
+                }
+            }.foregroundColor(.accentColor)
         }
         .navigationTitle("Positions")
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
-                    isPresentingAddPositionView = true
+//                    isPresentingAddPositionView = true
                 } label: {
-                    Image(systemName: "plus")
+                    Image(systemName: "slider.horizontal.3")
                 }
             }
         }
@@ -74,6 +83,7 @@ struct EditPositionView: View {
         self.position = position
         let initialInput = PositionInput(positionName: position.name,
                                          amountString: "\(position.amount)",
+                                         currency: position.currency,
                                          buyingPriceString: "\(position.buyingPrice)",
                                          currentPriceString: "\(position.currentPrice)")
         _input = State(wrappedValue: initialInput)
@@ -94,6 +104,18 @@ struct EditPositionView: View {
                 TextField("Amount", text: $input.amountString)
                     .multilineTextAlignment(.trailing)
                     .font(.system(.body, design: .monospaced))
+                    .keyboardType(.numberPad)
+            }
+            NavigationLink(destination: CurrencySelector(selectedCurrency: $input.currency,
+                                                         isBeingPresented: $isPresentingCurrencySelector),
+                           isActive: $isPresentingCurrencySelector) {
+                HStack {
+                    Label("Currency", systemImage: input.currency.symbolName)
+                        .fixedSize(horizontal: true, vertical: false)
+                    Spacer()
+                    Text(input.currency.symbol)
+                        .font(.system(.body, design: .monospaced))
+                }
             }
             HStack {
                 Label("Opening Price", systemImage: "arrow.down.right")
@@ -101,6 +123,7 @@ struct EditPositionView: View {
                 TextField("Opening Price", text: $input.buyingPriceString)
                     .multilineTextAlignment(.trailing)
                     .font(.system(.body, design: .monospaced))
+                    .keyboardType(.decimalPad)
             }
             HStack {
                 Label("Current Price", systemImage: "arrow.up.right")
@@ -109,6 +132,7 @@ struct EditPositionView: View {
                 TextField("Current Price", text: $input.currentPriceString)
                     .multilineTextAlignment(.trailing)
                     .font(.system(.body, design: .monospaced))
+                    .keyboardType(.decimalPad)
             }
         }
         .navigationTitle(input.positionName)
@@ -116,6 +140,8 @@ struct EditPositionView: View {
             updatePositionIfInputIsValid()
         }
     }
+
+    @State private var isPresentingCurrencySelector = false
     
     private func updatePositionIfInputIsValid() {
         guard !input.positionName.isEmpty,
@@ -125,6 +151,7 @@ struct EditPositionView: View {
         
         position.name = input.positionName
         position.amount = amount
+        position.currency = input.currency
         position.buyingPrice = buyingPrice
         position.currentPrice = currentPrice
         
@@ -137,9 +164,90 @@ struct EditPositionView: View {
     struct PositionInput: Equatable {
         var positionName: String
         var amountString: String
+        var currency: Currency
         var buyingPriceString: String
         var currentPriceString: String
     }
+}
+
+struct CurrencySelector: View {
+    var body: some View {
+        List(Currency.all) { currency in
+            Button {
+                selectedCurrency = currency
+                isBeingPresented = false
+            } label: {
+                HStack {
+                    Image(systemName: currency.symbolName + (currency == selectedCurrency ? ".fill" : ""))
+                        .foregroundColor(currency == selectedCurrency ? .accentColor : .primary)
+                        .imageScale(.large)
+                    Text(currency.name + " (" + currency.symbol + ")")
+                    Spacer()
+                }
+            }
+        }
+        .navigationTitle("Select Currency")
+    }
+    
+    @Binding var selectedCurrency: Currency
+    @Binding var isBeingPresented: Bool
+}
+
+extension Currency {
+    var symbolName: String {
+        switch code {
+        case "USD": return "dollarsign.circle"
+        case "GBP": return "sterlingsign.circle"
+        case "EUR": return "eurosign.circle"
+        case "CHF": return "francsign.circle"
+        case "BTC": return "bitcoinsign.circle"
+        default: return "1.circle"
+        }
+    }
+}
+
+struct Currency: Equatable, Identifiable, Codable {
+    
+    var id: String { code }
+    
+    static let all: [Currency] = [
+        bitCoin,
+        britishPound,
+        euro,
+        swissFranc,
+        usDollar
+    ]
+    
+    static let bitCoin = Currency(code: "BTC",
+                                  dollarPrice: 36861.70,
+                                  symbol: "₿",
+                                  name: "Bitcoin")
+    
+    static let usDollar = Currency(code: "USD",
+                                   dollarPrice: 1.0,
+                                   symbol: "$",
+                                   name: "US Dollar")
+    
+    static let euro = Currency(code: "EUR",
+                               dollarPrice: 1.18,
+                               symbol: "€",
+                               name: "Euro")
+    
+    static let swissFranc = Currency(code: "CHF",
+                                     dollarPrice: 1.09,
+                                     symbol: "CHF",
+                                     name: "Swiss Franc")
+    
+    static let britishPound = Currency(code: "GBP",
+                                       dollarPrice: 1.38,
+                                       symbol: "£",
+                                       name: "British Pound")
+    
+    let code: String
+    let dollarPrice: Double
+    let symbol: String
+    let name: String
+//    case usDollar, euro, britishPound, canadianDollar, australianDollar, swissFranc, bitCoin
 }
 
 struct AddPositionView: View {
@@ -160,6 +268,17 @@ struct AddPositionView: View {
                     TextField("Amount", text: $amountString)
                         .multilineTextAlignment(.trailing)
                         .font(.system(.body, design: .monospaced))
+                }
+                NavigationLink(destination: CurrencySelector(selectedCurrency: $currency,
+                                                             isBeingPresented: $isPresentingCurrencySelector),
+                               isActive: $isPresentingCurrencySelector) {
+                    HStack {
+                        Label("Currency", systemImage: currency.symbolName)
+                            .fixedSize(horizontal: true, vertical: false)
+                        Spacer()
+                        Text(currency.symbol)
+                            .font(.system(.body, design: .monospaced))
+                    }
                 }
                 HStack {
                     Label("Opening Price", systemImage: "arrow.down.right")
@@ -198,6 +317,8 @@ struct AddPositionView: View {
         }
     }
     
+    @State private var isPresentingCurrencySelector = false
+    
     private func saveAndCloseIfInputIsValid() {
         guard !positionName.isEmpty,
               let amount = integer(from: amountString),
@@ -206,6 +327,7 @@ struct AddPositionView: View {
         
         let newPosition = Position(name: positionName,
                                    amount: amount,
+                                   currency: currency,
                                    buyingPrice: buyingPrice,
                                    currentPrice: currentPrice)
         
@@ -215,6 +337,7 @@ struct AddPositionView: View {
     
     @Binding private(set) var isBeingPresented: Bool
     
+    @State private var currency = Currency.usDollar
     @State private var positionName: String = ""
     @State private var amountString: String = ""
     @State private var buyingPriceString: String = ""
@@ -250,6 +373,7 @@ class Portfolio: ObservableObject {
             Position(id: $0.id,
                      name: $0.name,
                      amount: $0.amount,
+                     currency: $0.currency,
                      buyingPrice: $0.buyingPrice,
                      currentPrice: $0.currentPrice)
         }
@@ -277,11 +401,13 @@ class Position: Identifiable, ObservableObject {
     internal init(id: UUID = UUID(),
                   name: String,
                   amount: Int,
+                  currency: Currency,
                   buyingPrice: Double,
                   currentPrice: Double) {
         self.id = id
         self.name = name
         self.amount = amount
+        self.currency = currency
         self.buyingPrice = buyingPrice
         self.currentPrice = currentPrice
     }
@@ -306,6 +432,7 @@ class Position: Identifiable, ObservableObject {
         .init(id: id,
               name: name,
               amount: amount,
+              currency: currency,
               buyingPrice: buyingPrice,
               currentPrice: currentPrice)
     }
@@ -314,6 +441,7 @@ class Position: Identifiable, ObservableObject {
         let id: UUID
         let name: String
         let amount: Int
+        let currency: Currency
         let buyingPrice: Double
         let currentPrice: Double
     }
@@ -321,6 +449,7 @@ class Position: Identifiable, ObservableObject {
     private(set) var id: UUID
     @Published var name: String
     @Published var amount: Int
+    @Published var currency: Currency
     @Published var buyingPrice: Double
     @Published var currentPrice: Double
 }
