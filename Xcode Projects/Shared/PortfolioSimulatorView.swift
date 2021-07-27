@@ -11,26 +11,29 @@ struct PortfolioSimulatorView_Previews: PreviewProvider {
 struct PortfolioSimulatorView: View {
     var body: some View {
         List {
-            ForEach(portfolio.positions) { position in
-                PositionView(displayCurrency: $portfolio.currency,
-                             position: position)
-            }
-            .onDelete(perform: delete)
-            Button {
-                isPresentingAddPositionView = true
-            } label: {
-                HStack {
-                    Image(systemName: "plus")
-                    Text("Add")
-                    Spacer()
+            Section(header: Text("Positions")) {
+                ForEach(portfolio.positions) { position in
+                    PositionView(displayCurrency: $portfolio.currency,
+                                 position: position)
+                }
+                .onDelete(perform: delete)
+                Button {
+                    isPresentingAddPositionView = true
+                } label: {
+                    HStack {
+                        Image(systemName: "plus")
+                        Text("Add Position")
+                        Spacer()
+                    }
+                }
+                .foregroundColor(.accentColor)
+                .popover(isPresented: $isPresentingAddPositionView) {
+                    AddPositionView(isBeingPresented: $isPresentingAddPositionView)
                 }
             }
-            .foregroundColor(.accentColor)
-            .popover(isPresented: $isPresentingAddPositionView) {
-                AddPositionView(isBeingPresented: $isPresentingAddPositionView)
-            }
         }
-        .navigationTitle("Positions")
+        .navigationTitle("Portfolio")
+        .listStyle(GroupedListStyle())
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
@@ -145,6 +148,7 @@ struct EditPositionView: View {
                     .keyboardType(.decimalPad)
             }
         }
+        .listStyle(GroupedListStyle())
         .navigationTitle(input.positionName)
         .onChange(of: input) { _ in
             updatePositionIfInputIsValid()
@@ -358,6 +362,37 @@ class Portfolio: ObservableObject {
     static let shared = Portfolio()
     private init() {}
     
+    // MARK: - Metrics
+    
+    var returnPercentageString: String {
+        String(format: "%.2f", returnPercentage) + " %"
+    }
+    
+    var returnPercentage: Double {
+        let v = value
+        return ((v / (v - profit)) - 1.0) * 100.0
+    }
+    
+    var valueDisplayString: String {
+        String(format: "%.0f", value) //+ " " + currency.symbol
+    }
+    
+    var isAtALoss: Bool { profit < 0 }
+    
+    var value: Double {
+        positions.map { $0.value(in: currency) }.reduce(0, +)
+    }
+    
+    var profitDisplayString: String {
+        String(format: "%.0f", profit) //+ " " + currency.symbol
+    }
+    
+    var profit: Double {
+        positions.map { $0.profit(in: currency) }.reduce(0, +)
+    }
+    
+    // MARK: - Positions
+    
     @Published var positions: [Position] = loadPositions() {
         didSet { persistPositions() }
     }
@@ -388,6 +423,8 @@ class Portfolio: ObservableObject {
                      currentPrice: $0.currentPrice)
         }
     }
+    
+    // MARK: - Currency
     
     @Published var currency = loadCurrency() {
         didSet { persistCurrency() }
