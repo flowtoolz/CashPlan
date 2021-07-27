@@ -14,6 +14,7 @@ struct CashPlanApp: App {
             case .inactive:
                 log("app became inactive")
                 Portfolio.shared.persistPositions()
+                Portfolio.shared.persistCurrency()
             case .active:
                 log("app became active")
             @unknown default:

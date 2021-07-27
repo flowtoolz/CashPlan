@@ -362,8 +362,6 @@ class Portfolio: ObservableObject {
         didSet { persistPositions() }
     }
     
-    @Published var currency: Currency = .usDollar
-    
     func persistPositions() {
         guard let recordsData = positions.map({ $0.record }).encode() else {
             return log(error: "couldn't encode position records")
@@ -389,6 +387,30 @@ class Portfolio: ObservableObject {
                      buyingPrice: $0.buyingPrice,
                      currentPrice: $0.currentPrice)
         }
+    }
+    
+    @Published var currency = loadCurrency() {
+        didSet { persistCurrency() }
+    }
+    
+    static func loadCurrency() -> Currency {
+        guard let data = UserDefaults.standard.data(forKey: "portfolioCurrencyDataKey") else {
+            return .usDollar
+        }
+        
+        guard let decodedCurrency = Currency(data) else {
+            log(error: "Couldn't decode portfolio currency")
+            return .usDollar
+        }
+        
+        return decodedCurrency
+    }
+    
+    func persistCurrency() {
+        guard let data = currency.encode() else {
+            return log(error: "couldn't encode portfolio currency")
+        }
+        UserDefaults.standard.set(data, forKey: "portfolioCurrencyDataKey")
     }
 }
 
