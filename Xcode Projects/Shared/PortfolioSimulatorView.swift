@@ -12,7 +12,8 @@ struct PortfolioSimulatorView: View {
     var body: some View {
         List {
             ForEach(portfolio.positions) { position in
-                PositionView(position: position)
+                PositionView(displayCurrency: $portfolio.currency,
+                             position: position)
             }
             .onDelete(perform: delete)
             Button {
@@ -23,20 +24,28 @@ struct PortfolioSimulatorView: View {
                     Text("Add")
                     Spacer()
                 }
-            }.foregroundColor(.accentColor)
+            }
+            .foregroundColor(.accentColor)
+            .popover(isPresented: $isPresentingAddPositionView) {
+                AddPositionView(isBeingPresented: $isPresentingAddPositionView)
+            }
         }
         .navigationTitle("Positions")
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
-//                    isPresentingAddPositionView = true
+                    isPresentingCurrencySelector = true
                 } label: {
-                    Image(systemName: "slider.horizontal.3")
+                    Image(systemName: portfolio.currency.symbolName)
                 }
             }
         }
-        .popover(isPresented: $isPresentingAddPositionView) {
-            AddPositionView(isBeingPresented: $isPresentingAddPositionView)
+        .popover(isPresented: $isPresentingCurrencySelector) {
+            NavigationView {
+                CurrencySelector(selectedCurrency: $portfolio.currency,
+                                 isBeingPresented: $isPresentingCurrencySelector)
+                    .navigationBarTitleDisplayMode(.inline)
+            }
         }
     }
     
@@ -44,8 +53,8 @@ struct PortfolioSimulatorView: View {
         portfolio.positions.remove(atOffsets: offsets)
     }
     
+    @State private var isPresentingCurrencySelector = false
     @State private var isPresentingAddPositionView = false
-    
     @ObservedObject private(set) var portfolio = Portfolio.shared
 }
 
@@ -56,7 +65,7 @@ struct PositionView: View {
                 HStack {
                     Text(position.name)
                     Spacer()
-                    Text("\(position.valueDisplayString)")
+                    Text("\(position.valueDisplayString(in: displayCurrency))")
                         .font(.system(.body, design: .monospaced))
                         .foregroundColor(.secondary)
                     
@@ -66,7 +75,7 @@ struct PositionView: View {
                         .font(.system(.body, design: .monospaced))
                         .foregroundColor(position.isLoss ? .red : .green)
                     Spacer()
-                    Text(position.profitDisplayString)
+                    Text(position.profitDisplayString(in: displayCurrency))
                         .font(.system(.body, design: .monospaced))
                         .foregroundColor(position.isLoss ? .red : .green)
                 }
@@ -74,6 +83,7 @@ struct PositionView: View {
         }
     }
     
+    @Binding private(set) var displayCurrency: Currency
     @ObservedObject private(set) var position: Position
 }
 
@@ -186,7 +196,7 @@ struct CurrencySelector: View {
                 }
             }
         }
-        .navigationTitle("Select Currency")
+        .navigationTitle("Currency")
     }
     
     @Binding var selectedCurrency: Currency
@@ -352,6 +362,8 @@ class Portfolio: ObservableObject {
         didSet { persistPositions() }
     }
     
+    @Published var currency: Currency = .usDollar
+    
     func persistPositions() {
         guard let recordsData = positions.map({ $0.record }).encode() else {
             return log(error: "couldn't encode position records")
@@ -387,13 +399,13 @@ extension Position {
         return (percentage > 0 ? "+" : "") + String(format: "%.2f", percentage) + " %"
     }
     
-    var profitDisplayString: String {
-        let p = profit
+    func profitDisplayString(in targetCurrency: Currency) -> String {
+        let p = profit(in: targetCurrency)
         return (p > 0 ? "+" : "") + String(format: "%.2f", p)
     }
     
-    var valueDisplayString: String {
-        String(format: "%.2f", value)
+    func valueDisplayString(in targetCurrency: Currency) -> String {
+        String(format: "%.2f", value(in: targetCurrency))
     }
 }
 
@@ -410,6 +422,18 @@ class Position: Identifiable, ObservableObject {
         self.currency = currency
         self.buyingPrice = buyingPrice
         self.currentPrice = currentPrice
+    }
+    
+    func value(in targetCurrency: Currency) -> Double {
+        guard currency.code != targetCurrency.code else { return value }
+        let valueInUSDollar = value * currency.dollarPrice
+        return valueInUSDollar / targetCurrency.dollarPrice
+    }
+    
+    func profit(in targetCurrency: Currency) -> Double {
+        guard currency.code != targetCurrency.code else { return profit }
+        let profitInUSDollar = profit * currency.dollarPrice
+        return profitInUSDollar / targetCurrency.dollarPrice
     }
     
     var profit: Double {
