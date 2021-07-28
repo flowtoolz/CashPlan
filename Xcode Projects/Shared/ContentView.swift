@@ -20,7 +20,6 @@ struct ContentView: View {
                                 }
                                 HStack {
                                     Text(Portfolio.shared.returnPercentageString)
-                                        .font(.system(.body, design: .monospaced))
                                         .foregroundColor(Portfolio.shared.isAtALoss ? .red : .green)
                                     Spacer()
                                     Text(Portfolio.shared.profitDisplayString)
@@ -31,7 +30,7 @@ struct ContentView: View {
                         }
                     }
                 }
-                Section(header: Text("5 Year Vision")) {
+                Section(header: Text("\(cashflow.input.years) Year Vision")) {
                     NavigationLink(destination: CashflowCalculatorView()) {
                         HStack(alignment: .center) {
                             Image(systemName: "face.smiling")
@@ -41,14 +40,15 @@ struct ContentView: View {
                                 HStack {
                                     Text("Cash")
                                     Spacer()
-                                    Text("123456")
+                                    Text(cashflow.output.cash.decimalString(fractionDigits: 0))
                                         .font(.system(.body, design: .monospaced))
                                         .foregroundColor(.secondary)
                                 }
                                 HStack {
                                     Text("Cashflow")
                                     Spacer()
-                                    Text("+1234")
+                                    // TODO: add plus sign
+                                    Text(cashflow.output.cashflow.decimalString())
                                         .font(.system(.body, design: .monospaced))
                                 }
                                 .foregroundColor(.green)
@@ -57,7 +57,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .navigationTitle("Steps")
+            .navigationTitle("Tools")
             .listStyle(GroupedListStyle())
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
@@ -70,6 +70,8 @@ struct ContentView: View {
             }
         }
     }
+    
+    @ObservedObject private var cashflow = CashFlow.shared
 }
 
 struct LabelImage: View {

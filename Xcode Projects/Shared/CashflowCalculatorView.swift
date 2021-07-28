@@ -7,7 +7,7 @@ struct CashflowCalculatorView: View {
                 HStack {
                     Label("Initial Investment", systemImage: "banknote")
                         .fixedSize(horizontal: true, vertical: false)
-                    TextField("Initial", text: $startCashString)
+                    TextField("Initial", text: $inputStrings.startCashString)
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.trailing)
                         .font(.system(.body, design: .monospaced))
@@ -15,7 +15,7 @@ struct CashflowCalculatorView: View {
                 HStack {
                     Label("Monthly Investment", systemImage: "calendar")
                         .fixedSize(horizontal: true, vertical: false)
-                    TextField("Monthly", text: $monthlyInvestmentString)
+                    TextField("Monthly", text: $inputStrings.monthlyInvestmentString)
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.trailing)
                         .font(.system(.body, design: .monospaced))
@@ -23,7 +23,7 @@ struct CashflowCalculatorView: View {
                 HStack {
                     Label("Expected Return", systemImage: "percent")
                         .fixedSize(horizontal: true, vertical: false)
-                    TextField("Return", text: $growthPercentString)
+                    TextField("Return", text: $inputStrings.growthPercentString)
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
                         .font(.system(.body, design: .monospaced))
@@ -32,13 +32,13 @@ struct CashflowCalculatorView: View {
                 HStack {
                     Label("Years", systemImage: "hourglass")
                         .fixedSize(horizontal: true, vertical: false)
-                    TextField("Years", text: $yearsString)
+                    TextField("Years", text: $inputStrings.yearsString)
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.trailing)
                         .font(.system(.body, design: .monospaced))
                 }
             }
-            Section(header: Text("Result in \(yearsString) years")) {
+            Section(header: Text("Result in \(inputStrings.yearsString) years")) {
                 HStack {
                     Label("Cash", systemImage: "banknote")
                     Spacer()
@@ -54,62 +54,48 @@ struct CashflowCalculatorView: View {
             }
             .accentColor(.green)
         }
-        .navigationTitle("Cashflow")
+        .navigationTitle("Vision")
+        .onChange(of: inputStrings) { inputStrings in
+            inputStrings.input.forSome {
+                cashflow.input = $0
+            }
+        }
     }
     
-    var cashString: String {
-        guard let result = result else { return "Invalid input format" }
-        return String(format: "%.2f", result.cash)
-    }
+    @State private var inputStrings = CashFlowInputStrings(CashFlow.shared.input)
     
-    var cashflowString: String {
-        guard let result = result else { return "Invalid input format" }
-        return String(format: "%.2f", result.cashflow)
-    }
-    
-    private var result: CashAndCashFlow? {
-        guard let growthPerYearInPercent = double(from: growthPercentString),
-              let startCapital = double(from: startCashString),
-              let investmentPerMonth = double(from: monthlyInvestmentString),
-              let years = integer(from: yearsString) else {
-            return nil
+    private struct CashFlowInputStrings: Equatable {
+        init(_ input: CashFlow.Input) {
+            startCashString = String(input.startCash)
+            monthlyInvestmentString = String(input.monthlyInvestment)
+            growthPercentString = String(input.growthPercent)
+            yearsString = String(input.years)
         }
         
-        let growthPerYear = 1.0 + (growthPerYearInPercent / 100.0)
-        
-        let months = years * 12
-        let growthPerMonth = pow(growthPerYear, 1.0 / 12.0)
-        
-        var resultingCapital = startCapital
-        
-        for _ in 0 ..< months {
-            resultingCapital *= growthPerMonth
-            resultingCapital += investmentPerMonth
+        var input: CashFlow.Input? {
+            guard let growthPerYearInPercent = double(from: growthPercentString),
+                  let startCapital = double(from: startCashString),
+                  let investmentPerMonth = double(from: monthlyInvestmentString),
+                  let years = integer(from: yearsString) else {
+                return nil
+            }
+            
+            return .init(startCash: startCapital,
+                         monthlyInvestment: investmentPerMonth,
+                         growthPercent: growthPerYearInPercent,
+                         years: years)
         }
         
-//        print("after \(years) years:")
-        
-//        print(String(format: "%.3f", resultingCapital / 1000000) + " million cash")
-        
-        let resultingCashFlowPerMonth = resultingCapital * (growthPerMonth - 1.0)
-        
-//        print("\(Int(resultingCashFlowPerMonth)) monthly cash flow")
-        
-        return .init(cash: resultingCapital,
-                     cashflow: resultingCashFlowPerMonth)
+        var startCashString: String
+        var monthlyInvestmentString: String
+        var growthPercentString: String
+        var yearsString: String
     }
     
-    struct CashAndCashFlow {
-        let cash: Double
-        let cashflow: Double
-    }
-    
-    @State private var startCashString: String = "10000"
-    @State private var monthlyInvestmentString: String = "1000"
-    @State private var growthPercentString: String = "8.5"
-    @State private var yearsString: String = "5"
+    private var cashString: String { cashflow.output.cash.decimalString() }
+    private var cashflowString: String { cashflow.output.cashflow.decimalString() }
+    @ObservedObject private var cashflow = CashFlow.shared
 }
-
 
 /*
 func calculateCashAndCashflow() {

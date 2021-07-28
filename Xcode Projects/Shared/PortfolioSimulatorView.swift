@@ -11,7 +11,7 @@ struct PortfolioSimulatorView_Previews: PreviewProvider {
 struct PortfolioSimulatorView: View {
     var body: some View {
         List {
-            Section(header: Text("Positions")) {
+            
                 ForEach(portfolio.positions) { position in
                     PositionView(displayCurrency: $portfolio.currency,
                                  position: position)
@@ -30,10 +30,9 @@ struct PortfolioSimulatorView: View {
                 .popover(isPresented: $isPresentingAddPositionView) {
                     AddPositionView(isBeingPresented: $isPresentingAddPositionView)
                 }
-            }
         }
         .navigationTitle("Portfolio")
-        .listStyle(GroupedListStyle())
+//        .listStyle(GroupedListStyle())
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
@@ -75,7 +74,6 @@ struct PositionView: View {
                 }
                 HStack {
                     Text(position.profitPercentageDisplayString)
-                        .font(.system(.body, design: .monospaced))
                         .foregroundColor(position.isLoss ? .red : .green)
                     Spacer()
                     Text(position.profitDisplayString(in: displayCurrency))
@@ -103,7 +101,7 @@ struct EditPositionView: View {
     }
     
     var body: some View {
-        List {
+        Form {
             HStack {
                 Label("Asset", systemImage: "building.2")
                     .fixedSize(horizontal: true, vertical: false)
@@ -169,7 +167,7 @@ struct EditPositionView: View {
         position.buyingPrice = buyingPrice
         position.currentPrice = currentPrice
         
-        Portfolio.shared.persistPositions()
+        Portfolio.shared.positions.sort()
     }
     
     @State private var input: PositionInput
@@ -196,15 +194,30 @@ struct CurrencySelector: View {
                         .foregroundColor(currency == selectedCurrency ? .accentColor : .primary)
                         .imageScale(.large)
                     Text(currency.name + " (" + currency.symbol + ")")
+                        .foregroundColor(.primary)
                     Spacer()
                 }
             }
         }
+        .listStyle(GroupedListStyle())
         .navigationTitle("Currency")
     }
     
     @Binding var selectedCurrency: Currency
     @Binding var isBeingPresented: Bool
+}
+
+extension Double {
+    func decimalString(fractionDigits: Int = 2) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.groupingSeparator = "'"
+        formatter.maximumFractionDigits = fractionDigits
+        formatter.minimumFractionDigits = fractionDigits
+        
+        let number = NSNumber(floatLiteral: self)
+        return formatter.string(from: number) ?? String(format: "%.\(fractionDigits)f", self)
+    }
 }
 
 extension Currency {
@@ -346,6 +359,7 @@ struct AddPositionView: View {
                                    currentPrice: currentPrice)
         
         Portfolio.shared.positions += newPosition
+        Portfolio.shared.positions.sort()
         isBeingPresented = false
     }
     
@@ -365,7 +379,7 @@ class Portfolio: ObservableObject {
     // MARK: - Metrics
     
     var returnPercentageString: String {
-        String(format: "%.2f", returnPercentage) + " %"
+        returnPercentage.decimalString() + "%"
     }
     
     var returnPercentage: Double {
@@ -374,7 +388,7 @@ class Portfolio: ObservableObject {
     }
     
     var valueDisplayString: String {
-        String(format: "%.0f", value) //+ " " + currency.symbol
+        value.decimalString(fractionDigits: 0) //+ " " + currency.symbol
     }
     
     var isAtALoss: Bool { profit < 0 }
@@ -384,7 +398,7 @@ class Portfolio: ObservableObject {
     }
     
     var profitDisplayString: String {
-        String(format: "%.0f", profit) //+ " " + currency.symbol
+        profit.decimalString(fractionDigits: 0) //+ " " + currency.symbol
     }
     
     var profit: Double {
@@ -455,20 +469,28 @@ extension Position {
     
     var profitPercentageDisplayString: String {
         let percentage = ((currentPrice / buyingPrice) - 1.0) * 100.0
-        return (percentage > 0 ? "+" : "") + String(format: "%.2f", percentage) + " %"
+        return (percentage > 0 ? "+" : "") + percentage.decimalString() + "%"
     }
     
     func profitDisplayString(in targetCurrency: Currency) -> String {
         let p = profit(in: targetCurrency)
-        return (p > 0 ? "+" : "") + String(format: "%.2f", p)
+        return (p > 0 ? "+" : "") + p.decimalString()
     }
     
     func valueDisplayString(in targetCurrency: Currency) -> String {
-        String(format: "%.2f", value(in: targetCurrency))
+        value(in: targetCurrency).decimalString()
     }
 }
 
-class Position: Identifiable, ObservableObject {
+class Position: Identifiable, ObservableObject, Comparable, Equatable {
+    static func == (lhs: Position, rhs: Position) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    static func < (lhs: Position, rhs: Position) -> Bool {
+        abs(lhs.profit) > abs(rhs.profit)
+    }
+    
     internal init(id: UUID = UUID(),
                   name: String,
                   amount: Int,

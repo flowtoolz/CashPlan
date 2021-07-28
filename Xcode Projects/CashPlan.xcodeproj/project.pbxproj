@@ -11,6 +11,8 @@
 		967B192526AF1A4700214F29 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B192326AF1A4700214F29 /* Helpers.swift */; };
 		967B192826AF2FB900214F29 /* SwiftyToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 967B192726AF2FB900214F29 /* SwiftyToolz */; };
 		967B192B26AF324F00214F29 /* FoundationToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 967B192A26AF324F00214F29 /* FoundationToolz */; };
+		96CA0AE226B1BEA300670336 /* CashFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CA0AE126B1BEA300670336 /* CashFlow.swift */; };
+		96CA0AE326B1BEA300670336 /* CashFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CA0AE126B1BEA300670336 /* CashFlow.swift */; };
 		96F9674A26AD991100A1258E /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F9674926AD991100A1258E /* Tests_iOS.swift */; };
 		96F9675526AD991100A1258E /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F9675426AD991100A1258E /* Tests_macOS.swift */; };
 		96F9675726AD991100A1258E /* CashPlanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F9672E26AD991000A1258E /* CashPlanApp.swift */; };
@@ -44,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		967B192326AF1A4700214F29 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		96CA0AE126B1BEA300670336 /* CashFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashFlow.swift; sourceTree = "<group>"; };
 		96F9672E26AD991000A1258E /* CashPlanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashPlanApp.swift; sourceTree = "<group>"; };
 		96F9672F26AD991000A1258E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		96F9673026AD991100A1258E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,6 +118,7 @@
 				96F9672F26AD991000A1258E /* ContentView.swift */,
 				967B192326AF1A4700214F29 /* Helpers.swift */,
 				96FE3C5226AE9A7500B7C230 /* CashflowCalculatorView.swift */,
+				96CA0AE126B1BEA300670336 /* CashFlow.swift */,
 				96FE3C4F26AE99E800B7C230 /* PortfolioSimulatorView.swift */,
 				96F9673026AD991100A1258E /* Assets.xcassets */,
 			);
@@ -334,6 +338,7 @@
 			files = (
 				96F9675926AD991100A1258E /* ContentView.swift in Sources */,
 				96FE3C5026AE99E800B7C230 /* PortfolioSimulatorView.swift in Sources */,
+				96CA0AE226B1BEA300670336 /* CashFlow.swift in Sources */,
 				96F9675726AD991100A1258E /* CashPlanApp.swift in Sources */,
 				967B192426AF1A4700214F29 /* Helpers.swift in Sources */,
 				96FE3C5326AE9A7500B7C230 /* CashflowCalculatorView.swift in Sources */,
@@ -346,6 +351,7 @@
 			files = (
 				96F9675A26AD991100A1258E /* ContentView.swift in Sources */,
 				96FE3C5126AE99E800B7C230 /* PortfolioSimulatorView.swift in Sources */,
+				96CA0AE326B1BEA300670336 /* CashFlow.swift in Sources */,
 				96F9675826AD991100A1258E /* CashPlanApp.swift in Sources */,
 				967B192526AF1A4700214F29 /* Helpers.swift in Sources */,
 				96FE3C5426AE9A7500B7C230 /* CashflowCalculatorView.swift in Sources */,
