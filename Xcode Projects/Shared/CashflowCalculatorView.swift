@@ -3,14 +3,31 @@ import SwiftUI
 struct CashflowCalculatorView: View {
     var body: some View {
         Form {
-            Section(header: Text("Investment")) {
+            Section(header: Text("Result in \(inputStrings.yearsString) years")) {
                 HStack {
-                    Label("Initial Investment", systemImage: "banknote")
+                    Label("Cash", systemImage: "chart.pie")
+                    Spacer()
+                    Text(cashString)
+                        .font(.system(.body, design: .monospaced))
+                }
+                HStack {
+                    Label("Cash / Month", systemImage: "calendar")
+                    Spacer()
+                    Text(cashflowString)
+                        .font(.system(.body, design: .monospaced))
+                }
+                .foregroundColor(.green)
+            }
+            .accentColor(.primary)
+            Section(header: Text("Edit Investment Plan")) {
+                HStack {
+                    Label("Initial Investment", systemImage: "chart.pie")
                         .fixedSize(horizontal: true, vertical: false)
                     TextField("Initial", text: $inputStrings.startCashString)
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.trailing)
                         .font(.system(.body, design: .monospaced))
+                        .foregroundColor(.accentColor)
                 }
                 HStack {
                     Label("Monthly Investment", systemImage: "calendar")
@@ -19,6 +36,7 @@ struct CashflowCalculatorView: View {
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.trailing)
                         .font(.system(.body, design: .monospaced))
+                        .foregroundColor(.accentColor)
                 }
                 HStack {
                     Label("Expected Return", systemImage: "percent")
@@ -27,6 +45,7 @@ struct CashflowCalculatorView: View {
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
                         .font(.system(.body, design: .monospaced))
+                        .foregroundColor(.accentColor)
                     
                 }
                 HStack {
@@ -36,23 +55,9 @@ struct CashflowCalculatorView: View {
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.trailing)
                         .font(.system(.body, design: .monospaced))
+                        .foregroundColor(.accentColor)
                 }
             }
-            Section(header: Text("Result in \(inputStrings.yearsString) years")) {
-                HStack {
-                    Label("Cash", systemImage: "banknote")
-                    Spacer()
-                    Text(cashString)
-                        .font(.system(.body, design: .monospaced))
-                }
-                HStack {
-                    Label("Monthly Cashflow", systemImage: "calendar")
-                    Spacer()
-                    Text(cashflowString)
-                        .font(.system(.body, design: .monospaced))
-                }
-            }
-            .accentColor(.green)
         }
         .navigationTitle("Vision")
         .onChange(of: inputStrings) { inputStrings in
@@ -66,7 +71,7 @@ struct CashflowCalculatorView: View {
     
     private struct CashFlowInputStrings: Equatable {
         init(_ input: CashFlow.Input) {
-            startCashString = String(input.startCash)
+            startCashString = input.startCash.decimalString(separator: "")
             monthlyInvestmentString = String(input.monthlyInvestment)
             growthPercentString = String(input.growthPercent)
             yearsString = String(input.years)
@@ -93,7 +98,7 @@ struct CashflowCalculatorView: View {
     }
     
     private var cashString: String { cashflow.output.cash.decimalString() }
-    private var cashflowString: String { cashflow.output.cashflow.decimalString() }
+    private var cashflowString: String { "+" + cashflow.output.cashflow.decimalString() }
     @ObservedObject private var cashflow = CashFlow.shared
 }
 

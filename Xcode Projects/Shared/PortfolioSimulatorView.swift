@@ -11,28 +11,27 @@ struct PortfolioSimulatorView_Previews: PreviewProvider {
 struct PortfolioSimulatorView: View {
     var body: some View {
         List {
-            
-                ForEach(portfolio.positions) { position in
-                    PositionView(displayCurrency: $portfolio.currency,
-                                 position: position)
+            ForEach(portfolio.positions) { position in
+                PositionView(displayCurrency: $portfolio.currency,
+                             position: position)
+            }
+            .onDelete(perform: delete)
+            Button {
+                isPresentingAddPositionView = true
+            } label: {
+                HStack {
+                    Image(systemName: "plus")
+                    Text("Add Position")
+                    Spacer()
                 }
-                .onDelete(perform: delete)
-                Button {
-                    isPresentingAddPositionView = true
-                } label: {
-                    HStack {
-                        Image(systemName: "plus")
-                        Text("Add Position")
-                        Spacer()
-                    }
-                }
-                .foregroundColor(.accentColor)
-                .popover(isPresented: $isPresentingAddPositionView) {
-                    AddPositionView(isBeingPresented: $isPresentingAddPositionView)
-                }
+            }
+            .foregroundColor(.accentColor)
+            .popover(isPresented: $isPresentingAddPositionView) {
+                AddPositionView(isBeingPresented: $isPresentingAddPositionView)
+            }
         }
-        .navigationTitle("Portfolio")
-//        .listStyle(GroupedListStyle())
+        .navigationTitle("Positions")
+        //        .listStyle(GroupedListStyle())
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
@@ -66,11 +65,11 @@ struct PositionView: View {
             VStack {
                 HStack {
                     Text(position.name)
+                        .fontWeight(.medium)
                     Spacer()
                     Text("\(position.valueDisplayString(in: displayCurrency))")
                         .font(.system(.body, design: .monospaced))
                         .foregroundColor(.secondary)
-                    
                 }
                 HStack {
                     Text(position.profitPercentageDisplayString)
@@ -152,7 +151,7 @@ struct EditPositionView: View {
             updatePositionIfInputIsValid()
         }
     }
-
+    
     @State private var isPresentingCurrencySelector = false
     
     private func updatePositionIfInputIsValid() {
@@ -208,10 +207,10 @@ struct CurrencySelector: View {
 }
 
 extension Double {
-    func decimalString(fractionDigits: Int = 2) -> String {
+    func decimalString(fractionDigits: Int = 2, separator: String = "'") -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
-        formatter.groupingSeparator = "'"
+        formatter.groupingSeparator = separator
         formatter.maximumFractionDigits = fractionDigits
         formatter.minimumFractionDigits = fractionDigits
         
@@ -274,7 +273,7 @@ struct Currency: Equatable, Identifiable, Codable {
     let dollarPrice: Double
     let symbol: String
     let name: String
-//    case usDollar, euro, britishPound, canadianDollar, australianDollar, swissFranc, bitCoin
+    //    case usDollar, euro, britishPound, canadianDollar, australianDollar, swissFranc, bitCoin
 }
 
 struct AddPositionView: View {
@@ -422,7 +421,7 @@ class Portfolio: ObservableObject {
         guard let data = UserDefaults.standard.data(forKey: "positionsDataKey") else {
             return []
         }
-
+        
         guard let records = [Position.Record](data) else {
             log(error: "could not decode position records")
             return []
@@ -550,7 +549,7 @@ class Position: Identifiable, ObservableObject, Comparable, Equatable {
         let buyingPrice: Double
         let currentPrice: Double
     }
-
+    
     private(set) var id: UUID
     @Published var name: String
     @Published var amount: Int

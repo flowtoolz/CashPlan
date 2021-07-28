@@ -25,7 +25,7 @@ class CashFlow: ObservableObject {
                      cashflow: resultingCashFlowPerMonth)
     }
     
-    @Published var input = Input(startCash: 10000,
+    @Published var input = Input(startCash: Portfolio.shared.value,
                                  monthlyInvestment: 1000,
                                  growthPercent: 8.5,
                                  years: 5)
