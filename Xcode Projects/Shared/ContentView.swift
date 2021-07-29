@@ -11,16 +11,15 @@ struct ContentView: View {
                             Text("\(Portfolio.shared.positions.count) Assets")
                                 .font(.body.weight(.medium))
                                 Spacer()
+                            }
+                            HStack(alignment: .firstTextBaseline) {
+                                Text("Profit / Loss")
+                                Spacer()
                                 Text(Portfolio.shared.returnPercentageString)
                                     .font(.system(.title2, design: .monospaced))
                                     .foregroundColor(Portfolio.shared.isAtALoss ? .red : .green)
                             }
-//                            HStack(alignment: .firstTextBaseline) {
-//                                Text("Profit / Loss")
-//                                Spacer()
-//
-//                            }
-//                            .foregroundColor(Portfolio.shared.isAtALoss ? .red : .green)
+                            .foregroundColor(Portfolio.shared.isAtALoss ? .red : .green)
                             HStack(alignment: .firstTextBaseline) {
                                 Text("Balance")
                                     .foregroundColor(.secondary)
@@ -29,14 +28,14 @@ struct ContentView: View {
                                     .font(.system(.title2, design: .monospaced))
                                     .foregroundColor(.secondary)
                             }
-                            HStack(alignment: .firstTextBaseline) {
-                                Text("Cash Flow")
-                                Spacer()
-                                
-                                    Text("+" + (Portfolio.shared.value * cashflow.input.monthProfitFactor).decimalString(fractionDigits: 0))
-                                        .font(.system(.title2, design: .monospaced))
-                            }
-                            .foregroundColor(.green)
+//                            HStack(alignment: .firstTextBaseline) {
+//                                Text("Cash Flow")
+//                                Spacer()
+//
+//                                    Text("+" + (Portfolio.shared.value * cashflow.input.monthProfitFactor).decimalString(fractionDigits: 0))
+//                                        .font(.system(.title2, design: .monospaced))
+//                            }
+//                            .foregroundColor(.green)
                         }
                     } icon: {
                         Image(systemName: "chart.pie")

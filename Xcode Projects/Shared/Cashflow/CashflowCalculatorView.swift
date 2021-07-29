@@ -5,16 +5,16 @@ struct CashflowCalculatorView: View {
         VStack {
         Form {
             Section(header: Text("Portfolio in \(inputStrings.yearsString) years")) {
-                VStack {
+                VStack(alignment: .leading, spacing: 12) {
                 HStack(alignment: .firstTextBaseline) {
                     Label("Balance", systemImage: "banknote")
                         .fixedSize(horizontal: true, vertical: false)
                         .accentColor(.secondary)
                     Spacer()
                     Text(cashString)
-                        .font(.system(.title2, design: .monospaced))
+                        .font(.system(.body, design: .monospaced))
                         .foregroundColor(.secondary)
-                }.padding(.bottom)
+                }
                 HStack(alignment: .firstTextBaseline) {
                     Label {
                         Text("Cash Flow")
@@ -25,16 +25,16 @@ struct CashflowCalculatorView: View {
                     Spacer()
                     VStack(alignment: .trailing) {
                         Text(cashflowString)
-                            .font(.system(.title2, design: .monospaced))
+                            .font(.system(.body, design: .monospaced))
                             .foregroundColor(.green)
                         Text("per month")
                             .foregroundColor(.secondary)
                             .font(.footnote)
                     }
                 }
-                }
+                }.padding([.top, .bottom], 6)
             }
-            Section(header: Text("Investment Goal")) {
+            Section(header: Text("Trading Goal")) {
                 HStack {
                     Label {
                         Text("Monthly Investment:")
