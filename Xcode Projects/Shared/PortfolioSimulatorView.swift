@@ -21,7 +21,7 @@ struct PortfolioSimulatorView: View {
             } label: {
                 HStack {
                     Image(systemName: "plus")
-                    Text("Add Position")
+                    Text("Add Asset")
                     Spacer()
                 }
             }
@@ -30,7 +30,7 @@ struct PortfolioSimulatorView: View {
                 AddPositionView(isBeingPresented: $isPresentingAddPositionView)
             }
         }
-        .navigationTitle("Positions")
+        .navigationTitle("Assets")
         //        .listStyle(GroupedListStyle())
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
@@ -43,9 +43,9 @@ struct PortfolioSimulatorView: View {
         }
         .popover(isPresented: $isPresentingCurrencySelector) {
             NavigationView {
-                CurrencySelector(selectedCurrency: $portfolio.currency,
+                CurrencySelector(subtitle: "In Which the Portfolio is Displayed",
+                                 selectedCurrency: $portfolio.currency,
                                  isBeingPresented: $isPresentingCurrencySelector)
-                    .navigationBarTitleDisplayMode(.inline)
             }
         }
     }
@@ -64,20 +64,27 @@ struct PositionView: View {
         NavigationLink(destination: EditPositionView(position)) {
             VStack {
                 HStack {
+//                    Image(systemName: position.currency.symbolName)
+//                        .foregroundColor(.accentColor)
                     Text(position.name)
                         .fontWeight(.medium)
+                    Spacer()
+                    Text(position.profitPercentageDisplayString)
+                        .font(.system(.body, design: .monospaced))
+                        .foregroundColor(position.isLoss ? .red : .green)
+                    
+                }
+//                HStack {
+//                    Spacer()
+//                    Text(position.profitDisplayString(in: displayCurrency))
+//                        .font(.system(.body, design: .monospaced))
+//                        .foregroundColor(.secondary)
+//                }
+                HStack {
                     Spacer()
                     Text("\(position.valueDisplayString(in: displayCurrency))")
                         .font(.system(.body, design: .monospaced))
                         .foregroundColor(.secondary)
-                }
-                HStack {
-                    Text(position.profitPercentageDisplayString)
-                        .foregroundColor(position.isLoss ? .red : .green)
-                    Spacer()
-                    Text(position.profitDisplayString(in: displayCurrency))
-                        .font(.system(.body, design: .monospaced))
-                        .foregroundColor(position.isLoss ? .red : .green)
                 }
             }
         }
@@ -101,48 +108,70 @@ struct EditPositionView: View {
     
     var body: some View {
         Form {
-            HStack {
-                Label("Asset", systemImage: "building.2")
-                    .fixedSize(horizontal: true, vertical: false)
-                TextField("Asset", text: $input.positionName)
-                    .multilineTextAlignment(.trailing)
-                    .font(.system(.body, design: .monospaced))
-            }
-            HStack {
-                Label("Amount", systemImage: "number")
-                    .fixedSize(horizontal: true, vertical: false)
-                TextField("Amount", text: $input.amountString)
-                    .multilineTextAlignment(.trailing)
-                    .font(.system(.body, design: .monospaced))
-                    .keyboardType(.numberPad)
-            }
-            NavigationLink(destination: CurrencySelector(selectedCurrency: $input.currency,
-                                                         isBeingPresented: $isPresentingCurrencySelector),
-                           isActive: $isPresentingCurrencySelector) {
+            Section(header: Text("Asset")) {
                 HStack {
-                    Label("Currency", systemImage: input.currency.symbolName)
-                        .fixedSize(horizontal: true, vertical: false)
-                    Spacer()
-                    Text(input.currency.symbol)
+                    Label {
+                        Text("Name:")
+                            .foregroundColor(.secondary)
+                    } icon: {
+                        Image(systemName: "building.2")
+                    }
+                    TextField("", text: $input.positionName)
+                        .multilineTextAlignment(.trailing)
+                }
+                NavigationLink(destination: CurrencySelector(subtitle: "In Which the Asset is Traded",
+                                                             selectedCurrency: $input.currency,
+                                                             isBeingPresented: $isPresentingCurrencySelector),
+                               isActive: $isPresentingCurrencySelector) {
+                    HStack {
+                        Label("Currency", systemImage: input.currency.symbolName)
+                            .fixedSize(horizontal: true, vertical: false)
+                        Spacer()
+                        Text(input.currency.name)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                HStack {
+                    Label {
+                        Text("Current Price:")
+                            .foregroundColor(.secondary)
+                            .fixedSize(horizontal: true, vertical: false)
+                    } icon: {
+                        Image(systemName: "arrow.up.right")
+                    }
+                    TextField("", text: $input.currentPriceString)
+                        .keyboardType(.decimalPad)
+                        .multilineTextAlignment(.trailing)
                         .font(.system(.body, design: .monospaced))
                 }
             }
-            HStack {
-                Label("Opening Price", systemImage: "arrow.down.right")
-                    .fixedSize(horizontal: true, vertical: false)
-                TextField("Opening Price", text: $input.buyingPriceString)
-                    .multilineTextAlignment(.trailing)
-                    .font(.system(.body, design: .monospaced))
-                    .keyboardType(.decimalPad)
-            }
-            HStack {
-                Label("Current Price", systemImage: "arrow.up.right")
-                    .fixedSize(horizontal: true, vertical: false)
-                    .foregroundColor(.green)
-                TextField("Current Price", text: $input.currentPriceString)
-                    .multilineTextAlignment(.trailing)
-                    .font(.system(.body, design: .monospaced))
-                    .keyboardType(.decimalPad)
+            
+            Section(header: Text("My Position")) {
+                HStack {
+                    Label {
+                        Text("Amount:")
+                            .foregroundColor(.secondary)
+                    } icon: {
+                        Image(systemName: "number")
+                    }
+                    TextField("", text: $input.amountString)
+                        .keyboardType(.numberPad)
+                        .multilineTextAlignment(.trailing)
+                        .font(.system(.body, design: .monospaced))
+                }
+                HStack {
+                    Label {
+                        Text("Opening Price:")
+                            .foregroundColor(.secondary)
+                            .fixedSize(horizontal: true, vertical: false)
+                    } icon: {
+                        Image(systemName: "arrow.down.right")
+                    }
+                    TextField("", text: $input.buyingPriceString)
+                        .keyboardType(.decimalPad)
+                        .multilineTextAlignment(.trailing)
+                        .font(.system(.body, design: .monospaced))
+                }
             }
         }
         .listStyle(GroupedListStyle())
@@ -183,25 +212,33 @@ struct EditPositionView: View {
 
 struct CurrencySelector: View {
     var body: some View {
-        List(Currency.all) { currency in
+        Form {
+            Section(header: Text(subtitle)) {
+            ForEach(Currency.all) { currency in
             Button {
                 selectedCurrency = currency
                 isBeingPresented = false
             } label: {
                 HStack {
-                    Image(systemName: currency.symbolName + (currency == selectedCurrency ? ".fill" : ""))
-                        .foregroundColor(currency == selectedCurrency ? .accentColor : .primary)
-                        .imageScale(.large)
-                    Text(currency.name + " (" + currency.symbol + ")")
-                        .foregroundColor(.primary)
+                    
+                        Text(currency.name)
+                            .foregroundColor(.primary)
+                        Text("(\(currency.symbol))")
+                            .foregroundColor(.secondary)
                     Spacer()
+                    Image(systemName: currency.symbolName) // + (currency == selectedCurrency ? ".fill" : ""))
+                        .foregroundColor(currency == selectedCurrency ? .accentColor : .secondary)
+                        .imageScale(.large)
                 }
+            }
+            }
             }
         }
         .listStyle(GroupedListStyle())
         .navigationTitle("Currency")
     }
     
+    let subtitle: String
     @Binding var selectedCurrency: Currency
     @Binding var isBeingPresented: Bool
 }
@@ -281,55 +318,79 @@ struct AddPositionView: View {
     var body: some View {
         NavigationView {
             Form {
-                HStack {
-                    Label("Asset", systemImage: "building.2")
-                        .fixedSize(horizontal: true, vertical: false)
-                    TextField("Asset", text: $positionName)
-                        .multilineTextAlignment(.trailing)
-                        .font(.system(.body, design: .monospaced))
-                }
-                HStack {
-                    Label("Amount", systemImage: "number")
-                        .fixedSize(horizontal: true, vertical: false)
-                    TextField("Amount", text: $amountString)
-                        .multilineTextAlignment(.trailing)
-                        .font(.system(.body, design: .monospaced))
-                }
-                NavigationLink(destination: CurrencySelector(selectedCurrency: $currency,
-                                                             isBeingPresented: $isPresentingCurrencySelector),
-                               isActive: $isPresentingCurrencySelector) {
+                Section(header: Text("Asset")) {
                     HStack {
-                        Label("Currency", systemImage: currency.symbolName)
-                            .fixedSize(horizontal: true, vertical: false)
-                        Spacer()
-                        Text(currency.symbol)
+                        Label {
+                            Text("Name:")
+                                .foregroundColor(.secondary)
+                        } icon: {
+                            Image(systemName: "building.2")
+                        }
+                        TextField("", text: $positionName)
+                            .multilineTextAlignment(.trailing)
+                    }
+                    NavigationLink(destination: CurrencySelector(subtitle: "In Which the Asset is Traded",
+                                                                 selectedCurrency: $currency,
+                                                                 isBeingPresented: $isPresentingCurrencySelector),
+                                   isActive: $isPresentingCurrencySelector) {
+                        HStack {
+                            Label("Currency", systemImage: currency.symbolName)
+                                .fixedSize(horizontal: true, vertical: false)
+                            Spacer()
+                            Text(currency.name)
+                                .foregroundColor(.secondary)
+                        }
+                    }
+                    HStack {
+                        Label {
+                            Text("Current Price:")
+                                .foregroundColor(.secondary)
+                                .fixedSize(horizontal: true, vertical: false)
+                        } icon: {
+                            Image(systemName: "arrow.up.right")
+                        }
+                        TextField("", text: $currentPriceString)
+                            .keyboardType(.decimalPad)
+                            .multilineTextAlignment(.trailing)
                             .font(.system(.body, design: .monospaced))
                     }
                 }
-                HStack {
-                    Label("Opening Price", systemImage: "arrow.down.right")
-                        .fixedSize(horizontal: true, vertical: false)
-                    TextField("Opening Price", text: $buyingPriceString)
-                        .multilineTextAlignment(.trailing)
-                        .font(.system(.body, design: .monospaced))
-                }
-                HStack {
-                    Label("Current Price", systemImage: "arrow.up.right")
-                        .fixedSize(horizontal: true, vertical: false)
-                        .foregroundColor(.green)
-                    TextField("Current Price", text: $currentPriceString)
-                        .multilineTextAlignment(.trailing)
-                        .font(.system(.body, design: .monospaced))
+                Section(header: Text("My Position")) {
+                    HStack {
+                        Label {
+                            Text("Amount:")
+                                .foregroundColor(.secondary)
+                        } icon: {
+                            Image(systemName: "number")
+                        }
+                        TextField("", text: $amountString)
+                            .keyboardType(.numberPad)
+                            .multilineTextAlignment(.trailing)
+                            .font(.system(.body, design: .monospaced))
+                    }
+                    HStack {
+                        Label {
+                            Text("Opening Price:")
+                                .foregroundColor(.secondary)
+                                .fixedSize(horizontal: true, vertical: false)
+                        } icon: {
+                            Image(systemName: "arrow.down.right")
+                        }
+                        TextField("", text: $buyingPriceString)
+                            .keyboardType(.decimalPad)
+                            .multilineTextAlignment(.trailing)
+                            .font(.system(.body, design: .monospaced))
+                    }
                 }
             }
-            .navigationTitle("Add Position")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("New Asset")
+//            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button {
                         saveAndCloseIfInputIsValid()
                     } label: {
-                        Text("Save")
+                        Text("Add")
                     }
                 }
                 ToolbarItem(placement: .cancellationAction) {
@@ -378,7 +439,8 @@ class Portfolio: ObservableObject {
     // MARK: - Metrics
     
     var returnPercentageString: String {
-        returnPercentage.decimalString() + "%"
+        let p = returnPercentage
+        return (p < 0 ? "" : "+") + p.decimalString() + "%"
     }
     
     var returnPercentage: Double {

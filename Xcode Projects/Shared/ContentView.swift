@@ -5,55 +5,74 @@ struct ContentView: View {
         NavigationView {
             List {
                 NavigationLink(destination: PortfolioSimulatorView()) {
-                    HStack(alignment: .center) {
-                        Image(systemName: "chart.pie")
-                            .font(.largeTitle.weight(.thin))
-                            .foregroundColor(.accentColor)
+                    Label {
                         VStack(alignment: .leading) {
+                            HStack {
+                            Text("\(Portfolio.shared.positions.count) Assets")
+                                .font(.body.weight(.medium))
+                                Spacer()
+                                Text(Portfolio.shared.returnPercentageString)
+                                    .font(.system(.title2, design: .monospaced))
+                                    .foregroundColor(Portfolio.shared.isAtALoss ? .red : .green)
+                            }
+//                            HStack(alignment: .firstTextBaseline) {
+//                                Text("Profit / Loss")
+//                                Spacer()
+//
+//                            }
+//                            .foregroundColor(Portfolio.shared.isAtALoss ? .red : .green)
                             HStack(alignment: .firstTextBaseline) {
-                                Text("\(Portfolio.shared.positions.count) Positions")
-                                    .fontWeight(.medium)
+                                Text("Balance")
+                                    .foregroundColor(.secondary)
                                 Spacer()
                                 Text(Portfolio.shared.valueDisplayString)
                                     .font(.system(.title2, design: .monospaced))
                                     .foregroundColor(.secondary)
                             }
                             HStack(alignment: .firstTextBaseline) {
-                                Text(Portfolio.shared.returnPercentageString)
-                                    .foregroundColor(Portfolio.shared.isAtALoss ? .red : .green)
+                                Text("Cash Flow")
                                 Spacer()
-                                Text(Portfolio.shared.profitDisplayString)
-                                    .font(.system(.title2, design: .monospaced))
-                                    .foregroundColor(Portfolio.shared.isAtALoss ? .red : .green)
+                                
+                                    Text("+" + (Portfolio.shared.value * cashflow.input.monthProfitFactor).decimalString(fractionDigits: 0))
+                                        .font(.system(.title2, design: .monospaced))
                             }
+                            .foregroundColor(.green)
                         }
+                    } icon: {
+                        Image(systemName: "chart.pie")
+                            .imageScale(.large)
+                            .foregroundColor(.accentColor)
                     }
                 }
                 NavigationLink(destination: CashflowCalculatorView()) {
-                    HStack(alignment: .center) {
-                        Image(systemName: "face.smiling")
-                            .font(.largeTitle.weight(.thin))
-                            .foregroundColor(.accentColor)
+                    Label {
                         VStack(alignment: .leading) {
+                            Text("\(cashflow.input.years) Year Vision")
+                                .font(.body.weight(.medium))
                             HStack(alignment: .firstTextBaseline) {
-                                Text("\(cashflow.input.years) Year Vision")
-                                    .fontWeight(.medium)
+                                Text("Balance")
+                                    .foregroundColor(.secondary)
                                 Spacer()
                                 Text(cashflow.output.cash.decimalString(fractionDigits: 0))
                                     .font(.system(.title2, design: .monospaced))
                                     .foregroundColor(.secondary)
                             }
                             HStack(alignment: .firstTextBaseline) {
-                                Text("Cashflow")
+                                Text("Cash Flow")
                                 Spacer()
                                 Text("+" + cashflow.output.cashflow.decimalString(fractionDigits: 0))
                                     .font(.system(.title2, design: .monospaced))
                             }
                             .foregroundColor(.green)
                         }
+                    } icon: {
+                        Image(systemName: "face.smiling")
+                            .imageScale(.large)
+                            .foregroundColor(.accentColor)
                     }
                 }
             }
+//            .listStyle(InsetGroupedListStyle())
             .navigationTitle("Portfolio")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {

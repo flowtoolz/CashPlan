@@ -1,0 +1,124 @@
+import SwiftUI
+
+struct CashflowCalculatorView: View {
+    var body: some View {
+        VStack {
+        Form {
+            Section(header: Text("Portfolio in \(inputStrings.yearsString) years")) {
+                VStack {
+                HStack(alignment: .firstTextBaseline) {
+                    Label("Balance", systemImage: "banknote")
+                        .fixedSize(horizontal: true, vertical: false)
+                        .accentColor(.secondary)
+                    Spacer()
+                    Text(cashString)
+                        .font(.system(.title2, design: .monospaced))
+                        .foregroundColor(.secondary)
+                }.padding(.bottom)
+                HStack(alignment: .firstTextBaseline) {
+                    Label {
+                        Text("Cash Flow")
+                    } icon: {
+                        Image(systemName: "calendar.badge.plus")
+                    }
+                    .accentColor(.secondary)
+                    Spacer()
+                    VStack(alignment: .trailing) {
+                        Text(cashflowString)
+                            .font(.system(.title2, design: .monospaced))
+                            .foregroundColor(.green)
+                        Text("per month")
+                            .foregroundColor(.secondary)
+                            .font(.footnote)
+                    }
+                }
+                }
+            }
+            Section(header: Text("Investment Goal")) {
+                HStack {
+                    Label {
+                        Text("Monthly Investment:")
+                            .foregroundColor(.secondary)
+                            .fixedSize(horizontal: true, vertical: false)
+                    } icon: {
+                        Image(systemName: "calendar.badge.minus")
+                    }
+                    TextField("", text: $inputStrings.monthlyInvestmentString)
+                        .keyboardType(.numberPad)
+                        .multilineTextAlignment(.trailing)
+                        .font(.system(.body, design: .monospaced))
+                }
+                HStack {
+                    Label {
+                        Text("Annual Return:")
+                            .foregroundColor(.secondary)
+                            .fixedSize(horizontal: true, vertical: false)
+                    } icon: {
+                        Image(systemName: "percent")
+                    }
+                    
+                    TextField("", text: $inputStrings.growthPercentString)
+                        .keyboardType(.decimalPad)
+                        .multilineTextAlignment(.trailing)
+                        .font(.system(.body, design: .monospaced))
+                }
+                HStack {
+                    Label {
+                        Text("Years:")
+                            .foregroundColor(.secondary)
+                            .fixedSize(horizontal: true, vertical: false)
+                    } icon: {
+                        Image(systemName: "hourglass")
+                    }
+                    TextField("", text: $inputStrings.yearsString)
+                        .keyboardType(.numberPad)
+                        .multilineTextAlignment(.trailing)
+                        .font(.system(.body, design: .monospaced))
+                }
+            }
+        }
+        }
+        .navigationTitle("Vision")
+        .onChange(of: inputStrings) { inputStrings in
+            inputStrings.input.forSome {
+                cashflow.input = $0
+            }
+        }
+    }
+    
+    @State private var inputStrings = CashFlowInputStrings(CashFlow.shared.input)
+    
+    private struct CashFlowInputStrings: Equatable {
+        init(_ input: CashFlow.Input) {
+            startCashString = input.startCash.decimalString(separator: "")
+            monthlyInvestmentString = String(input.monthlyInvestment)
+            growthPercentString = String(input.annualReturnPercent)
+            yearsString = String(input.years)
+        }
+        
+        var input: CashFlow.Input? {
+            guard let growthPerYearInPercent = double(from: growthPercentString),
+                  let startCapital = double(from: startCashString),
+                  let investmentPerMonth = double(from: monthlyInvestmentString),
+                  let years = integer(from: yearsString) else {
+                return nil
+            }
+            
+            return .init(startCash: startCapital,
+                         monthlyInvestment: investmentPerMonth,
+                         annualReturnPercent: growthPerYearInPercent,
+                         years: years)
+        }
+        
+        var startCashString: String
+        var monthlyInvestmentString: String
+        var growthPercentString: String
+        var yearsString: String
+    }
+    
+    private var cashString: String { cashflow.output.cash.decimalString(fractionDigits: 0) }
+    private var cashflowString: String {
+        "+" + cashflow.output.cashflow.decimalString(fractionDigits: 0)
+    }
+    @ObservedObject private var cashflow = CashFlow.shared
+}

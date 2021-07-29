@@ -99,6 +99,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9675DC0E26B20B1500969939 /* Cashflow */ = {
+			isa = PBXGroup;
+			children = (
+				96FE3C5226AE9A7500B7C230 /* CashflowCalculatorView.swift */,
+				96CA0AE126B1BEA300670336 /* CashFlow.swift */,
+			);
+			path = Cashflow;
+			sourceTree = "<group>";
+		};
 		96F9672826AD991000A1258E = {
 			isa = PBXGroup;
 			children = (
@@ -116,10 +125,9 @@
 			children = (
 				96F9672E26AD991000A1258E /* CashPlanApp.swift */,
 				96F9672F26AD991000A1258E /* ContentView.swift */,
-				967B192326AF1A4700214F29 /* Helpers.swift */,
-				96FE3C5226AE9A7500B7C230 /* CashflowCalculatorView.swift */,
-				96CA0AE126B1BEA300670336 /* CashFlow.swift */,
 				96FE3C4F26AE99E800B7C230 /* PortfolioSimulatorView.swift */,
+				9675DC0E26B20B1500969939 /* Cashflow */,
+				967B192326AF1A4700214F29 /* Helpers.swift */,
 				96F9673026AD991100A1258E /* Assets.xcassets */,
 			);
 			path = Shared;

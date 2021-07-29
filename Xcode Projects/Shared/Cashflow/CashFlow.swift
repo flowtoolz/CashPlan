@@ -7,10 +7,8 @@ class CashFlow: ObservableObject {
     var output: Output { Self.calculate(input) }
     
     static func calculate(_ input: Input) -> Output {
-        let growthPerYear = 1.0 + (input.growthPercent / 100.0)
-        
         let months = input.years * 12
-        let growthPerMonth = pow(growthPerYear, 1.0 / 12.0)
+        let growthPerMonth = pow(input.annualGrowthFactor, 1.0 / 12.0)
         
         var resultingCapital = input.startCash
         
@@ -27,13 +25,17 @@ class CashFlow: ObservableObject {
     
     @Published var input = Input(startCash: Portfolio.shared.value,
                                  monthlyInvestment: 1000,
-                                 growthPercent: 8.5,
+                                 annualReturnPercent: 8.5,
                                  years: 5)
     
     struct Input {
+        var annualGrowthFactor: Double { 1.0 + annualProfitFactor }
+        var monthProfitFactor: Double { annualProfitFactor / 12.0 }
+        var annualProfitFactor: Double { annualReturnPercent / 100.0 }
+        
         let startCash: Double
         let monthlyInvestment: Double
-        let growthPercent: Double
+        let annualReturnPercent: Double
         let years: Int
     }
     
