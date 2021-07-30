@@ -23,7 +23,6 @@ struct AssetList: View {
             }
         }
         .navigationTitle("Assets")
-        //        .listStyle(GroupedListStyle())
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
@@ -36,8 +35,8 @@ struct AssetList: View {
         .popover(isPresented: $isPresentingCurrencySelector) {
             NavigationView {
                 CurrencyPicker(subtitle: "In Which the Portfolio is Displayed",
-                                 selectedCurrency: $portfolio.currency,
-                                 isBeingPresented: $isPresentingCurrencySelector)
+                               selectedCurrency: $portfolio.currency,
+                               isBeingPresented: $isPresentingCurrencySelector)
             }
         }
     }

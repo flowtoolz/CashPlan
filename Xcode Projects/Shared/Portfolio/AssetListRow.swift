@@ -5,8 +5,8 @@ struct AssetListRow: View {
         NavigationLink(destination: EditPositionView(position)) {
             VStack {
                 HStack {
-//                    Image(systemName: position.currency.symbolName)
-//                        .foregroundColor(.accentColor)
+                    //                    Image(systemName: position.currency.symbolName)
+                    //                        .foregroundColor(.accentColor)
                     Text(position.name)
                         .fontWeight(.medium)
                     Spacer()
@@ -15,12 +15,12 @@ struct AssetListRow: View {
                         .foregroundColor(position.isLoss ? .red : .green)
                     
                 }
-//                HStack {
-//                    Spacer()
-//                    Text(position.profitDisplayString(in: displayCurrency))
-//                        .font(.system(.body, design: .monospaced))
-//                        .foregroundColor(.secondary)
-//                }
+                //                HStack {
+                //                    Spacer()
+                //                    Text(position.profitDisplayString(in: displayCurrency))
+                //                        .font(.system(.body, design: .monospaced))
+                //                        .foregroundColor(.secondary)
+                //                }
                 HStack {
                     Spacer()
                     Text("\(position.valueDisplayString(in: displayCurrency))")

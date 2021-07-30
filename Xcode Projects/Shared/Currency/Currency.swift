@@ -39,5 +39,5 @@ struct Currency: Equatable, Identifiable, Codable {
     let dollarPrice: Double
     let symbol: String
     let name: String
-    //    case usDollar, euro, britishPound, canadianDollar, australianDollar, swissFranc, bitCoin
+    //    case canadianDollar, australianDollar
 }

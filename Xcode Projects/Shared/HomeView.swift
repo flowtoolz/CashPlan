@@ -8,8 +8,8 @@ struct HomeView: View {
                     Label {
                         VStack(alignment: .leading) {
                             HStack {
-                            Text("\(Portfolio.shared.positions.count) Assets")
-                                .font(.body.weight(.medium))
+                                Text("\(Portfolio.shared.positions.count) Assets")
+                                    .font(.body.weight(.medium))
                                 Spacer()
                             }
                             HStack(alignment: .firstTextBaseline) {
@@ -28,14 +28,14 @@ struct HomeView: View {
                                     .font(.system(.title2, design: .monospaced))
                                     .foregroundColor(.secondary)
                             }
-//                            HStack(alignment: .firstTextBaseline) {
-//                                Text("Cash Flow")
-//                                Spacer()
-//
-//                                    Text("+" + (Portfolio.shared.value * cashflow.input.monthProfitFactor).decimalString(fractionDigits: 0))
-//                                        .font(.system(.title2, design: .monospaced))
-//                            }
-//                            .foregroundColor(.green)
+                            //                            HStack(alignment: .firstTextBaseline) {
+                            //                                Text("Cash Flow")
+                            //                                Spacer()
+                            //
+                            //                                    Text("+" + (Portfolio.shared.value * cashflow.input.monthProfitFactor).decimalString(fractionDigits: 0))
+                            //                                        .font(.system(.title2, design: .monospaced))
+                            //                            }
+                            //                            .foregroundColor(.green)
                         }
                     } icon: {
                         Image(systemName: "chart.pie")

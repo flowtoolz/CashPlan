@@ -10,13 +10,12 @@ struct CurrencyPicker: View {
                         isBeingPresented = false
                     } label: {
                         HStack {
-                            
                             Text(currency.name)
                                 .foregroundColor(.primary)
                             Text("(\(currency.symbol))")
                                 .foregroundColor(.secondary)
                             Spacer()
-                            Image(systemName: currency.symbolName) // + (currency == selectedCurrency ? ".fill" : ""))
+                            Image(systemName: currency.symbolName)
                                 .foregroundColor(currency == selectedCurrency ? .accentColor : .secondary)
                                 .imageScale(.large)
                         }

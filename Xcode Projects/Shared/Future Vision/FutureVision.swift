@@ -16,7 +16,7 @@ class FutureVision: ObservableObject {
             resultingCapital *= growthPerMonth
             resultingCapital += input.monthlyInvestment
         }
-
+        
         let resultingCashFlowPerMonth = resultingCapital * (growthPerMonth - 1.0)
         
         return .init(cash: resultingCapital,
