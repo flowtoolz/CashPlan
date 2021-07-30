@@ -75,14 +75,23 @@ struct HomeView: View {
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {
-                        print("❗️select currency")
+                        isPresentingCurrencySelector = true
                     } label: {
                         Image(systemName: Portfolio.shared.currency.symbolName)
+                    }
+                    .sheet(isPresented: $isPresentingCurrencySelector) {
+                        NavigationView {
+                            CurrencyPicker(subtitle: "In Which the Portfolio is Displayed",
+                                           selectedCurrency: $portfolio.currency,
+                                           isBeingPresented: $isPresentingCurrencySelector)
+                        }
                     }
                 }
             }
         }
     }
     
+    @State private var isPresentingCurrencySelector = false
     @ObservedObject private var cashflow = FutureVision.shared
+    @ObservedObject private(set) var portfolio = Portfolio.shared
 }
