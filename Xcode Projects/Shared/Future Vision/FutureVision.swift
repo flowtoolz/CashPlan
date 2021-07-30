@@ -1,12 +1,12 @@
 import Foundation
 
-class CashFlow: ObservableObject {
-    static let shared = CashFlow()
+class FutureVision: ObservableObject {
+    static let shared = FutureVision()
     private init() {}
     
-    var output: Output { Self.calculate(input) }
+    var output: Output { Self.output(from: input) }
     
-    static func calculate(_ input: Input) -> Output {
+    static func output(from input: Input) -> Output {
         let months = input.years * 12
         let growthPerMonth = pow(input.annualGrowthFactor, 1.0 / 12.0)
         

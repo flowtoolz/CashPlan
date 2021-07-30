@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct CashflowCalculatorView: View {
+struct FutureVisionView: View {
     var body: some View {
         VStack {
         Form {
@@ -86,17 +86,17 @@ struct CashflowCalculatorView: View {
         }
     }
     
-    @State private var inputStrings = CashFlowInputStrings(CashFlow.shared.input)
+    @State private var inputStrings = CashFlowInputStrings(FutureVision.shared.input)
     
     private struct CashFlowInputStrings: Equatable {
-        init(_ input: CashFlow.Input) {
+        init(_ input: FutureVision.Input) {
             startCashString = input.startCash.decimalString(separator: "")
             monthlyInvestmentString = String(input.monthlyInvestment)
             growthPercentString = String(input.annualReturnPercent)
             yearsString = String(input.years)
         }
         
-        var input: CashFlow.Input? {
+        var input: FutureVision.Input? {
             guard let growthPerYearInPercent = double(from: growthPercentString),
                   let startCapital = double(from: startCashString),
                   let investmentPerMonth = double(from: monthlyInvestmentString),
@@ -120,5 +120,5 @@ struct CashflowCalculatorView: View {
     private var cashflowString: String {
         "+" + cashflow.output.cashflow.decimalString(fractionDigits: 0)
     }
-    @ObservedObject private var cashflow = CashFlow.shared
+    @ObservedObject private var cashflow = FutureVision.shared
 }

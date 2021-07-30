@@ -1,10 +1,10 @@
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
     var body: some View {
         NavigationView {
             List {
-                NavigationLink(destination: PortfolioSimulatorView()) {
+                NavigationLink(destination: AssetList()) {
                     Label {
                         VStack(alignment: .leading) {
                             HStack {
@@ -43,7 +43,7 @@ struct ContentView: View {
                             .foregroundColor(.accentColor)
                     }
                 }
-                NavigationLink(destination: CashflowCalculatorView()) {
+                NavigationLink(destination: FutureVisionView()) {
                     Label {
                         VStack(alignment: .leading) {
                             Text("\(cashflow.input.years) Year Vision")
@@ -71,8 +71,7 @@ struct ContentView: View {
                     }
                 }
             }
-//            .listStyle(InsetGroupedListStyle())
-            .navigationTitle("Portfolio")
+            .navigationTitle("Home")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {
@@ -85,19 +84,5 @@ struct ContentView: View {
         }
     }
     
-    @ObservedObject private var cashflow = CashFlow.shared
+    @ObservedObject private var cashflow = FutureVision.shared
 }
-
-struct LabelImage: View {
-    var body: some View {
-        ZStack(alignment: .center) {
-            Image(systemName: "rectangle").hidden()
-            Image(systemName: "rectangle.portrait").hidden()
-            Image(systemName: systemName)
-        }
-    }
-    
-    let systemName: String
-}
-
-

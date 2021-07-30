@@ -2,10 +2,10 @@ import SwiftUI
 import SwiftyToolz
 
 @main
-struct CashPlanApp: App {
+struct TradeMateApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
         .onChange(of: scenePhase) { newScenePhase in
             switch newScenePhase {
