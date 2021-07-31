@@ -4,11 +4,6 @@ struct HomeView: View {
     var body: some View {
         
         TabView {
-            Text("Watchlist")
-                .tabItem {
-                    Image(systemName: "message.fill")
-                    Text("Alerts")
-                }
             NavigationView {
                 List {
                     PlainNavigationLink(destination: AssetList(isPresentingCurrencyPicker: $isPresentingCurrencyPicker)) {
@@ -38,7 +33,7 @@ struct HomeView: View {
                                 }
                             }
                         } icon: {
-                            Image(systemName: "chart.pie")
+                            Image(systemName: "building.2")
                                 .imageScale(.large)
                         }
                     }
@@ -143,6 +138,11 @@ struct HomeView: View {
                 Image(systemName: "chart.pie.fill")
                 Text("Portfolio")
             }
+            Text("Watchlist")
+                .tabItem {
+                    Image(systemName: "star.fill")
+                    Text("Watchlist")
+                }
             Text("Alerts")
                 .tabItem {
                     Image(systemName: "message.fill")

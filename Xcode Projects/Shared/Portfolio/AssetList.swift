@@ -10,21 +10,15 @@ struct AssetList: View {
                 }
             }
             .onDelete(perform: delete)
-//            Section {
-                Button {
-                    isPresentingAddPositionView = true
-                } label: {
-                    HStack {
-                        Image(systemName: "plus")
-                        Text("Add Asset")
-                        Spacer()
-                    }
+
+            NavigationLink(destination: AssetCreationView(isBeingPresented: $isPresentingAddPositionView),
+                           isActive: $isPresentingAddPositionView) {
+                HStack {
+                    Image(systemName: "plus")
+                    Text("Add Asset")
                 }
                 .foregroundColor(.accentColor)
-                .popover(isPresented: $isPresentingAddPositionView) {
-                    AssetCreationView(isBeingPresented: $isPresentingAddPositionView)
-                }
-//            }
+            }
         }
         .navigationTitle("Assets")
         .toolbar {

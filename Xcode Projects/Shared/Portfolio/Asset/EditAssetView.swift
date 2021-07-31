@@ -120,93 +120,79 @@ struct AssetEditingView: View {
 struct AssetCreationView: View {
     
     var body: some View {
-        NavigationView {
-            Form {
-                Section(header: Text("Asset")) {
-                    HStack {
-                        Label {
-                            Text("Name:")
-                                .foregroundColor(.secondary)
-                        } icon: {
-                            Image(systemName: "building.2")
-                        }
-                        TextField("", text: $name)
-                            .multilineTextAlignment(.trailing)
+        Form {
+            Section(header: Text("Asset")) {
+                HStack {
+                    Label {
+                        Text("Name:")
+                            .foregroundColor(.secondary)
+                    } icon: {
+                        Image(systemName: "building.2")
                     }
-                    NavigationLink(destination: CurrencyPicker(title: assetCurrencyTitle,
-                                                               subtitle: assetCurrencySubtitle,
-                                                               selectedCurrency: $currency,
-                                                               isBeingPresented: $isPresentingCurrencySelector),
-                                   isActive: $isPresentingCurrencySelector) {
-                        HStack {
-                            Label("Currency", systemImage: currency.symbolName)
-                                .fixedSize(horizontal: true, vertical: false)
-                            Spacer()
-                            Text(currency.name)
-                                .foregroundColor(.secondary)
-                        }
-                    }
+                    TextField("", text: $name)
+                        .multilineTextAlignment(.trailing)
+                }
+                NavigationLink(destination: CurrencyPicker(title: assetCurrencyTitle,
+                                                           subtitle: assetCurrencySubtitle,
+                                                           selectedCurrency: $currency,
+                                                           isBeingPresented: $isPresentingCurrencySelector),
+                               isActive: $isPresentingCurrencySelector) {
                     HStack {
-                        Label {
-                            Text("Current Price:")
-                                .foregroundColor(.secondary)
-                                .fixedSize(horizontal: true, vertical: false)
-                        } icon: {
-                            Image(systemName: "arrow.up.right")
-                        }
-                        TextField("", text: $currentPriceString)
-                            .keyboardType(.decimalPad)
-                            .multilineTextAlignment(.trailing)
-                            .font(.system(.body, design: .monospaced))
+                        Label("Currency", systemImage: currency.symbolName)
+                            .fixedSize(horizontal: true, vertical: false)
+                        Spacer()
+                        Text(currency.name)
+                            .foregroundColor(.secondary)
                     }
                 }
-                Section(header: Text("My Position")) {
-                    HStack {
-                        Label {
-                            Text("Amount:")
-                                .foregroundColor(.secondary)
-                        } icon: {
-                            Image(systemName: "number")
-                        }
-                        TextField("", text: $amountString)
-                            .keyboardType(.numberPad)
-                            .multilineTextAlignment(.trailing)
-                            .font(.system(.body, design: .monospaced))
+                HStack {
+                    Label {
+                        Text("Current Price:")
+                            .foregroundColor(.secondary)
+                            .fixedSize(horizontal: true, vertical: false)
+                    } icon: {
+                        Image(systemName: "arrow.up.right")
                     }
-                    HStack {
-                        Label {
-                            Text("Opening Price:")
-                                .foregroundColor(.secondary)
-                                .fixedSize(horizontal: true, vertical: false)
-                        } icon: {
-                            Image(systemName: "arrow.down.left")
-                        }
-                        TextField("", text: $buyingPriceString)
-                            .keyboardType(.decimalPad)
-                            .multilineTextAlignment(.trailing)
-                            .font(.system(.body, design: .monospaced))
-                    }
+                    TextField("", text: $currentPriceString)
+                        .keyboardType(.decimalPad)
+                        .multilineTextAlignment(.trailing)
+                        .font(.system(.body, design: .monospaced))
                 }
             }
-            .navigationTitle("New Asset")
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button {
-                        saveAndCloseIfInputIsValid()
-                    } label: {
-                        Text("Add")
+            Section(header: Text("My Position")) {
+                HStack {
+                    Label {
+                        Text("Amount:")
+                            .foregroundColor(.secondary)
+                    } icon: {
+                        Image(systemName: "number")
                     }
+                    TextField("", text: $amountString)
+                        .keyboardType(.numberPad)
+                        .multilineTextAlignment(.trailing)
+                        .font(.system(.body, design: .monospaced))
                 }
-                ToolbarItem(placement: .cancellationAction) {
-                    Button {
-                        isBeingPresented = false
-                    } label: {
-                        Text("Cancel")
+                HStack {
+                    Label {
+                        Text("Opening Price:")
+                            .foregroundColor(.secondary)
+                            .fixedSize(horizontal: true, vertical: false)
+                    } icon: {
+                        Image(systemName: "arrow.down.left")
                     }
+                    TextField("", text: $buyingPriceString)
+                        .keyboardType(.decimalPad)
+                        .multilineTextAlignment(.trailing)
+                        .font(.system(.body, design: .monospaced))
                 }
             }
         }
-        .accentColor(trademateAccentColor)
+        .navigationTitle("New Asset")
+        .navigationBarItems(trailing: Button {
+            saveAndCloseIfInputIsValid()
+        } label: {
+            Text("Add")
+        })
     }
     
     @State private var isPresentingCurrencySelector = false
@@ -238,4 +224,4 @@ struct AssetCreationView: View {
 }
 
 let assetCurrencyTitle = "Asset Currency"
-let assetCurrencySubtitle = "For Pricing / Trading"
+let assetCurrencySubtitle = "How the Asset is Priced and Traded"
