@@ -2,28 +2,19 @@ import SwiftUI
 
 struct AssetListRow: View {
     var body: some View {
-        NavigationLink(destination: EditPositionView(position)) {
+        NavigationLink(destination: AssetEditingView(asset)) {
             VStack {
                 HStack {
-                    //                    Image(systemName: position.currency.symbolName)
-                    //                        .foregroundColor(.accentColor)
-                    Text(position.name)
+                    Text(asset.name)
                         .fontWeight(.medium)
                     Spacer()
-                    Text(position.profitPercentageDisplayString)
+                    Text(asset.profitPercentageDisplayString)
                         .font(.system(.body, design: .monospaced))
-                        .foregroundColor(position.isLoss ? .red : .green)
-                    
+                        .foregroundColor(asset.isLoss ? .red : .green)
                 }
-                //                HStack {
-                //                    Spacer()
-                //                    Text(position.profitDisplayString(in: displayCurrency))
-                //                        .font(.system(.body, design: .monospaced))
-                //                        .foregroundColor(.secondary)
-                //                }
                 HStack {
                     Spacer()
-                    Text("\(position.valueDisplayString(in: displayCurrency))")
+                    Text("\(asset.valueDisplayString(in: displayCurrency))")
                         .font(.system(.body, design: .monospaced))
                         .foregroundColor(.secondary)
                 }
@@ -32,5 +23,5 @@ struct AssetListRow: View {
     }
     
     @Binding private(set) var displayCurrency: Currency
-    @ObservedObject private(set) var position: Asset
+    @ObservedObject private(set) var asset: Asset
 }

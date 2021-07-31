@@ -5,7 +5,7 @@ struct AssetList: View {
         List {
             ForEach(portfolio.assets) { position in
                 AssetListRow(displayCurrency: $settings.currency,
-                             position: position)
+                             asset: position)
             }
             .onDelete(perform: delete)
             Button {
@@ -19,7 +19,7 @@ struct AssetList: View {
             }
             .foregroundColor(.accentColor)
             .popover(isPresented: $isPresentingAddPositionView) {
-                AddPositionView(isBeingPresented: $isPresentingAddPositionView)
+                AssetCreationView(isBeingPresented: $isPresentingAddPositionView)
             }
         }
         .navigationTitle("Assets")

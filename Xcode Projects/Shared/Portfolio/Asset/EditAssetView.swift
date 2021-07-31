@@ -1,15 +1,15 @@
 import SwiftUI
 import SwiftyToolz
 
-struct EditPositionView: View {
+struct AssetEditingView: View {
     
-    init(_ position: Asset) {
-        self.position = position
-        let initialInput = PositionInput(positionName: position.name,
-                                         amountString: "\(position.amount)",
-                                         currency: position.currency,
-                                         buyingPriceString: "\(position.buyingPrice)",
-                                         currentPriceString: "\(position.currentPrice)")
+    init(_ asset: Asset) {
+        self.asset = asset
+        let initialInput = AssetInput(name: asset.name,
+                                      amountString: "\(asset.amount)",
+                                      currency: asset.currency,
+                                      buyingPriceString: "\(asset.buyingPrice)",
+                                      currentPriceString: "\(asset.currentPrice)")
         _input = State(wrappedValue: initialInput)
     }
     
@@ -23,14 +23,14 @@ struct EditPositionView: View {
                     } icon: {
                         Image(systemName: "building.2")
                     }
-                    TextField("", text: $input.positionName)
+                    TextField("", text: $input.name)
                         .multilineTextAlignment(.trailing)
                 }
                 NavigationLink(destination: CurrencyPicker(title: assetCurrencyTitle,
                                                            subtitle: assetCurrencySubtitle,
                                                            selectedCurrency: $input.currency,
-                                                           isBeingPresented: $isPresentingCurrencySelector),
-                               isActive: $isPresentingCurrencySelector) {
+                                                           isBeingPresented: $isPresentingCurrencyPicker),
+                               isActive: $isPresentingCurrencyPicker) {
                     HStack {
                         Label("Currency", systemImage: input.currency.symbolName)
                             .fixedSize(horizontal: true, vertical: false)
@@ -83,34 +83,34 @@ struct EditPositionView: View {
             }
         }
         .listStyle(GroupedListStyle())
-        .navigationTitle(input.positionName)
+        .navigationTitle(input.name)
         .onChange(of: input) { _ in
-            updatePositionIfInputIsValid()
+            updateAssetIfInputIsValid()
         }
     }
     
-    @State private var isPresentingCurrencySelector = false
+    @State private var isPresentingCurrencyPicker = false
     
-    private func updatePositionIfInputIsValid() {
-        guard !input.positionName.isEmpty,
+    private func updateAssetIfInputIsValid() {
+        guard !input.name.isEmpty,
               let amount = integer(from: input.amountString),
               let buyingPrice = double(from: input.buyingPriceString),
               let currentPrice = double(from: input.currentPriceString) else { return }
         
-        position.name = input.positionName
-        position.amount = amount
-        position.currency = input.currency
-        position.buyingPrice = buyingPrice
-        position.currentPrice = currentPrice
+        asset.name = input.name
+        asset.amount = amount
+        asset.currency = input.currency
+        asset.buyingPrice = buyingPrice
+        asset.currentPrice = currentPrice
         
         Portfolio.shared.assets.sort()
     }
     
-    @State private var input: PositionInput
-    private let position: Asset
+    @State private var input: AssetInput
+    private let asset: Asset
     
-    struct PositionInput: Equatable {
-        var positionName: String
+    struct AssetInput: Equatable {
+        var name: String
         var amountString: String
         var currency: Currency
         var buyingPriceString: String
@@ -118,7 +118,7 @@ struct EditPositionView: View {
     }
 }
 
-struct AddPositionView: View {
+struct AssetCreationView: View {
     
     var body: some View {
         NavigationView {
@@ -131,7 +131,7 @@ struct AddPositionView: View {
                         } icon: {
                             Image(systemName: "building.2")
                         }
-                        TextField("", text: $positionName)
+                        TextField("", text: $name)
                             .multilineTextAlignment(.trailing)
                     }
                     NavigationLink(destination: CurrencyPicker(title: assetCurrencyTitle,
@@ -190,7 +190,6 @@ struct AddPositionView: View {
                 }
             }
             .navigationTitle("New Asset")
-            //            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button {
@@ -213,12 +212,12 @@ struct AddPositionView: View {
     @State private var isPresentingCurrencySelector = false
     
     private func saveAndCloseIfInputIsValid() {
-        guard !positionName.isEmpty,
+        guard !name.isEmpty,
               let amount = integer(from: amountString),
               let buyingPrice = double(from: buyingPriceString),
               let currentPrice = double(from: currentPriceString) else { return }
         
-        let newPosition = Asset(name: positionName,
+        let newPosition = Asset(name: name,
                                 amount: amount,
                                 currency: currency,
                                 buyingPrice: buyingPrice,
@@ -232,7 +231,7 @@ struct AddPositionView: View {
     @Binding private(set) var isBeingPresented: Bool
     
     @State private var currency = Currency.usDollar
-    @State private var positionName: String = ""
+    @State private var name: String = ""
     @State private var amountString: String = ""
     @State private var buyingPriceString: String = ""
     @State private var currentPriceString: String = ""
