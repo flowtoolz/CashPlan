@@ -44,5 +44,5 @@ struct AssetList: View {
     @ObservedObject private(set) var settings = AppSettings.shared
 }
 
-let appCurrencyTitle = "App Currency"
-let appCurrencySubtitle = "To Display All Cash Values and Metrics"
+let userCurrencyTitle = "My Currency"
+let userCurrencySubtitle = "Display Cash Balances and Metrics In"

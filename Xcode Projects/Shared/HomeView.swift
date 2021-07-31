@@ -84,8 +84,8 @@ struct HomeView: View {
         }
         .popover(isPresented: $isPresentingCurrencyPicker) {
             NavigationView {
-                CurrencyPicker(title: appCurrencyTitle,
-                               subtitle: appCurrencySubtitle,
+                CurrencyPicker(title: userCurrencyTitle,
+                               subtitle: userCurrencySubtitle,
                                selectedCurrency: $settings.currency,
                                isBeingPresented: $isPresentingCurrencyPicker)
                     .toolbar {

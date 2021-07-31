@@ -238,4 +238,4 @@ struct AssetCreationView: View {
 }
 
 let assetCurrencyTitle = "Asset Currency"
-let assetCurrencySubtitle = "In Which this Asset is Priced and Traded"
+let assetCurrencySubtitle = "The Asset is Priced and Traded In"
