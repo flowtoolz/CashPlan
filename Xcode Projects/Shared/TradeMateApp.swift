@@ -1,8 +1,20 @@
 import SwiftUI
+import Combine
 import SwiftyToolz
 
 @main
 struct TradeMateApp: App {
+    
+    init() {
+        Portfolio.shared.assets = AssetPersister.load()
+        
+        // TODO: observe each asset ...
+        // persist assets whenever the array changes
+        observations += Portfolio.shared.$assets.sink(receiveValue: AssetPersister.save)
+    }
+    
+    private var observations = [AnyCancellable]()
+    
     var body: some Scene {
         WindowGroup {
             HomeView()
@@ -13,8 +25,7 @@ struct TradeMateApp: App {
                 log("app went to background")
             case .inactive:
                 log("app became inactive")
-                Portfolio.shared.persistPositions()
-                Portfolio.shared.persistCurrency()
+                AssetPersister.save(Portfolio.shared.assets)
             case .active:
                 log("app became active")
             @unknown default:

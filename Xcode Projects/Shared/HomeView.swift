@@ -8,23 +8,23 @@ struct HomeView: View {
                     Label {
                         VStack(alignment: .leading) {
                             HStack {
-                                Text("\(Portfolio.shared.positions.count) Assets")
+                                Text("\(portfolio.assets.count) Assets")
                                     .font(.body.weight(.medium))
                                 Spacer()
                             }
                             HStack(alignment: .firstTextBaseline) {
                                 Text("Profit / Loss")
                                 Spacer()
-                                Text(Portfolio.shared.returnPercentageString)
+                                Text(portfolio.returnPercentageString)
                                     .font(.system(.title2, design: .monospaced))
-                                    .foregroundColor(Portfolio.shared.isAtALoss ? .red : .green)
+                                    .foregroundColor(portfolio.isAtALoss ? .red : .green)
                             }
-                            .foregroundColor(Portfolio.shared.isAtALoss ? .red : .green)
+                            .foregroundColor(portfolio.isAtALoss ? .red : .green)
                             HStack(alignment: .firstTextBaseline) {
                                 Text("Balance")
                                     .foregroundColor(.secondary)
                                 Spacer()
-                                Text(Portfolio.shared.valueDisplayString)
+                                Text(portfolio.valueDisplayString)
                                     .font(.system(.title2, design: .monospaced))
                                     .foregroundColor(.secondary)
                             }
@@ -46,20 +46,20 @@ struct HomeView: View {
                 NavigationLink(destination: FutureVisionView()) {
                     Label {
                         VStack(alignment: .leading) {
-                            Text("\(cashflow.input.years) Year Vision")
+                            Text("\(futureVision.input.years) Year Vision")
                                 .font(.body.weight(.medium))
                             HStack(alignment: .firstTextBaseline) {
                                 Text("Balance")
                                     .foregroundColor(.secondary)
                                 Spacer()
-                                Text(cashflow.output.cash.decimalString(fractionDigits: 0))
+                                Text(futureVision.output.cash.decimalString(fractionDigits: 0))
                                     .font(.system(.title2, design: .monospaced))
                                     .foregroundColor(.secondary)
                             }
                             HStack(alignment: .firstTextBaseline) {
                                 Text("Cash Flow")
                                 Spacer()
-                                Text("+" + cashflow.output.cashflow.decimalString(fractionDigits: 0))
+                                Text("+" + futureVision.output.cashflow.decimalString(fractionDigits: 0))
                                     .font(.system(.title2, design: .monospaced))
                             }
                             .foregroundColor(.green)
@@ -77,21 +77,24 @@ struct HomeView: View {
                     Button {
                         isPresentingCurrencySelector = true
                     } label: {
-                        Image(systemName: Portfolio.shared.currency.symbolName)
-                    }
-                    .sheet(isPresented: $isPresentingCurrencySelector) {
-                        NavigationView {
-                            CurrencyPicker(subtitle: "In Which the Portfolio is Displayed",
-                                           selectedCurrency: $portfolio.currency,
-                                           isBeingPresented: $isPresentingCurrencySelector)
-                        }
+                        Image(systemName: settings.currency.symbolName)
                     }
                 }
+            }
+        }
+        .popover(isPresented: $isPresentingCurrencySelector) {
+            NavigationView {
+                CurrencyPicker(title: appCurrencyTitle,
+                               subtitle: appCurrencySubtitle,
+                               selectedCurrency: $settings.currency,
+                               isBeingPresented: $isPresentingCurrencySelector)
             }
         }
     }
     
     @State private var isPresentingCurrencySelector = false
-    @ObservedObject private var cashflow = FutureVision.shared
+    
+    @ObservedObject private var futureVision = FutureVision.shared
     @ObservedObject private(set) var portfolio = Portfolio.shared
+    @ObservedObject private(set) var settings = AppSettings.shared
 }

@@ -24,9 +24,10 @@ struct CurrencyPicker: View {
             }
         }
         .listStyle(GroupedListStyle())
-        .navigationTitle("Currency")
+        .navigationTitle(title)
     }
     
+    let title: String
     let subtitle: String
     @Binding var selectedCurrency: Currency
     @Binding var isBeingPresented: Bool

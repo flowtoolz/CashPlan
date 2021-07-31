@@ -3,8 +3,8 @@ import SwiftUI
 struct AssetList: View {
     var body: some View {
         List {
-            ForEach(portfolio.positions) { position in
-                AssetListRow(displayCurrency: $portfolio.currency,
+            ForEach(portfolio.assets) { position in
+                AssetListRow(displayCurrency: $currencyProvider.currency,
                              position: position)
             }
             .onDelete(perform: delete)
@@ -28,24 +28,29 @@ struct AssetList: View {
                 Button {
                     isPresentingCurrencySelector = true
                 } label: {
-                    Image(systemName: portfolio.currency.symbolName)
+                    Image(systemName: currencyProvider.currency.symbolName)
                 }
             }
         }
         .popover(isPresented: $isPresentingCurrencySelector) {
             NavigationView {
-                CurrencyPicker(subtitle: "In Which the Portfolio is Displayed",
-                               selectedCurrency: $portfolio.currency,
+                CurrencyPicker(title: appCurrencyTitle,
+                               subtitle: appCurrencySubtitle,
+                               selectedCurrency: $currencyProvider.currency,
                                isBeingPresented: $isPresentingCurrencySelector)
             }
         }
     }
     
     private func  delete(at offsets: IndexSet) {
-        portfolio.positions.remove(atOffsets: offsets)
+        portfolio.assets.remove(atOffsets: offsets)
     }
     
     @State private var isPresentingCurrencySelector = false
     @State private var isPresentingAddPositionView = false
     @ObservedObject private(set) var portfolio = Portfolio.shared
+    @ObservedObject private(set) var currencyProvider = AppSettings.shared
 }
+
+let appCurrencyTitle = "App Currency"
+let appCurrencySubtitle = "To Display All Cash Values and Metrics"

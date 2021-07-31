@@ -26,9 +26,10 @@ struct EditPositionView: View {
                     TextField("", text: $input.positionName)
                         .multilineTextAlignment(.trailing)
                 }
-                NavigationLink(destination: CurrencyPicker(subtitle: "In Which the Asset is Traded",
-                                                             selectedCurrency: $input.currency,
-                                                             isBeingPresented: $isPresentingCurrencySelector),
+                NavigationLink(destination: CurrencyPicker(title: assetCurrencyTitle,
+                                                           subtitle: assetCurrencySubtitle,
+                                                           selectedCurrency: $input.currency,
+                                                           isBeingPresented: $isPresentingCurrencySelector),
                                isActive: $isPresentingCurrencySelector) {
                     HStack {
                         Label("Currency", systemImage: input.currency.symbolName)
@@ -102,7 +103,7 @@ struct EditPositionView: View {
         position.buyingPrice = buyingPrice
         position.currentPrice = currentPrice
         
-        Portfolio.shared.positions.sort()
+        Portfolio.shared.assets.sort()
     }
     
     @State private var input: PositionInput
@@ -133,9 +134,10 @@ struct AddPositionView: View {
                         TextField("", text: $positionName)
                             .multilineTextAlignment(.trailing)
                     }
-                    NavigationLink(destination: CurrencyPicker(subtitle: "In Which the Asset is Traded",
-                                                                 selectedCurrency: $currency,
-                                                                 isBeingPresented: $isPresentingCurrencySelector),
+                    NavigationLink(destination: CurrencyPicker(title: assetCurrencyTitle,
+                                                               subtitle: assetCurrencySubtitle,
+                                                               selectedCurrency: $currency,
+                                                               isBeingPresented: $isPresentingCurrencySelector),
                                    isActive: $isPresentingCurrencySelector) {
                         HStack {
                             Label("Currency", systemImage: currency.symbolName)
@@ -188,7 +190,7 @@ struct AddPositionView: View {
                 }
             }
             .navigationTitle("New Asset")
-//            .navigationBarTitleDisplayMode(.inline)
+            //            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button {
@@ -217,13 +219,13 @@ struct AddPositionView: View {
               let currentPrice = double(from: currentPriceString) else { return }
         
         let newPosition = Asset(name: positionName,
-                                   amount: amount,
-                                   currency: currency,
-                                   buyingPrice: buyingPrice,
-                                   currentPrice: currentPrice)
+                                amount: amount,
+                                currency: currency,
+                                buyingPrice: buyingPrice,
+                                currentPrice: currentPrice)
         
-        Portfolio.shared.positions += newPosition
-        Portfolio.shared.positions.sort()
+        Portfolio.shared.assets += newPosition
+        Portfolio.shared.assets.sort()
         isBeingPresented = false
     }
     
@@ -235,3 +237,6 @@ struct AddPositionView: View {
     @State private var buyingPriceString: String = ""
     @State private var currentPriceString: String = ""
 }
+
+let assetCurrencyTitle = "Asset Currency"
+let assetCurrencySubtitle = "In Which this Asset is Priced and Traded"

@@ -1,22 +1,5 @@
 import Foundation
 
-extension Asset {
-    
-    var profitPercentageDisplayString: String {
-        let percentage = ((currentPrice / buyingPrice) - 1.0) * 100.0
-        return (percentage > 0 ? "+" : "") + percentage.decimalString() + "%"
-    }
-    
-    func profitDisplayString(in targetCurrency: Currency) -> String {
-        let p = profit(in: targetCurrency)
-        return (p > 0 ? "+" : "") + p.decimalString()
-    }
-    
-    func valueDisplayString(in targetCurrency: Currency) -> String {
-        value(in: targetCurrency).decimalString()
-    }
-}
-
 class Asset: Identifiable, ObservableObject, Comparable, Equatable {
     static func == (lhs: Asset, rhs: Asset) -> Bool {
         lhs.id == rhs.id
@@ -68,25 +51,8 @@ class Asset: Identifiable, ObservableObject, Comparable, Equatable {
         buyingPrice > currentPrice
     }
     
-    var record: Record {
-        .init(id: id,
-              name: name,
-              amount: amount,
-              currency: currency,
-              buyingPrice: buyingPrice,
-              currentPrice: currentPrice)
-    }
-    
-    struct Record: Codable {
-        let id: UUID
-        let name: String
-        let amount: Int
-        let currency: Currency
-        let buyingPrice: Double
-        let currentPrice: Double
-    }
-    
     private(set) var id: UUID
+    
     @Published var name: String
     @Published var amount: Int
     @Published var currency: Currency
