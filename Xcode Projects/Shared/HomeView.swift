@@ -4,7 +4,6 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             List {
-                
                 PlainNavigationLink(destination: AssetList(isPresentingCurrencyPicker: $isPresentingCurrencyPicker)) {
                     Label {
                         VStack(alignment: .leading) {
@@ -131,6 +130,7 @@ struct HomeView: View {
                         }
                     }
             }
+            .accentColor(.orange)
         }
 //        .listStyle(GroupedListStyle())
     }
