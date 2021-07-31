@@ -79,6 +79,15 @@ struct FutureVisionView: View {
             }
         }
         .navigationTitle("Vision")
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    isPresentingCurrencyPicker = true
+                } label: {
+                    Image(systemName: settings.currency.symbolName)
+                }
+            }
+        }
         .onChange(of: inputStrings) { inputStrings in
             inputStrings.input.forSome {
                 cashflow.input = $0
@@ -115,6 +124,9 @@ struct FutureVisionView: View {
         var growthPercentString: String
         var yearsString: String
     }
+    
+    @Binding private(set) var isPresentingCurrencyPicker: Bool
+    @ObservedObject private var settings = AppSettings.shared
     
     private var cashString: String { cashflow.output.cash.decimalString(fractionDigits: 0) }
     private var cashflowString: String {

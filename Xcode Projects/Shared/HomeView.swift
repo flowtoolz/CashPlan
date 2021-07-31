@@ -4,7 +4,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             List {
-                NavigationLink(destination: AssetList()) {
+                NavigationLink(destination: AssetList(isPresentingCurrencyPicker: $isPresentingCurrencyPicker)) {
                     Label {
                         VStack(alignment: .leading) {
                             HStack {
@@ -43,7 +43,7 @@ struct HomeView: View {
                             .foregroundColor(.accentColor)
                     }
                 }
-                NavigationLink(destination: FutureVisionView()) {
+                NavigationLink(destination: FutureVisionView(isPresentingCurrencyPicker: $isPresentingCurrencyPicker)) {
                     Label {
                         VStack(alignment: .leading) {
                             Text("\(futureVision.input.years) Year Vision")
@@ -75,24 +75,24 @@ struct HomeView: View {
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {
-                        isPresentingCurrencySelector = true
+                        isPresentingCurrencyPicker = true
                     } label: {
                         Image(systemName: settings.currency.symbolName)
                     }
                 }
             }
         }
-        .popover(isPresented: $isPresentingCurrencySelector) {
+        .popover(isPresented: $isPresentingCurrencyPicker) {
             NavigationView {
                 CurrencyPicker(title: appCurrencyTitle,
                                subtitle: appCurrencySubtitle,
                                selectedCurrency: $settings.currency,
-                               isBeingPresented: $isPresentingCurrencySelector)
+                               isBeingPresented: $isPresentingCurrencyPicker)
             }
         }
     }
     
-    @State private var isPresentingCurrencySelector = false
+    @State private var isPresentingCurrencyPicker = false
     
     @ObservedObject private var futureVision = FutureVision.shared
     @ObservedObject private(set) var portfolio = Portfolio.shared

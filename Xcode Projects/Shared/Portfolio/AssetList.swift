@@ -4,7 +4,7 @@ struct AssetList: View {
     var body: some View {
         List {
             ForEach(portfolio.assets) { position in
-                AssetListRow(displayCurrency: $currencyProvider.currency,
+                AssetListRow(displayCurrency: $settings.currency,
                              position: position)
             }
             .onDelete(perform: delete)
@@ -26,18 +26,10 @@ struct AssetList: View {
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
-                    isPresentingCurrencySelector = true
+                    isPresentingCurrencyPicker = true
                 } label: {
-                    Image(systemName: currencyProvider.currency.symbolName)
+                    Image(systemName: settings.currency.symbolName)
                 }
-            }
-        }
-        .popover(isPresented: $isPresentingCurrencySelector) {
-            NavigationView {
-                CurrencyPicker(title: appCurrencyTitle,
-                               subtitle: appCurrencySubtitle,
-                               selectedCurrency: $currencyProvider.currency,
-                               isBeingPresented: $isPresentingCurrencySelector)
             }
         }
     }
@@ -46,10 +38,10 @@ struct AssetList: View {
         portfolio.assets.remove(atOffsets: offsets)
     }
     
-    @State private var isPresentingCurrencySelector = false
+    @Binding private(set) var isPresentingCurrencyPicker: Bool
     @State private var isPresentingAddPositionView = false
     @ObservedObject private(set) var portfolio = Portfolio.shared
-    @ObservedObject private(set) var currencyProvider = AppSettings.shared
+    @ObservedObject private(set) var settings = AppSettings.shared
 }
 
 let appCurrencyTitle = "App Currency"
