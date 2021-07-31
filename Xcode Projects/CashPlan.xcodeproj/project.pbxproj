@@ -11,6 +11,8 @@
 		961B90CD26B459A7001E5CE2 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B90CB26B459A7001E5CE2 /* AppSettings.swift */; };
 		961B90CF26B460F8001E5CE2 /* AssetPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B90CE26B460F8001E5CE2 /* AssetPersister.swift */; };
 		961B90D026B460F8001E5CE2 /* AssetPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B90CE26B460F8001E5CE2 /* AssetPersister.swift */; };
+		961D0A2A26B57D2400603B28 /* SwiftUIToolz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961D0A2926B57D2400603B28 /* SwiftUIToolz.swift */; };
+		961D0A2B26B57D2400603B28 /* SwiftUIToolz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961D0A2926B57D2400603B28 /* SwiftUIToolz.swift */; };
 		96352E6526B3E15A004EE425 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96352E6426B3E15A004EE425 /* HomeView.swift */; };
 		96352E6626B3E15A004EE425 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96352E6426B3E15A004EE425 /* HomeView.swift */; };
 		96352E6826B3E256004EE425 /* AssetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96352E6726B3E256004EE425 /* AssetList.swift */; };
@@ -69,6 +71,7 @@
 /* Begin PBXFileReference section */
 		961B90CB26B459A7001E5CE2 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		961B90CE26B460F8001E5CE2 /* AssetPersister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPersister.swift; sourceTree = "<group>"; };
+		961D0A2926B57D2400603B28 /* SwiftUIToolz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIToolz.swift; sourceTree = "<group>"; };
 		96352E6426B3E15A004EE425 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		96352E6726B3E256004EE425 /* AssetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetList.swift; sourceTree = "<group>"; };
 		96352E6A26B3E288004EE425 /* AssetListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetListRow.swift; sourceTree = "<group>"; };
@@ -195,6 +198,7 @@
 				96352E6326B3E0F6004EE425 /* Portfolio */,
 				961B90CB26B459A7001E5CE2 /* AppSettings.swift */,
 				96352E7926B3E466004EE425 /* Currency */,
+				961D0A2926B57D2400603B28 /* SwiftUIToolz.swift */,
 				967B192326AF1A4700214F29 /* Helpers.swift */,
 				96F9673026AD991100A1258E /* Assets.xcassets */,
 			);
@@ -424,6 +428,7 @@
 				96352E7E26B3E508004EE425 /* Asset.swift in Sources */,
 				96F117FA26B4A552003B21F1 /* Portfolio+DisplayString.swift in Sources */,
 				961B90CF26B460F8001E5CE2 /* AssetPersister.swift in Sources */,
+				961D0A2A26B57D2400603B28 /* SwiftUIToolz.swift in Sources */,
 				96352E6E26B3E2DA004EE425 /* CurrencyPicker.swift in Sources */,
 				96352E7126B3E35C004EE425 /* EditAssetView.swift in Sources */,
 				96FE3C5326AE9A7500B7C230 /* FutureVisionView.swift in Sources */,
@@ -448,6 +453,7 @@
 				96352E7F26B3E508004EE425 /* Asset.swift in Sources */,
 				96F117FB26B4A552003B21F1 /* Portfolio+DisplayString.swift in Sources */,
 				961B90D026B460F8001E5CE2 /* AssetPersister.swift in Sources */,
+				961D0A2B26B57D2400603B28 /* SwiftUIToolz.swift in Sources */,
 				96352E6F26B3E2DA004EE425 /* CurrencyPicker.swift in Sources */,
 				96352E7226B3E35C004EE425 /* EditAssetView.swift in Sources */,
 				96FE3C5426AE9A7500B7C230 /* FutureVisionView.swift in Sources */,
