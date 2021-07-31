@@ -15,8 +15,8 @@ struct CurrencyPicker: View {
                             Text("(\(currency.symbol))")
                                 .foregroundColor(.secondary)
                             Spacer()
-                            Image(systemName: currency.symbolName)
-                                .foregroundColor(currency == selectedCurrency ? .accentColor : Color(UIColor.systemGray3))
+                            CurrencyView(currency: currency)
+                                .foregroundColor(currency.code == selectedCurrency.code ? .accentColor : Color(UIColor.systemGray3))
                                 .imageScale(.large)
                         }
                     }

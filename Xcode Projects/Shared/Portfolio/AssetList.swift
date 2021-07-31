@@ -26,7 +26,7 @@ struct AssetList: View {
                 Button {
                     isPresentingCurrencyPicker = true
                 } label: {
-                    Image(systemName: settings.currency.symbolName)
+                    CurrencyView(currency: settings.currency)
                 }
             }
         }

@@ -25,8 +25,8 @@
 		96352E7226B3E35C004EE425 /* EditAssetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96352E7026B3E35C004EE425 /* EditAssetView.swift */; };
 		96352E7426B3E3E1004EE425 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96352E7326B3E3E1004EE425 /* Currency.swift */; };
 		96352E7526B3E3E1004EE425 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96352E7326B3E3E1004EE425 /* Currency.swift */; };
-		96352E7726B3E428004EE425 /* Currency+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96352E7626B3E428004EE425 /* Currency+SwiftUI.swift */; };
-		96352E7826B3E428004EE425 /* Currency+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96352E7626B3E428004EE425 /* Currency+SwiftUI.swift */; };
+		96352E7726B3E428004EE425 /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96352E7626B3E428004EE425 /* CurrencyView.swift */; };
+		96352E7826B3E428004EE425 /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96352E7626B3E428004EE425 /* CurrencyView.swift */; };
 		96352E7B26B3E4BD004EE425 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96352E7A26B3E4BD004EE425 /* Portfolio.swift */; };
 		96352E7C26B3E4BD004EE425 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96352E7A26B3E4BD004EE425 /* Portfolio.swift */; };
 		96352E7E26B3E508004EE425 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96352E7D26B3E508004EE425 /* Asset.swift */; };
@@ -81,7 +81,7 @@
 		96352E6D26B3E2DA004EE425 /* CurrencyPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPicker.swift; sourceTree = "<group>"; };
 		96352E7026B3E35C004EE425 /* EditAssetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAssetView.swift; sourceTree = "<group>"; };
 		96352E7326B3E3E1004EE425 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
-		96352E7626B3E428004EE425 /* Currency+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Currency+SwiftUI.swift"; sourceTree = "<group>"; };
+		96352E7626B3E428004EE425 /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
 		96352E7A26B3E4BD004EE425 /* Portfolio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
 		96352E7D26B3E508004EE425 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		967B192326AF1A4700214F29 /* TrademateFoundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrademateFoundation.swift; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 			children = (
 				96EC039A26B5C0E400CBF0FA /* CurrencyViewModel.swift */,
 				96352E6D26B3E2DA004EE425 /* CurrencyPicker.swift */,
-				96352E7626B3E428004EE425 /* Currency+SwiftUI.swift */,
+				96352E7626B3E428004EE425 /* CurrencyView.swift */,
 				96352E7326B3E3E1004EE425 /* Currency.swift */,
 			);
 			path = Currency;
@@ -441,7 +441,7 @@
 				96352E7126B3E35C004EE425 /* EditAssetView.swift in Sources */,
 				96EC039826B5C07A00CBF0FA /* TrademateSwiftUI.swift in Sources */,
 				96FE3C5326AE9A7500B7C230 /* FutureVisionView.swift in Sources */,
-				96352E7726B3E428004EE425 /* Currency+SwiftUI.swift in Sources */,
+				96352E7726B3E428004EE425 /* CurrencyView.swift in Sources */,
 				96352E6826B3E256004EE425 /* AssetList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,7 +467,7 @@
 				96352E7226B3E35C004EE425 /* EditAssetView.swift in Sources */,
 				96EC039926B5C07A00CBF0FA /* TrademateSwiftUI.swift in Sources */,
 				96FE3C5426AE9A7500B7C230 /* FutureVisionView.swift in Sources */,
-				96352E7826B3E428004EE425 /* Currency+SwiftUI.swift in Sources */,
+				96352E7826B3E428004EE425 /* CurrencyView.swift in Sources */,
 				96352E6926B3E256004EE425 /* AssetList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

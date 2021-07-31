@@ -3,17 +3,14 @@ struct Currency: Equatable, Identifiable, Codable {
     var id: String { code }
     
     static let all: [Currency] = [
-        bitCoin,
-        britishPound,
+        usDollar,
         euro,
+        britishPound,
         swissFranc,
-        usDollar
+        canadianDollar,
+        australianDollar,
+        bitCoin
     ]
-    
-    static let bitCoin = Currency(code: "BTC",
-                                  dollarPrice: 36861.70,
-                                  symbol: "₿",
-                                  name: "Bitcoin")
     
     static let usDollar = Currency(code: "USD",
                                    dollarPrice: 1.0,
@@ -21,23 +18,37 @@ struct Currency: Equatable, Identifiable, Codable {
                                    name: "US Dollar")
     
     static let euro = Currency(code: "EUR",
-                               dollarPrice: 1.18,
+                               dollarPrice: 1.19,
                                symbol: "€",
                                name: "Euro")
     
     static let swissFranc = Currency(code: "CHF",
-                                     dollarPrice: 1.09,
+                                     dollarPrice: 1.10,
                                      symbol: "CHF",
                                      name: "Swiss Franc")
     
     static let britishPound = Currency(code: "GBP",
-                                       dollarPrice: 1.38,
+                                       dollarPrice: 1.39,
                                        symbol: "£",
                                        name: "British Pound")
+    
+    static let bitCoin = Currency(code: "BTC",
+                                  dollarPrice: 41579.80,
+                                  symbol: "₿",
+                                  name: "Bitcoin")
+    
+    static let canadianDollar = Currency(code: "CAD",
+                                         dollarPrice: 0.8,
+                                         symbol: "C$",
+                                         name: "Canadian Dollar")
+    
+    static let australianDollar = Currency(code: "AUD",
+                                           dollarPrice: 0.73,
+                                           symbol: "A$",
+                                           name: "Australian Dollar")
     
     let code: String
     let dollarPrice: Double
     let symbol: String
     let name: String
-    //    case canadianDollar, australianDollar
 }

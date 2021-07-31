@@ -32,8 +32,12 @@ struct AssetEditingView: View {
                                                            isBeingPresented: $isPresentingCurrencyPicker),
                                isActive: $isPresentingCurrencyPicker) {
                     HStack {
-                        Label("Currency", systemImage: input.currency.symbolName)
-                            .fixedSize(horizontal: true, vertical: false)
+                        Label {
+                            Text("Currency")
+                                .fixedSize(horizontal: true, vertical: false)
+                        } icon: {
+                            CurrencyView(currency: input.currency)
+                        }
                         Spacer()
                         Text(input.currency.name)
                             .foregroundColor(.secondary)
@@ -138,8 +142,12 @@ struct AssetCreationView: View {
                                                            isBeingPresented: $isPresentingCurrencySelector),
                                isActive: $isPresentingCurrencySelector) {
                     HStack {
-                        Label("Currency", systemImage: currency.symbolName)
-                            .fixedSize(horizontal: true, vertical: false)
+                        Label {
+                            Text("Currency")
+                                .fixedSize(horizontal: true, vertical: false)
+                        } icon: {
+                            CurrencyView(currency: currency)
+                        }
                         Spacer()
                         Text(currency.name)
                             .foregroundColor(.secondary)
