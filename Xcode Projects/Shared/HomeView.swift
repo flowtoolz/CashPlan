@@ -88,6 +88,15 @@ struct HomeView: View {
                                subtitle: appCurrencySubtitle,
                                selectedCurrency: $settings.currency,
                                isBeingPresented: $isPresentingCurrencyPicker)
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button {
+                                isPresentingCurrencyPicker = false
+                            } label: {
+                                Text("Cancel")
+                            }
+                        }
+                    }
             }
         }
     }
