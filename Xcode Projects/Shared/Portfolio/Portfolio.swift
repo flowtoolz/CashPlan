@@ -7,11 +7,20 @@ class Portfolio: ObservableObject {
     static let shared = Portfolio()
     private init() {}
     
-    // MARK: - Metrics in Terms of Selected Currency
+    // MARK: - Metrics in Terms of User Currency
     
-    var returnPercentage: Double {
-        let v = value
-        return ((v / (v - profit)) - 1.0) * 100.0
+    var profitLossPercentage: Double {
+        let openingValue = openingValue
+        let value = value
+        
+        guard openingValue != 0 else {
+            if value > 0 { return 100 }
+            else { return 0 }
+        }
+        
+        let growthFactor = value / openingValue
+
+        return (growthFactor - 1.0) * 100.0
     }
     
     var isAtALoss: Bool { profit < 0 }
@@ -22,6 +31,10 @@ class Portfolio: ObservableObject {
     
     var profit: Double {
         assets.map { $0.profit(in: AppSettings.shared.currency) }.reduce(0, +)
+    }
+    
+    var openingValue: Double {
+        assets.map { $0.openingValue(in: AppSettings.shared.currency) }.reduce(0, +)
     }
     
     // MARK: - Assets

@@ -29,6 +29,12 @@ class Asset: Identifiable, ObservableObject, Comparable, Equatable {
         return valueInUSDollar / targetCurrency.dollarPrice
     }
     
+    func openingValue(in targetCurrency: Currency) -> Double {
+        guard currency.code != targetCurrency.code else { return openingValue }
+        let openingValueInUSDollar = openingValue * currency.dollarPrice
+        return openingValueInUSDollar / targetCurrency.dollarPrice
+    }
+    
     func profit(in targetCurrency: Currency) -> Double {
         guard currency.code != targetCurrency.code else { return profit }
         let profitInUSDollar = profit * currency.dollarPrice
@@ -43,7 +49,7 @@ class Asset: Identifiable, ObservableObject, Comparable, Equatable {
         currentPrice * Double(amount)
     }
     
-    var buyingValue: Double {
+    var openingValue: Double {
         buyingPrice * Double(amount)
     }
     

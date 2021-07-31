@@ -2,7 +2,7 @@ import Foundation
 
 extension Portfolio {
     var returnPercentageString: String {
-        let p = returnPercentage
+        let p = profitLossPercentage
         return (p < 0 ? "" : "+") + p.decimalString() + "%"
     }
     
