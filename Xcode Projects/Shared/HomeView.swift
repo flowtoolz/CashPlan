@@ -21,7 +21,7 @@ struct HomeView: View {
                                     Spacer()
                                     Text(portfolio.returnPercentageString)
                                         .font(.system(.title2, design: .monospaced))
-                                        .foregroundColor(portfolio.isAtALoss ? .red : .green)
+                                        .foregroundColor(portfolio.isAtALoss ? trademateRed : trademateGreen)
                                 }
                                 HStack(alignment: .firstTextBaseline) {
                                     Text("Balance")
@@ -96,7 +96,7 @@ struct HomeView: View {
                                     Spacer()
                                     Text("+" + futureVision.output.cashflow.decimalString(fractionDigits: 0))
                                         .font(.system(.title2, design: .monospaced))
-                                        .foregroundColor(.green)
+                                        .foregroundColor(trademateGreen)
                                 }
                             }
                         } icon: {

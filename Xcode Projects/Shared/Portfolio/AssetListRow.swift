@@ -10,7 +10,7 @@ struct AssetListRow: View {
                     Spacer()
                     Text(asset.profitPercentageDisplayString)
                         .font(.system(.body, design: .monospaced))
-                        .foregroundColor(asset.isLoss ? .red : .green)
+                        .foregroundColor(asset.isLoss ? trademateRed : trademateGreen)
                 }
                 HStack {
                     Spacer()

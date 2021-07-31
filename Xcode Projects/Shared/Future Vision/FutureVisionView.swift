@@ -26,7 +26,7 @@ struct FutureVisionView: View {
                             VStack(alignment: .trailing) {
                                 Text(cashflowString)
                                     .font(.system(.body, design: .monospaced))
-                                    .foregroundColor(.green)
+                                    .foregroundColor(trademateGreen)
                                 Text("per month")
                                     .foregroundColor(.secondary)
                                     .font(.footnote)
