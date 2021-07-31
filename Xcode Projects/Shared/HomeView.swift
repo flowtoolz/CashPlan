@@ -149,7 +149,14 @@ struct HomeView: View {
                     Text("Alerts")
                 }
         }
+        .accentColor(trademateAccentColor)
     }
+    
+    private var trademateAccentColor: Color {
+        colorScheme == .dark ? trademateAccentColorDark : trademateAccentColorLight
+    }
+    
+    @Environment(\.colorScheme) private var colorScheme
     
     @State private var isPresentingCurrencyPicker = false
     

@@ -20,8 +20,8 @@ struct FutureVisionView: View {
                                 Text("Cash Flow")
                             } icon: {
                                 Image(systemName: "calendar.badge.plus")
+                                    .foregroundColor(.secondary)
                             }
-                            .accentColor(.secondary)
                             Spacer()
                             VStack(alignment: .trailing) {
                                 Text(cashflowString)
