@@ -31,12 +31,15 @@
 		96352E7C26B3E4BD004EE425 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96352E7A26B3E4BD004EE425 /* Portfolio.swift */; };
 		96352E7E26B3E508004EE425 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96352E7D26B3E508004EE425 /* Asset.swift */; };
 		96352E7F26B3E508004EE425 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96352E7D26B3E508004EE425 /* Asset.swift */; };
-		967B192426AF1A4700214F29 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B192326AF1A4700214F29 /* Helpers.swift */; };
-		967B192526AF1A4700214F29 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B192326AF1A4700214F29 /* Helpers.swift */; };
+		967B192426AF1A4700214F29 /* TrademateFoundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B192326AF1A4700214F29 /* TrademateFoundation.swift */; };
+		967B192526AF1A4700214F29 /* TrademateFoundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B192326AF1A4700214F29 /* TrademateFoundation.swift */; };
 		967B192826AF2FB900214F29 /* SwiftyToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 967B192726AF2FB900214F29 /* SwiftyToolz */; };
 		967B192B26AF324F00214F29 /* FoundationToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 967B192A26AF324F00214F29 /* FoundationToolz */; };
 		96CA0AE226B1BEA300670336 /* FutureVision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CA0AE126B1BEA300670336 /* FutureVision.swift */; };
 		96CA0AE326B1BEA300670336 /* FutureVision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CA0AE126B1BEA300670336 /* FutureVision.swift */; };
+		96EC039826B5C07A00CBF0FA /* TrademateSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EC039726B5C07A00CBF0FA /* TrademateSwiftUI.swift */; };
+		96EC039926B5C07A00CBF0FA /* TrademateSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EC039726B5C07A00CBF0FA /* TrademateSwiftUI.swift */; };
+		96EC039B26B5C18000CBF0FA /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EC039A26B5C0E400CBF0FA /* CurrencyViewModel.swift */; };
 		96F117F726B4A484003B21F1 /* Asset+DisplayStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F117F626B4A484003B21F1 /* Asset+DisplayStrings.swift */; };
 		96F117F826B4A484003B21F1 /* Asset+DisplayStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F117F626B4A484003B21F1 /* Asset+DisplayStrings.swift */; };
 		96F117FA26B4A552003B21F1 /* Portfolio+DisplayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F117F926B4A552003B21F1 /* Portfolio+DisplayString.swift */; };
@@ -81,8 +84,10 @@
 		96352E7626B3E428004EE425 /* Currency+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Currency+SwiftUI.swift"; sourceTree = "<group>"; };
 		96352E7A26B3E4BD004EE425 /* Portfolio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
 		96352E7D26B3E508004EE425 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
-		967B192326AF1A4700214F29 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		967B192326AF1A4700214F29 /* TrademateFoundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrademateFoundation.swift; sourceTree = "<group>"; };
 		96CA0AE126B1BEA300670336 /* FutureVision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureVision.swift; sourceTree = "<group>"; };
+		96EC039726B5C07A00CBF0FA /* TrademateSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrademateSwiftUI.swift; sourceTree = "<group>"; };
+		96EC039A26B5C0E400CBF0FA /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
 		96F117F626B4A484003B21F1 /* Asset+DisplayStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Asset+DisplayStrings.swift"; sourceTree = "<group>"; };
 		96F117F926B4A552003B21F1 /* Portfolio+DisplayString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Portfolio+DisplayString.swift"; sourceTree = "<group>"; };
 		96F9672E26AD991000A1258E /* TradeMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeMateApp.swift; sourceTree = "<group>"; };
@@ -150,6 +155,7 @@
 		96352E7926B3E466004EE425 /* Currency */ = {
 			isa = PBXGroup;
 			children = (
+				96EC039A26B5C0E400CBF0FA /* CurrencyViewModel.swift */,
 				96352E6D26B3E2DA004EE425 /* CurrencyPicker.swift */,
 				96352E7626B3E428004EE425 /* Currency+SwiftUI.swift */,
 				96352E7326B3E3E1004EE425 /* Currency.swift */,
@@ -198,8 +204,9 @@
 				96352E6326B3E0F6004EE425 /* Portfolio */,
 				961B90CB26B459A7001E5CE2 /* AppSettings.swift */,
 				96352E7926B3E466004EE425 /* Currency */,
+				96EC039726B5C07A00CBF0FA /* TrademateSwiftUI.swift */,
+				967B192326AF1A4700214F29 /* TrademateFoundation.swift */,
 				961D0A2926B57D2400603B28 /* SwiftUIToolz.swift */,
-				967B192326AF1A4700214F29 /* Helpers.swift */,
 				96F9673026AD991100A1258E /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -418,12 +425,13 @@
 			files = (
 				96F117F726B4A484003B21F1 /* Asset+DisplayStrings.swift in Sources */,
 				96352E7B26B3E4BD004EE425 /* Portfolio.swift in Sources */,
+				96EC039B26B5C18000CBF0FA /* CurrencyViewModel.swift in Sources */,
 				96352E6B26B3E288004EE425 /* AssetListRow.swift in Sources */,
 				96352E6526B3E15A004EE425 /* HomeView.swift in Sources */,
 				961B90CC26B459A7001E5CE2 /* AppSettings.swift in Sources */,
 				96CA0AE226B1BEA300670336 /* FutureVision.swift in Sources */,
 				96F9675726AD991100A1258E /* TradeMateApp.swift in Sources */,
-				967B192426AF1A4700214F29 /* Helpers.swift in Sources */,
+				967B192426AF1A4700214F29 /* TrademateFoundation.swift in Sources */,
 				96352E7426B3E3E1004EE425 /* Currency.swift in Sources */,
 				96352E7E26B3E508004EE425 /* Asset.swift in Sources */,
 				96F117FA26B4A552003B21F1 /* Portfolio+DisplayString.swift in Sources */,
@@ -431,6 +439,7 @@
 				961D0A2A26B57D2400603B28 /* SwiftUIToolz.swift in Sources */,
 				96352E6E26B3E2DA004EE425 /* CurrencyPicker.swift in Sources */,
 				96352E7126B3E35C004EE425 /* EditAssetView.swift in Sources */,
+				96EC039826B5C07A00CBF0FA /* TrademateSwiftUI.swift in Sources */,
 				96FE3C5326AE9A7500B7C230 /* FutureVisionView.swift in Sources */,
 				96352E7726B3E428004EE425 /* Currency+SwiftUI.swift in Sources */,
 				96352E6826B3E256004EE425 /* AssetList.swift in Sources */,
@@ -448,7 +457,7 @@
 				961B90CD26B459A7001E5CE2 /* AppSettings.swift in Sources */,
 				96CA0AE326B1BEA300670336 /* FutureVision.swift in Sources */,
 				96F9675826AD991100A1258E /* TradeMateApp.swift in Sources */,
-				967B192526AF1A4700214F29 /* Helpers.swift in Sources */,
+				967B192526AF1A4700214F29 /* TrademateFoundation.swift in Sources */,
 				96352E7526B3E3E1004EE425 /* Currency.swift in Sources */,
 				96352E7F26B3E508004EE425 /* Asset.swift in Sources */,
 				96F117FB26B4A552003B21F1 /* Portfolio+DisplayString.swift in Sources */,
@@ -456,6 +465,7 @@
 				961D0A2B26B57D2400603B28 /* SwiftUIToolz.swift in Sources */,
 				96352E6F26B3E2DA004EE425 /* CurrencyPicker.swift in Sources */,
 				96352E7226B3E35C004EE425 /* EditAssetView.swift in Sources */,
+				96EC039926B5C07A00CBF0FA /* TrademateSwiftUI.swift in Sources */,
 				96FE3C5426AE9A7500B7C230 /* FutureVisionView.swift in Sources */,
 				96352E7826B3E428004EE425 /* Currency+SwiftUI.swift in Sources */,
 				96352E6926B3E256004EE425 /* AssetList.swift in Sources */,

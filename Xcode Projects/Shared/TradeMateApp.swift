@@ -18,7 +18,7 @@ struct TradeMateApp: App {
     var body: some Scene {
         WindowGroup {
             HomeView()
-                .accentColor(.orange)
+                .accentColor(trademateAccentColor)
         }
         .onChange(of: scenePhase) { newScenePhase in
             switch newScenePhase {

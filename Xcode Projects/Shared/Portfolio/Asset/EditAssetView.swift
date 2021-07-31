@@ -206,7 +206,7 @@ struct AssetCreationView: View {
                 }
             }
         }
-        .accentColor(.orange)
+        .accentColor(trademateAccentColor)
     }
     
     @State private var isPresentingCurrencySelector = false
