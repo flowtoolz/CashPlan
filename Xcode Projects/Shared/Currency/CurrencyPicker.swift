@@ -23,7 +23,6 @@ struct CurrencyPicker: View {
                 }
             }
         }
-        .listStyle(GroupedListStyle())
         .navigationTitle(title)
     }
     

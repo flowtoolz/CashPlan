@@ -34,7 +34,7 @@ struct FutureVisionView: View {
                         }
                     }.padding([.top, .bottom], 6)
                 }
-                Section(header: Text("Trading Goal")) {
+                Section(header: Text("Trading Target")) {
                     HStack {
                         Label {
                             Text("Monthly Investment:")
@@ -78,7 +78,7 @@ struct FutureVisionView: View {
                 }
             }
         }
-        .navigationTitle("Vision")
+        .navigationTitle("Target")
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {

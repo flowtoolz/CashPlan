@@ -82,7 +82,6 @@ struct AssetEditingView: View {
                 }
             }
         }
-        .listStyle(GroupedListStyle())
         .navigationTitle(input.name)
         .onChange(of: input) { _ in
             updateAssetIfInputIsValid()
@@ -238,4 +237,4 @@ struct AssetCreationView: View {
 }
 
 let assetCurrencyTitle = "Asset Currency"
-let assetCurrencySubtitle = "The Asset is Priced and Traded In"
+let assetCurrencySubtitle = "For Pricing / Trading"

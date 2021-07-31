@@ -3,24 +3,28 @@ import SwiftUI
 struct AssetList: View {
     var body: some View {
         List {
-            ForEach(portfolio.assets) { position in
-                AssetListRow(displayCurrency: $settings.currency,
-                             asset: position)
-            }
-            .onDelete(perform: delete)
-            Button {
-                isPresentingAddPositionView = true
-            } label: {
-                HStack {
-                    Image(systemName: "plus")
-                    Text("Add Asset")
-                    Spacer()
+            ForEach(portfolio.assets) { asset in
+                PlainNavigationLink(destination: AssetEditingView(asset)) {
+                    AssetListRow(displayCurrency: $settings.currency,
+                                 asset: asset)
                 }
             }
-            .foregroundColor(.accentColor)
-            .popover(isPresented: $isPresentingAddPositionView) {
-                AssetCreationView(isBeingPresented: $isPresentingAddPositionView)
-            }
+            .onDelete(perform: delete)
+//            Section {
+                Button {
+                    isPresentingAddPositionView = true
+                } label: {
+                    HStack {
+                        Image(systemName: "plus")
+                        Text("Add Asset")
+                        Spacer()
+                    }
+                }
+                .foregroundColor(.accentColor)
+                .popover(isPresented: $isPresentingAddPositionView) {
+                    AssetCreationView(isBeingPresented: $isPresentingAddPositionView)
+                }
+//            }
         }
         .navigationTitle("Assets")
         .toolbar {
@@ -45,4 +49,4 @@ struct AssetList: View {
 }
 
 let userCurrencyTitle = "My Currency"
-let userCurrencySubtitle = "Display Cash Balances and Metrics In"
+let userCurrencySubtitle = "For Cash Balances / Metrics"

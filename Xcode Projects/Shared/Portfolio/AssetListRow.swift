@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AssetListRow: View {
     var body: some View {
-        NavigationLink(destination: AssetEditingView(asset)) {
+        HStack(alignment: .firstTextBaseline) {
             VStack {
                 HStack {
                     Text(asset.name)
@@ -19,6 +19,7 @@ struct AssetListRow: View {
                         .foregroundColor(.secondary)
                 }
             }
+            NavigationChevron()
         }
     }
     
