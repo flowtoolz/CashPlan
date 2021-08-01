@@ -20,6 +20,24 @@
         }
       },
       {
+        "package": "SwiftObserver",
+        "repositoryURL": "https://github.com/flowtoolz/SwiftObserver.git",
+        "state": {
+          "branch": "master",
+          "revision": "e6c65e0f4f138a3f25ba379c45ce6a85e405aac8",
+          "version": null
+        }
+      },
+      {
+        "package": "SwiftUIToolz",
+        "repositoryURL": "https://github.com/flowtoolz/SwiftUIToolz",
+        "state": {
+          "branch": "master",
+          "revision": "ea4dee678edfb092694faf784c3bc0a8f1b536b1",
+          "version": null
+        }
+      },
+      {
         "package": "SwiftyToolz",
         "repositoryURL": "https://github.com/flowtoolz/SwiftyToolz",
         "state": {
