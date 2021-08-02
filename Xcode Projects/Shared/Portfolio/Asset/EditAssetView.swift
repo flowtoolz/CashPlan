@@ -5,7 +5,7 @@ struct AssetEditingView: View {
     
     init(_ asset: Asset) {
         self.asset = asset
-        let initialInput = AssetInput(name: asset.name,
+        let initialInput = AssetEditingState(name: asset.name,
                                       amountString: "\(asset.amount)",
                                       currency: asset.currency,
                                       buyingPriceString: "\(asset.buyingPrice)",
@@ -109,16 +109,8 @@ struct AssetEditingView: View {
         Portfolio.shared.assets.sort()
     }
     
-    @State private var input: AssetInput
+    @State private var input: AssetEditingState
     private let asset: Asset
-    
-    struct AssetInput: Equatable {
-        var name: String
-        var amountString: String
-        var currency: Currency
-        var buyingPriceString: String
-        var currentPriceString: String
-    }
 }
 
 struct AssetCreationView: View {
@@ -133,12 +125,12 @@ struct AssetCreationView: View {
                     } icon: {
                         Image(systemName: "building.2")
                     }
-                    TextField("", text: $name)
+                    TextField("", text: $editingState.name)
                         .multilineTextAlignment(.trailing)
                 }
                 NavigationLink(destination: CurrencyPicker(title: assetCurrencyTitle,
                                                            subtitle: assetCurrencySubtitle,
-                                                           selectedCurrency: $currency,
+                                                           selectedCurrency: $editingState.currency,
                                                            isBeingPresented: $isPresentingCurrencySelector),
                                isActive: $isPresentingCurrencySelector) {
                     HStack {
@@ -146,10 +138,10 @@ struct AssetCreationView: View {
                             Text("Currency")
                                 .fixedSize(horizontal: true, vertical: false)
                         } icon: {
-                            CurrencyView(currency: currency)
+                            CurrencyView(currency: editingState.currency)
                         }
                         Spacer()
-                        Text(currency.name)
+                        Text(editingState.currency.name)
                             .foregroundColor(.secondary)
                     }
                 }
@@ -161,7 +153,7 @@ struct AssetCreationView: View {
                     } icon: {
                         Image(systemName: "arrow.up.right")
                     }
-                    TextField("", text: $currentPriceString)
+                    TextField("", text: $editingState.currentPriceString)
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
                         .font(.system(.body, design: .monospaced))
@@ -175,7 +167,7 @@ struct AssetCreationView: View {
                     } icon: {
                         Image(systemName: "number")
                     }
-                    TextField("", text: $amountString)
+                    TextField("", text: $editingState.amountString)
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.trailing)
                         .font(.system(.body, design: .monospaced))
@@ -188,7 +180,7 @@ struct AssetCreationView: View {
                     } icon: {
                         Image(systemName: "arrow.down.left")
                     }
-                    TextField("", text: $buyingPriceString)
+                    TextField("", text: $editingState.buyingPriceString)
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
                         .font(.system(.body, design: .monospaced))
@@ -206,14 +198,14 @@ struct AssetCreationView: View {
     @State private var isPresentingCurrencySelector = false
     
     private func saveAndCloseIfInputIsValid() {
-        guard !name.isEmpty,
-              let amount = integer(from: amountString),
-              let buyingPrice = double(from: buyingPriceString),
-              let currentPrice = double(from: currentPriceString) else { return }
+        guard !editingState.name.isEmpty,
+              let amount = integer(from: editingState.amountString),
+              let buyingPrice = double(from: editingState.buyingPriceString),
+              let currentPrice = double(from: editingState.currentPriceString) else { return }
         
-        let newPosition = Asset(name: name,
+        let newPosition = Asset(name: editingState.name,
                                 amount: amount,
-                                currency: currency,
+                                currency: editingState.currency,
                                 buyingPrice: buyingPrice,
                                 currentPrice: currentPrice)
         
@@ -224,12 +216,16 @@ struct AssetCreationView: View {
     
     @Binding private(set) var isBeingPresented: Bool
     
-    @State private var currency = Currency.usDollar
-    @State private var name: String = ""
-    @State private var amountString: String = ""
-    @State private var buyingPriceString: String = ""
-    @State private var currentPriceString: String = ""
+    @State private var editingState = AssetEditingState()
 }
 
 let assetCurrencyTitle = "Asset Currency"
 let assetCurrencySubtitle = "How the Asset is Priced and Traded"
+
+struct AssetEditingState: Equatable {
+    var name = ""
+    var amountString = ""
+    var currency = Currency.usDollar
+    var buyingPriceString = ""
+    var currentPriceString = ""
+}
