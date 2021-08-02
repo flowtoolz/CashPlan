@@ -173,7 +173,6 @@
 				96F117F626B4A484003B21F1 /* Asset+DisplayStrings.swift */,
 				961B90CE26B460F8001E5CE2 /* AssetPersister.swift */,
 				96352E7D26B3E508004EE425 /* Asset.swift */,
-				962C26DA26B6BF7000CEE84B /* CoreFoundationToolz.swift */,
 			);
 			path = Asset;
 			sourceTree = "<group>";
@@ -211,6 +210,7 @@
 				96352E7926B3E466004EE425 /* Currency */,
 				96EC039726B5C07A00CBF0FA /* TrademateSwiftUI.swift */,
 				967B192326AF1A4700214F29 /* TrademateFoundation.swift */,
+				962C26DA26B6BF7000CEE84B /* CoreFoundationToolz.swift */,
 				96F9673026AD991100A1258E /* Assets.xcassets */,
 			);
 			path = Shared;
