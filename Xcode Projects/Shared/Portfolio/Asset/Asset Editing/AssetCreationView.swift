@@ -4,24 +4,30 @@ import SwiftyToolz
 struct AssetCreationView: View {
     
     var body: some View {
-        AssetEditingForm(state: $editingState)
+        AssetEditingForm(state: $viewModel.editingState)
             .navigationTitle("New Asset")
             .navigationBarItems(trailing: Button {
-                saveAndCloseIfInputIsValid()
+                if viewModel.addAssetIfStateIsValid() {
+                    isBeingPresented = false
+                }
             } label: {
                 Text("Add")
             })
     }
     
-    private func saveAndCloseIfInputIsValid() {
-        guard let newAsset = editingState.asset else { return }
+    @Binding private(set) var isBeingPresented: Bool
+    @StateObject private var viewModel = AssetCreationViewModel()
+}
+
+class AssetCreationViewModel: ObservableObject {
+    func addAssetIfStateIsValid() -> Bool {
+        guard let newAsset = editingState.asset else { return false }
         Portfolio.shared.assets += newAsset
         // TODO: it's the portfolio's or the view model's responsibility to sort this ...
         Portfolio.shared.assets.sort()
-        isBeingPresented = false
+        return true
+        
     }
     
-    @Binding private(set) var isBeingPresented: Bool
-    
-    @State private var editingState = AssetEditingState()
+    @Published var editingState = AssetEditingState()
 }

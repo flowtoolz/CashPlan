@@ -1,22 +1,36 @@
 import SwiftUI
+import Combine
+import SwiftyToolz
 
 struct AssetEditingView: View {
     
     init(_ asset: Asset) {
-        self.asset = asset
-        _state = State(wrappedValue: AssetEditingState(asset))
+        _viewModel = StateObject(wrappedValue: AssetEditingViewModel(asset))
     }
     
     var body: some View {
-        AssetEditingForm(state: $state)
-            .navigationTitle(state.name)
-            .onChange(of: state) { _ in
-                state.writeValidInputs(to: asset)
-                // TODO: it's the portfolio's or the view model's responsibility to observe assets and resort them ...
-                Portfolio.shared.assets.sort()
-            }
+        AssetEditingForm(state: $viewModel.editingState)
+            .navigationTitle(viewModel.editingState.name)
     }
     
-    @State private var state: AssetEditingState
+    @StateObject private var viewModel: AssetEditingViewModel
+}
+
+class AssetEditingViewModel: ObservableObject {
+    
+    init(_ asset: Asset) {
+        self.asset = asset
+        editingState = AssetEditingState(asset)
+        
+        observations += $editingState.sink { newState in
+            newState.writeValidInputs(to: asset)
+            // TODO: it's the portfolio's or the view model's responsibility to observe assets and resort them ...
+            Portfolio.shared.assets.sort()
+        }
+    }
+    
+    private var observations = [AnyCancellable]()
+    @Published var editingState: AssetEditingState
+    
     private let asset: Asset
 }
