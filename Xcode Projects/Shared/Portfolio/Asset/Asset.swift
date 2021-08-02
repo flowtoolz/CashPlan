@@ -1,6 +1,7 @@
-import Foundation
+import SwiftObserver
+import SwiftyToolz
 
-class Asset: Identifiable, ObservableObject, Comparable, Equatable {
+class Asset: Identifiable, Comparable, Equatable, Observable {
     static func == (lhs: Asset, rhs: Asset) -> Bool {
         lhs.id == rhs.id
     }
@@ -9,18 +10,18 @@ class Asset: Identifiable, ObservableObject, Comparable, Equatable {
         abs(lhs.profit) > abs(rhs.profit)
     }
     
-    internal init(id: UUID = UUID(),
-                  name: String,
-                  amount: Int,
-                  currency: Currency,
-                  buyingPrice: Double,
-                  currentPrice: Double) {
-        self.id = id
-        self.name = name
-        self.amount = amount
-        self.currency = currency
-        self.buyingPrice = buyingPrice
-        self.currentPrice = currentPrice
+    var id: HashValue { hashValue(self) }
+    
+    init(name: String,
+         amount: Int,
+         currency: Currency,
+         buyingPrice: Double,
+         currentPrice: Double) {
+        properties = .init(name: name,
+                           amount: amount,
+                           currency: currency,
+                           buyingPrice: buyingPrice,
+                           currentPrice: currentPrice)
     }
     
     func value(in targetCurrency: Currency) -> Double {
@@ -57,11 +58,28 @@ class Asset: Identifiable, ObservableObject, Comparable, Equatable {
         buyingPrice > currentPrice
     }
     
-    private(set) var id: UUID
+    var name: String { properties.name }
+    var amount: Int { properties.amount }
+    var currency: Currency { properties.currency }
+    var buyingPrice: Double { properties.buyingPrice }
+    var currentPrice: Double { properties.currentPrice }
     
-    @Published var name: String
-    @Published var amount: Int
-    @Published var currency: Currency
-    @Published var buyingPrice: Double
-    @Published var currentPrice: Double
+    var properties: Properties {
+        didSet {
+            if oldValue != properties {
+                send(.propertiesDidChange)
+            }
+        }
+    }
+    
+    struct Properties: Equatable {
+        var name: String
+        var amount: Int
+        var currency: Currency
+        var buyingPrice: Double
+        var currentPrice: Double
+    }
+    
+    let messenger = Messenger<Event>()
+    enum Event { case propertiesDidChange }
 }

@@ -2,20 +2,25 @@ import SwiftUIToolz
 import SwiftUI
 
 struct AssetListRow: View {
+    
+    init(asset: Asset) {
+        _viewModel = StateObject(wrappedValue: AssetListRowModel(asset: asset))
+    }
+    
     var body: some View {
         HStack(alignment: .firstTextBaseline) {
             VStack {
                 HStack {
-                    Text(asset.name)
+                    Text(viewModel.assetName)
                         .fontWeight(.medium)
                     Spacer()
-                    Text(asset.profitPercentageDisplayString)
+                    Text(viewModel.profitPercentageDisplayString)
                         .font(.system(.body, design: .monospaced))
-                        .foregroundColor(asset.isLoss ? trademateRed : trademateGreen)
+                        .foregroundColor(viewModel.isLoss ? trademateRed : trademateGreen)
                 }
                 HStack {
                     Spacer()
-                    Text("\(asset.valueDisplayString(in: displayCurrency))")
+                    Text(viewModel.valueDisplayString)
                         .font(.system(.body, design: .monospaced))
                         .foregroundColor(.secondary)
                 }
@@ -24,6 +29,5 @@ struct AssetListRow: View {
         }
     }
     
-    @Binding private(set) var displayCurrency: Currency
-    @ObservedObject private(set) var asset: Asset
+    @StateObject private var viewModel: AssetListRowModel
 }

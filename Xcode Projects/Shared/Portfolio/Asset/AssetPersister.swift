@@ -28,8 +28,7 @@ struct AssetPersister {
 
 private extension AssetRecord {
     var asset: Asset {
-        Asset(id: id,
-              name: name,
+        Asset(name: name,
               amount: amount,
               currency: currency,
               buyingPrice: buyingPrice,
@@ -37,7 +36,6 @@ private extension AssetRecord {
     }
     
     init(_ asset: Asset) {
-        id = asset.id
         name = asset.name
         amount = asset.amount
         currency = asset.currency
@@ -47,7 +45,6 @@ private extension AssetRecord {
 }
 
 private struct AssetRecord: Codable {
-    let id: UUID
     let name: String
     let amount: Int
     let currency: Currency

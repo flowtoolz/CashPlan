@@ -6,8 +6,7 @@ struct AssetList: View {
         List {
             ForEach(portfolio.assets) { asset in
                 PlainNavigationLink(destination: AssetEditingView(asset)) {
-                    AssetListRow(displayCurrency: $settings.currency,
-                                 asset: asset)
+                    AssetListRow(asset: asset)
                 }
             }
             .onDelete(perform: delete)
@@ -33,7 +32,7 @@ struct AssetList: View {
         }
     }
     
-    private func  delete(at offsets: IndexSet) {
+    private func delete(at offsets: IndexSet) {
         portfolio.assets.remove(atOffsets: offsets)
     }
     

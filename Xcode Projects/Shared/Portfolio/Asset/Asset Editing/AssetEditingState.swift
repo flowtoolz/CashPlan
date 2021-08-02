@@ -1,4 +1,4 @@
-/// Create editing state from asset an vice versa
+/// Create editing state from asset and vice versa
 extension AssetEditingState {
     
     init(_ asset: Asset) {
@@ -25,22 +25,22 @@ extension AssetEditingState {
     }
     
     func writeValidInputs(to asset: Asset) {
-        asset.currency = currency
+        asset.properties.currency = currency
         
         if !name.isEmpty {
-            asset.name = name
+            asset.properties.name = name
         }
         
         if let amount = integer(from: amountString) {
-            asset.amount = amount
+            asset.properties.amount = amount
         }
         
         if let buyingPrice = double(from: buyingPriceString) {
-            asset.buyingPrice = buyingPrice
+            asset.properties.buyingPrice = buyingPrice
         }
         
         if let currentPrice = double(from: currentPriceString) {
-            asset.currentPrice = currentPrice
+            asset.properties.currentPrice = currentPrice
         }
     }
 }
