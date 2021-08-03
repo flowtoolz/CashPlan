@@ -62,6 +62,8 @@ class Asset: Codable {
         }
         
         var profitFactor: Double? {
+            guard amount != 0 else { return 1 }
+            
             if buyingPrice == 0 {
                 return currentPrice == 0 ? 1 : nil
             } else {
