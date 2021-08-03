@@ -18,6 +18,9 @@ class AssetListRowModel {
     lazy private(set) var profitPercentageString = asset.properties
         .new()
         .map { (properties: Asset.Properties) -> String in
+            guard properties.buyingPrice > 0 else {
+                return properties.currentPrice > 0 ? "100%" : "0%"
+            }
             let percentage = ((properties.currentPrice / properties.buyingPrice) - 1.0) * 100.0
             return (percentage > 0 ? "+" : "") + percentage.decimalString() + "%"
         }
@@ -27,7 +30,7 @@ class AssetListRowModel {
         .new()
         .publisher()
         .combineLatest(AppSettings.shared.$currency)
-        .map { (assetProperties: Asset.Properties, currency: Currency) -> String in
+        .map { assetProperties, currency in
             assetProperties.value(in: currency).decimalString()
         }
     
