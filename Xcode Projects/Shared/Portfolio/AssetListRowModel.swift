@@ -23,15 +23,6 @@ class AssetListRowModel {
         }
         .publisher()
     
-    lazy var profitString = asset.properties
-        .new()
-        .publisher()
-        .combineLatest(AppSettings.shared.$currency)
-        .map { (assetProperties: Asset.Properties, currency: Currency) -> String in
-            let profit = assetProperties.profit(in: currency)
-            return (profit > 0 ? "+" : "") + profit.decimalString()
-        }
-    
     lazy var valueString = asset.properties
         .new()
         .publisher()
