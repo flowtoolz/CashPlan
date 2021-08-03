@@ -1,3 +1,4 @@
+import SwiftUIToolz
 import SwiftUI
 import SwiftyToolz
 
@@ -28,8 +29,6 @@ class AssetCreationViewModel {
     func addAssetIfStateIsValid() -> Bool {
         guard let newAsset = formModel.editingState.asset else { return false }
         Portfolio.shared.assets += newAsset
-        // TODO: it's the portfolio's or the view model's responsibility to sort this ...
-        Portfolio.shared.assets.sort()
         return true
     }
     

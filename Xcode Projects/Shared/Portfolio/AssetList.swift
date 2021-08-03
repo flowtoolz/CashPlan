@@ -30,6 +30,10 @@ struct AssetList: View {
                 }
             }
         }
+        .onAppear {
+            // TODO: it's the portfolio's or the view model's responsibility to observe assets and resort them ...
+            Portfolio.shared.assets.sort()
+        }
     }
     
     private func delete(at offsets: IndexSet) {

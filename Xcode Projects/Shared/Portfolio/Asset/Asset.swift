@@ -13,7 +13,6 @@ extension Asset: Identifiable, Comparable, Equatable {
     var id: HashValue { hashValue(self) }
 }
 
-
 class Asset: Codable {
 
     init(name: String,

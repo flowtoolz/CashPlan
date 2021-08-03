@@ -1,7 +1,6 @@
 import SwiftUIToolz
 import SwiftUI
 import Combine
-import SwiftyToolz
 
 struct AssetEditingView: View {
     
@@ -31,8 +30,6 @@ class AssetEditingViewModel {
             guard let self = self,
                   newState != self.formModel.editingState else { return }
             newState.writeValidInputs(to: asset)
-            // TODO: it's the portfolio's or the view model's responsibility to observe assets and resort them ...
-            Portfolio.shared.assets.sort()
         }
     }
     

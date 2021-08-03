@@ -119,8 +119,8 @@ struct HomeView: View {
             }
             .popover(isPresented: $isPresentingCurrencyPicker) {
                 NavigationView {
-                    CurrencyPicker(title: userCurrencyTitle,
-                                   subtitle: userCurrencySubtitle,
+                    CurrencyPicker(title: "My Currency",
+                                   subtitle: "For Cash Values and Metrics",
                                    selectedCurrency: $settings.currency,
                                    isBeingPresented: $isPresentingCurrencyPicker)
                         .toolbar {
@@ -161,7 +161,7 @@ struct HomeView: View {
     
     @State private var isPresentingCurrencyPicker = false
     
-    @ObservedObject private var futureVision = FutureVision.shared
+    @ObservedObject private(set) var futureVision = FutureVision.shared
     @ObservedObject private(set) var portfolio = Portfolio.shared
     @ObservedObject private(set) var settings = AppSettings.shared
 }
