@@ -40,7 +40,7 @@ struct AssetList: View {
     private var assetCreationView: some View {
         AssetCreationView { newAsset in
             isPresentingAssetCreationView = false
-            Portfolio.shared.assets += newAsset
+            Portfolio.shared.assets.insertSorted(newAsset)
         }
     }
     
