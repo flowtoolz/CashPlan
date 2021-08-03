@@ -56,6 +56,19 @@ class Asset: Codable {
             return profitInUSDollar / targetCurrency.dollarPrice
         }
         
+        var profitPercentage: Double? {
+            guard let profitFactor = profitFactor else { return nil }
+            return (profitFactor - 1.0) * 100.0
+        }
+        
+        var profitFactor: Double? {
+            if buyingPrice == 0 {
+                return currentPrice == 0 ? 1 : nil
+            } else {
+                return currentPrice / buyingPrice
+            }
+        }
+        
         var profit: Double {
             (currentPrice - buyingPrice) * Double(amount)
         }

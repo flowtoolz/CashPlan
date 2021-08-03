@@ -17,11 +17,9 @@ class AssetListRowModel {
     
     lazy private(set) var profitPercentageString = asset.properties
         .new()
-        .map { (properties: Asset.Properties) -> String in
-            guard properties.buyingPrice > 0 else {
-                return properties.currentPrice > 0 ? "100%" : "0%"
-            }
-            let percentage = ((properties.currentPrice / properties.buyingPrice) - 1.0) * 100.0
+        .map { $0.profitPercentage }
+        .map { (profitPercentage: Double?) -> String in
+            guard let percentage = profitPercentage else { return "" }
             return (percentage > 0 ? "+" : "") + percentage.decimalString() + "%"
         }
         .publisher()
