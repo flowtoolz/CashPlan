@@ -2,44 +2,85 @@ import Combine
 import SwiftObserver
 import SwiftyToolz
 
-class AssetListRowModel: ObservableObject, Observer {
+class AssetListRowModel: Observer {
+    
+    // MARK: - Life Cycle & Observing
+    
     init(asset: Asset) {
         self.asset = asset
+        assetName = asset.name
+        profitPercentageString = Self.profitPercentageString(for: asset)
+        profitString = Self.profitString(for: asset)
+        valueString = Self.valueString(for: asset)
         
         observe(asset) { [weak self] event in
             switch event {
-            case .propertiesDidChange: self?.objectWillChange.send()
+            case .propertiesDidChange: self?.assetPropertiesDidChange()
             }
         }
         
-        observations += AppSettings.shared.$currency.sink { [weak self] _ in
-            self?.objectWillChange.send()
+        observations += AppSettings.shared.$currency.sink { [weak self] newCurrency in
+            self?.currencyWillChange(to: newCurrency)
         }
     }
     
+    let receiver = Receiver()
     private var observations = [AnyCancellable]()
     
-    var isLoss: Bool { asset.isLoss }
+    // MARK: - React to Changes
     
-    var assetName: String { asset.name }
+    private func assetPropertiesDidChange() {
+        assetName = asset.name
+        updateMetricStrings()
+    }
     
-    var profitPercentageDisplayString: String {
+    private func currencyWillChange(to newCurrency: Currency) {
+        updateMetricStrings(displayCurrency: newCurrency)
+    }
+    
+    private func updateMetricStrings(displayCurrency: Currency = AppSettings.shared.currency) {
+        profitPercentageString = Self.profitPercentageString(for: asset)
+        profitString = Self.profitString(for: asset,
+                                         displayCurrency: displayCurrency)
+        valueString = Self.valueString(for: asset,
+                                       displayCurrency: displayCurrency)
+    }
+    
+    // MARK: -
+    
+    @Published var assetName: String
+    
+    // MARK: -
+    
+    @Published var profitPercentageString: String
+    
+    private static func profitPercentageString(for asset: Asset) -> String {
         let percentage = ((asset.currentPrice / asset.buyingPrice) - 1.0) * 100.0
         return (percentage > 0 ? "+" : "") + percentage.decimalString() + "%"
     }
     
-    var profitDisplayString: String {
+    // MARK: -
+    
+    @Published var profitString: String
+    
+    private static func profitString(for asset: Asset,
+                                     displayCurrency: Currency = AppSettings.shared.currency) -> String {
         let p = asset.profit(in: displayCurrency)
         return (p > 0 ? "+" : "") + p.decimalString()
     }
     
-    var valueDisplayString: String {
+    // MARK: -
+    
+    @Published var valueString: String
+    
+    private static func valueString(for asset: Asset,
+                                    displayCurrency: Currency = AppSettings.shared.currency) -> String {
         asset.value(in: displayCurrency).decimalString()
     }
     
-    private var displayCurrency: Currency { AppSettings.shared.currency }
+    // MARK: -
+    
+    var isLoss: Bool { asset.isLoss }
     
     private let asset: Asset
-    
-    let receiver = Receiver()
 }
