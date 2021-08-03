@@ -1,36 +1,46 @@
+import SwiftUIToolz
 import SwiftUI
 import Combine
 import SwiftyToolz
 
 struct AssetEditingView: View {
     
-    init(_ asset: Asset) {
-        _viewModel = StateObject(wrappedValue: AssetEditingViewModel(asset))
+    init(_ viewModel: AssetEditingViewModel) {
+        self.viewModel = viewModel
+        _title = State(wrappedValue: viewModel.defaultTitle)
     }
     
     var body: some View {
-        AssetEditingForm(state: $viewModel.editingState)
-            .navigationTitle(viewModel.editingState.name)
+        AssetEditingForm(viewModel: viewModel.formModel)
+            .navigationTitle(title)
+            .bind($title, to: viewModel.title)
     }
     
-    @StateObject private var viewModel: AssetEditingViewModel
+    @State private var title: String
+    
+    private let viewModel: AssetEditingViewModel
 }
 
-class AssetEditingViewModel: ObservableObject {
+class AssetEditingViewModel {
     
     init(_ asset: Asset) {
         self.asset = asset
-        editingState = AssetEditingState(asset)
+        self.formModel = AssetEditingFormModel(.init(asset))
         
-        observations += $editingState.sink { newState in
+        formObservation = formModel.$editingState.sink { [weak self] newState in
+            guard let self = self,
+                  newState != self.formModel.editingState else { return }
             newState.writeValidInputs(to: asset)
             // TODO: it's the portfolio's or the view model's responsibility to observe assets and resort them ...
             Portfolio.shared.assets.sort()
         }
     }
     
-    private var observations = [AnyCancellable]()
-    @Published var editingState: AssetEditingState
+    lazy var title = formModel.$editingState.map { $0.name }
+    var defaultTitle: String { formModel.editingState.name }
+    
+    private var formObservation: AnyCancellable?
+    let formModel: AssetEditingFormModel
     
     private let asset: Asset
 }

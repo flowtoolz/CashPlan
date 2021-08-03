@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct AssetEditingForm: View {
+    
     var body: some View {
         Form {
             Section(header: Text("Asset")) {
@@ -11,12 +12,12 @@ struct AssetEditingForm: View {
                     } icon: {
                         Image(systemName: "building.2")
                     }
-                    TextField("", text: $state.name)
+                    TextField("", text: $viewModel.editingState.name)
                         .multilineTextAlignment(.trailing)
                 }
                 NavigationLink(destination: CurrencyPicker(title: "Asset Currency",
                                                            subtitle: "How the Asset is Priced and Traded",
-                                                           selectedCurrency: $state.currency,
+                                                           selectedCurrency: $viewModel.editingState.currency,
                                                            isBeingPresented: $isPresentingCurrencyPicker),
                                isActive: $isPresentingCurrencyPicker) {
                     HStack {
@@ -24,10 +25,10 @@ struct AssetEditingForm: View {
                             Text("Currency")
                                 .fixedSize(horizontal: true, vertical: false)
                         } icon: {
-                            CurrencyView(currency: state.currency)
+                            CurrencyView(currency: viewModel.editingState.currency)
                         }
                         Spacer()
-                        Text(state.currency.name)
+                        Text(viewModel.editingState.currency.name)
                             .foregroundColor(.secondary)
                     }
                 }
@@ -39,7 +40,7 @@ struct AssetEditingForm: View {
                     } icon: {
                         Image(systemName: "arrow.up.right")
                     }
-                    TextField("", text: $state.currentPriceString)
+                    TextField("", text: $viewModel.editingState.currentPriceString)
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
                         .font(.system(.body, design: .monospaced))
@@ -53,7 +54,7 @@ struct AssetEditingForm: View {
                     } icon: {
                         Image(systemName: "number")
                     }
-                    TextField("", text: $state.amountString)
+                    TextField("", text: $viewModel.editingState.amountString)
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.trailing)
                         .font(.system(.body, design: .monospaced))
@@ -66,7 +67,7 @@ struct AssetEditingForm: View {
                     } icon: {
                         Image(systemName: "arrow.down.left")
                     }
-                    TextField("", text: $state.buyingPriceString)
+                    TextField("", text: $viewModel.editingState.buyingPriceString)
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
                         .font(.system(.body, design: .monospaced))
@@ -76,5 +77,13 @@ struct AssetEditingForm: View {
     }
     
     @State private var isPresentingCurrencyPicker = false
-    @Binding private(set) var state: AssetEditingState
+    @ObservedObject private(set) var viewModel: AssetEditingFormModel
+}
+
+class AssetEditingFormModel: ObservableObject {
+    init(_ editingState: AssetEditingState = AssetEditingState()) {
+        self.editingState = editingState
+    }
+    
+    @Published var editingState = AssetEditingState()
 }
