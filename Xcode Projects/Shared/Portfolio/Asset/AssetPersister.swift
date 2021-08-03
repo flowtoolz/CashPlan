@@ -7,11 +7,11 @@ struct AssetPersister {
             return log(error: "couldn't encode position records")
         }
         
-        UserDefaults.standard.set(assetsData, forKey: assetsKey)
+        storage.set(assetsData, forKey: assetArrayDataKey)
     }
     
     static func load() -> [Asset] {
-        guard let assetsData = UserDefaults.standard.data(forKey: assetsKey) else {
+        guard let assetsData = storage.data(forKey: assetArrayDataKey) else {
             return []
         }
         
@@ -23,5 +23,7 @@ struct AssetPersister {
         return assets
     }
     
-    private static let assetsKey = "positionsDataKey"
+    private static var storage: UserDefaults { .standard }
+    
+    private static let assetArrayDataKey = "AssetArrayData"
 }
