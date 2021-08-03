@@ -7,85 +7,76 @@ extension Asset: Identifiable, Comparable, Equatable {
     }
     
     static func < (lhs: Asset, rhs: Asset) -> Bool {
-        abs(lhs.profit) > abs(rhs.profit)
+        abs(lhs.properties.value.profit) > abs(rhs.properties.value.profit)
     }
     
     var id: HashValue { hashValue(self) }
 }
 
 
-class Asset: Codable, Observable {
-    
-    enum CodingKeys: CodingKey { case properties }
+class Asset: Codable {
 
     init(name: String,
          amount: Int,
          currency: Currency,
          buyingPrice: Double,
          currentPrice: Double) {
-        properties = .init(name: name,
-                           amount: amount,
-                           currency: currency,
-                           buyingPrice: buyingPrice,
-                           currentPrice: currentPrice)
+        properties = Var(.init(name: name,
+                               amount: amount,
+                               currency: currency,
+                               buyingPrice: buyingPrice,
+                               currentPrice: currentPrice))
     }
     
-    func value(in targetCurrency: Currency) -> Double {
-        guard currency.code != targetCurrency.code else { return value }
-        let valueInUSDollar = value * currency.dollarPrice
-        return valueInUSDollar / targetCurrency.dollarPrice
-    }
     
-    func openingValue(in targetCurrency: Currency) -> Double {
-        guard currency.code != targetCurrency.code else { return openingValue }
-        let openingValueInUSDollar = openingValue * currency.dollarPrice
-        return openingValueInUSDollar / targetCurrency.dollarPrice
-    }
     
-    func profit(in targetCurrency: Currency) -> Double {
-        guard currency.code != targetCurrency.code else { return profit }
-        let profitInUSDollar = profit * currency.dollarPrice
-        return profitInUSDollar / targetCurrency.dollarPrice
-    }
+    var name: String { properties.value.name }
+    var amount: Int { properties.value.amount }
+    var currency: Currency { properties.value.currency }
+    var buyingPrice: Double { properties.value.buyingPrice }
+    var currentPrice: Double { properties.value.currentPrice }
     
-    var profit: Double {
-        (currentPrice - buyingPrice) * Double(amount)
-    }
-    
-    var value: Double {
-        currentPrice * Double(amount)
-    }
-    
-    var openingValue: Double {
-        buyingPrice * Double(amount)
-    }
-    
-    var isLoss: Bool {
-        buyingPrice > currentPrice
-    }
-    
-    var name: String { properties.name }
-    var amount: Int { properties.amount }
-    var currency: Currency { properties.currency }
-    var buyingPrice: Double { properties.buyingPrice }
-    var currentPrice: Double { properties.currentPrice }
-    
-    var properties: Properties {
-        didSet {
-            if oldValue != properties {
-                send(.propertiesDidChange)
-            }
-        }
-    }
+    private(set) var properties: Var<Properties>
     
     struct Properties: Codable, Equatable {
+        func value(in targetCurrency: Currency) -> Double {
+            guard currency.code != targetCurrency.code else { return value }
+            let valueInUSDollar = value * currency.dollarPrice
+            return valueInUSDollar / targetCurrency.dollarPrice
+        }
+        
+        func openingValue(in targetCurrency: Currency) -> Double {
+            guard currency.code != targetCurrency.code else { return openingValue }
+            let openingValueInUSDollar = openingValue * currency.dollarPrice
+            return openingValueInUSDollar / targetCurrency.dollarPrice
+        }
+        
+        func profit(in targetCurrency: Currency) -> Double {
+            guard currency.code != targetCurrency.code else { return profit }
+            let profitInUSDollar = profit * currency.dollarPrice
+            return profitInUSDollar / targetCurrency.dollarPrice
+        }
+        
+        var profit: Double {
+            (currentPrice - buyingPrice) * Double(amount)
+        }
+        
+        var value: Double {
+            currentPrice * Double(amount)
+        }
+        
+        var openingValue: Double {
+            buyingPrice * Double(amount)
+        }
+        
+        var isLoss: Bool {
+            buyingPrice > currentPrice
+        }
+        
         var name: String
         var amount: Int
         var currency: Currency
         var buyingPrice: Double
         var currentPrice: Double
     }
-    
-    let messenger = Messenger<Event>()
-    enum Event { case propertiesDidChange }
 }

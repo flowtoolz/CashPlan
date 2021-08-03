@@ -2,85 +2,46 @@ import Combine
 import SwiftObserver
 import SwiftyToolz
 
-class AssetListRowModel: Observer {
+class AssetListRowModel {
     
-    // MARK: - Life Cycle & Observing
+    // MARK: - Life Cycle
     
-    init(asset: Asset) {
-        self.asset = asset
-        assetName = asset.name
-        profitPercentageString = Self.profitPercentageString(for: asset)
-        profitString = Self.profitString(for: asset)
-        valueString = Self.valueString(for: asset)
-        
-        observe(asset) { [weak self] event in
-            switch event {
-            case .propertiesDidChange: self?.assetPropertiesDidChange()
-            }
+    init(_ asset: Asset) { self.asset = asset }
+    
+    // MARK: - Publishers
+    
+    lazy private(set) var assetName = asset.properties
+        .new()
+        .map { $0.name }
+        .publisher()
+    
+    lazy private(set) var profitPercentageString = asset.properties
+        .new()
+        .map { (properties: Asset.Properties) -> String in
+            let percentage = ((properties.currentPrice / properties.buyingPrice) - 1.0) * 100.0
+            return (percentage > 0 ? "+" : "") + percentage.decimalString() + "%"
         }
-        
-        observations += AppSettings.shared.$currency.sink { [weak self] newCurrency in
-            self?.currencyWillChange(to: newCurrency)
+        .publisher()
+    
+    lazy var profitString = asset.properties
+        .new()
+        .publisher()
+        .combineLatest(AppSettings.shared.$currency)
+        .map { (assetProperties: Asset.Properties, currency: Currency) -> String in
+            let profit = assetProperties.profit(in: currency)
+            return (profit > 0 ? "+" : "") + profit.decimalString()
         }
-    }
     
-    let receiver = Receiver()
-    private var observations = [AnyCancellable]()
+    lazy var valueString = asset.properties
+        .new()
+        .publisher()
+        .combineLatest(AppSettings.shared.$currency)
+        .map { (assetProperties: Asset.Properties, currency: Currency) -> String in
+            assetProperties.value(in: currency).decimalString()
+        }
     
-    // MARK: - React to Changes
+    // MARK: - Asset
     
-    private func assetPropertiesDidChange() {
-        assetName = asset.name
-        updateMetricStrings()
-    }
-    
-    private func currencyWillChange(to newCurrency: Currency) {
-        updateMetricStrings(displayCurrency: newCurrency)
-    }
-    
-    private func updateMetricStrings(displayCurrency: Currency = AppSettings.shared.currency) {
-        profitPercentageString = Self.profitPercentageString(for: asset)
-        profitString = Self.profitString(for: asset,
-                                         displayCurrency: displayCurrency)
-        valueString = Self.valueString(for: asset,
-                                       displayCurrency: displayCurrency)
-    }
-    
-    // MARK: -
-    
-    @Published var assetName: String
-    
-    // MARK: -
-    
-    @Published var profitPercentageString: String
-    
-    private static func profitPercentageString(for asset: Asset) -> String {
-        let percentage = ((asset.currentPrice / asset.buyingPrice) - 1.0) * 100.0
-        return (percentage > 0 ? "+" : "") + percentage.decimalString() + "%"
-    }
-    
-    // MARK: -
-    
-    @Published var profitString: String
-    
-    private static func profitString(for asset: Asset,
-                                     displayCurrency: Currency = AppSettings.shared.currency) -> String {
-        let p = asset.profit(in: displayCurrency)
-        return (p > 0 ? "+" : "") + p.decimalString()
-    }
-    
-    // MARK: -
-    
-    @Published var valueString: String
-    
-    private static func valueString(for asset: Asset,
-                                    displayCurrency: Currency = AppSettings.shared.currency) -> String {
-        asset.value(in: displayCurrency).decimalString()
-    }
-    
-    // MARK: -
-    
-    var isLoss: Bool { asset.isLoss }
-    
+    var isLoss: Bool { asset.properties.value.isLoss }
     private let asset: Asset
 }

@@ -6,7 +6,7 @@ struct AssetList: View {
         List {
             ForEach(portfolio.assets) { asset in
                 PlainNavigationLink(destination: AssetEditingView(asset)) {
-                    AssetListRow(asset: asset)
+                    AssetListRow(viewModel: AssetListRowModel(asset))
                 }
             }
             .onDelete(perform: delete)

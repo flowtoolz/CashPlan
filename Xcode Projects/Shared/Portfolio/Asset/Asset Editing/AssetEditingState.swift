@@ -25,22 +25,22 @@ extension AssetEditingState {
     }
     
     func writeValidInputs(to asset: Asset) {
-        asset.properties.currency = currency
+        asset.properties.value.currency = currency
         
         if !name.isEmpty {
-            asset.properties.name = name
+            asset.properties.value.name = name
         }
         
         if let amount = integer(from: amountString) {
-            asset.properties.amount = amount
+            asset.properties.value.amount = amount
         }
         
         if let buyingPrice = double(from: buyingPriceString) {
-            asset.properties.buyingPrice = buyingPrice
+            asset.properties.value.buyingPrice = buyingPrice
         }
         
         if let currentPrice = double(from: currentPriceString) {
-            asset.properties.currentPrice = currentPrice
+            asset.properties.value.currentPrice = currentPrice
         }
     }
 }
