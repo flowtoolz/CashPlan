@@ -1,7 +1,7 @@
 import SwiftObserver
 import SwiftyToolz
 
-class Asset: Identifiable, Comparable, Equatable, Observable {
+extension Asset: Identifiable, Comparable, Equatable {
     static func == (lhs: Asset, rhs: Asset) -> Bool {
         lhs.id == rhs.id
     }
@@ -11,7 +11,13 @@ class Asset: Identifiable, Comparable, Equatable, Observable {
     }
     
     var id: HashValue { hashValue(self) }
+}
+
+
+class Asset: Codable, Observable {
     
+    enum CodingKeys: CodingKey { case properties }
+
     init(name: String,
          amount: Int,
          currency: Currency,
@@ -72,7 +78,7 @@ class Asset: Identifiable, Comparable, Equatable, Observable {
         }
     }
     
-    struct Properties: Equatable {
+    struct Properties: Codable, Equatable {
         var name: String
         var amount: Int
         var currency: Currency

@@ -20,6 +20,7 @@ struct AssetCreationView: View {
 }
 
 class AssetCreationViewModel: ObservableObject {
+    
     func addAssetIfStateIsValid() -> Bool {
         guard let newAsset = editingState.asset else { return false }
         Portfolio.shared.assets += newAsset
