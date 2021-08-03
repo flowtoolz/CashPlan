@@ -4,33 +4,36 @@ import SwiftyToolz
 
 struct AssetCreationView: View {
     
+    init(action: @escaping (Asset) -> Void) {
+        viewModel = AssetCreationViewModel(action: action)
+    }
+    
     var body: some View {
         AssetEditingForm(viewModel: viewModel.formModel)
             .navigationTitle(title)
             .navigationBarItems(trailing: Button {
-                if viewModel.addAssetIfStateIsValid() {
-                    isBeingPresented = false
-                }
+                viewModel.addButtonWasTapped()
             } label: {
-                Text("Add")
+                Text(AssetCreationViewModel.addButtonTitle)
             })
             .bind($title, to: viewModel.title)
     }
     
     @State private var title = AssetCreationViewModel.defaultTitle
     
-    @Binding private(set) var isBeingPresented: Bool
-    
-    private let viewModel = AssetCreationViewModel()
+    private let viewModel: AssetCreationViewModel
 }
 
 class AssetCreationViewModel {
-    
-    func addAssetIfStateIsValid() -> Bool {
-        guard let newAsset = formModel.editingState.asset else { return false }
-        Portfolio.shared.assets += newAsset
-        return true
+    init(action: @escaping (Asset) -> Void) {
+        self.action = action
     }
+    
+    func addButtonWasTapped() {
+        formModel.editingState.asset.forSome(action)
+    }
+    
+    static let addButtonTitle = "Add"
     
     lazy var title = formModel.$editingState
         .map { $0.name }
@@ -39,4 +42,5 @@ class AssetCreationViewModel {
     static let defaultTitle = "New Asset"
     
     let formModel = AssetEditingFormModel()
+    private let action: (Asset) -> Void
 }

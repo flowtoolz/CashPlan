@@ -1,5 +1,6 @@
 import SwiftUIToolz
 import SwiftUI
+import SwiftyToolz
 
 struct AssetList: View {
     var body: some View {
@@ -11,8 +12,8 @@ struct AssetList: View {
             }
             .onDelete(perform: delete)
 
-            NavigationLink(destination: AssetCreationView(isBeingPresented: $isPresentingAddPositionView),
-                           isActive: $isPresentingAddPositionView) {
+            NavigationLink(destination: assetCreationView,
+                           isActive: $isPresentingAssetCreationView) {
                 HStack {
                     Image(systemName: "plus")
                     Text("Add Asset")
@@ -36,12 +37,19 @@ struct AssetList: View {
         }
     }
     
+    private var assetCreationView: some View {
+        AssetCreationView { newAsset in
+            isPresentingAssetCreationView = false
+            Portfolio.shared.assets += newAsset
+        }
+    }
+    
     private func delete(at offsets: IndexSet) {
         portfolio.assets.remove(atOffsets: offsets)
     }
     
     @Binding private(set) var isPresentingCurrencyPicker: Bool
-    @State private var isPresentingAddPositionView = false
+    @State private var isPresentingAssetCreationView = false
     @ObservedObject private(set) var portfolio = Portfolio.shared
     @ObservedObject private(set) var settings = AppSettings.shared
 }
