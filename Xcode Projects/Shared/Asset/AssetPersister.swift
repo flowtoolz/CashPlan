@@ -3,6 +3,7 @@ import Foundation
 import SwiftyToolz
 
 struct AssetPersister {
+    
     static func save(_ assets: [Asset]) {
         guard let assetsData = assets.encode() else {
             return log(error: "couldn't encode position records")

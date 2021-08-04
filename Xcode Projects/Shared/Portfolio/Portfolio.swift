@@ -26,15 +26,22 @@ class Portfolio: ObservableObject {
     var isAtALoss: Bool { profit < 0 }
     
     var value: Double {
-        assets.map { $0.properties.value.value(in: AppSettings.shared.currency) }.reduce(0, +)
+        assets.map {
+            $0.properties.balance.in(AppSettings.shared.currency).value
+        }
+        .reduce(0, +)
     }
     
     var profit: Double {
-        assets.map { $0.properties.value.profit(in: AppSettings.shared.currency) }.reduce(0, +)
+        assets.map {
+            $0.properties.profit.in(AppSettings.shared.currency).value
+        }.reduce(0, +)
     }
     
     var openingValue: Double {
-        assets.map { $0.properties.value.openingValue(in: AppSettings.shared.currency) }.reduce(0, +)
+        assets.map {
+            $0.properties.openingBalance.in(AppSettings.shared.currency).value
+        }.reduce(0, +)
     }
     
     // MARK: - Assets

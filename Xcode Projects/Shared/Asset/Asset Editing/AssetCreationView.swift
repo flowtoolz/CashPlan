@@ -25,6 +25,7 @@ struct AssetCreationView: View {
 }
 
 class AssetCreationViewModel {
+    
     init(action: @escaping (Asset) -> Void) {
         self.action = action
     }

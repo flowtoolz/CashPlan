@@ -40,6 +40,12 @@
 		963B484A26B8693B0063EF73 /* AssetEditingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963B484826B8693B0063EF73 /* AssetEditingState.swift */; };
 		963B484C26B88EBA0063EF73 /* AssetListRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963B484B26B88EBA0063EF73 /* AssetListRowModel.swift */; };
 		963B484D26B88EBA0063EF73 /* AssetListRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963B484B26B88EBA0063EF73 /* AssetListRowModel.swift */; };
+		964B4D0F26BB262900F69B49 /* Cash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964B4D0E26BB262900F69B49 /* Cash.swift */; };
+		964B4D1026BB262900F69B49 /* Cash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964B4D0E26BB262900F69B49 /* Cash.swift */; };
+		964B4D1226BB279700F69B49 /* Asset.Properties+Profit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964B4D1126BB279700F69B49 /* Asset.Properties+Profit.swift */; };
+		964B4D1326BB279700F69B49 /* Asset.Properties+Profit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964B4D1126BB279700F69B49 /* Asset.Properties+Profit.swift */; };
+		964B4D1526BB27C800F69B49 /* Asset+Conformances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964B4D1426BB27C800F69B49 /* Asset+Conformances.swift */; };
+		964B4D1626BB27C800F69B49 /* Asset+Conformances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964B4D1426BB27C800F69B49 /* Asset+Conformances.swift */; };
 		967B192426AF1A4700214F29 /* TrademateFoundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B192326AF1A4700214F29 /* TrademateFoundation.swift */; };
 		967B192526AF1A4700214F29 /* TrademateFoundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B192326AF1A4700214F29 /* TrademateFoundation.swift */; };
 		967B192826AF2FB900214F29 /* SwiftyToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 967B192726AF2FB900214F29 /* SwiftyToolz */; };
@@ -95,6 +101,9 @@
 		963B484526B85FFC0063EF73 /* AssetCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCreationView.swift; sourceTree = "<group>"; };
 		963B484826B8693B0063EF73 /* AssetEditingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetEditingState.swift; sourceTree = "<group>"; };
 		963B484B26B88EBA0063EF73 /* AssetListRowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetListRowModel.swift; sourceTree = "<group>"; };
+		964B4D0E26BB262900F69B49 /* Cash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cash.swift; sourceTree = "<group>"; };
+		964B4D1126BB279700F69B49 /* Asset.Properties+Profit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Asset.Properties+Profit.swift"; sourceTree = "<group>"; };
+		964B4D1426BB27C800F69B49 /* Asset+Conformances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Asset+Conformances.swift"; sourceTree = "<group>"; };
 		967B192326AF1A4700214F29 /* TrademateFoundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrademateFoundation.swift; sourceTree = "<group>"; };
 		96CA0AE126B1BEA300670336 /* FutureVision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureVision.swift; sourceTree = "<group>"; };
 		96EC039726B5C07A00CBF0FA /* TrademateSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrademateSwiftUI.swift; sourceTree = "<group>"; };
@@ -158,7 +167,6 @@
 				963B484B26B88EBA0063EF73 /* AssetListRowModel.swift */,
 				96F117F926B4A552003B21F1 /* Portfolio+DisplayString.swift */,
 				96352E7A26B3E4BD004EE425 /* Portfolio.swift */,
-				96352E8026B3E5CA004EE425 /* Asset */,
 			);
 			path = Portfolio;
 			sourceTree = "<group>";
@@ -178,7 +186,10 @@
 			children = (
 				9649F55826B83F6300C44A19 /* Asset Editing */,
 				961B90CE26B460F8001E5CE2 /* AssetPersister.swift */,
+				964B4D1426BB27C800F69B49 /* Asset+Conformances.swift */,
+				964B4D1126BB279700F69B49 /* Asset.Properties+Profit.swift */,
 				96352E7D26B3E508004EE425 /* Asset.swift */,
+				964B4D0E26BB262900F69B49 /* Cash.swift */,
 			);
 			path = Asset;
 			sourceTree = "<group>";
@@ -223,6 +234,7 @@
 				96352E6426B3E15A004EE425 /* HomeView.swift */,
 				9675DC0E26B20B1500969939 /* Future Vision */,
 				96352E6326B3E0F6004EE425 /* Portfolio */,
+				96352E8026B3E5CA004EE425 /* Asset */,
 				961B90CB26B459A7001E5CE2 /* AppSettings.swift */,
 				96352E7926B3E466004EE425 /* Currency */,
 				96EC039726B5C07A00CBF0FA /* TrademateSwiftUI.swift */,
@@ -450,6 +462,7 @@
 				963B484926B8693B0063EF73 /* AssetEditingState.swift in Sources */,
 				963B484326B85F680063EF73 /* AssetEditingForm.swift in Sources */,
 				96352E7B26B3E4BD004EE425 /* Portfolio.swift in Sources */,
+				964B4D1226BB279700F69B49 /* Asset.Properties+Profit.swift in Sources */,
 				96352E6B26B3E288004EE425 /* AssetListRow.swift in Sources */,
 				963B484626B85FFC0063EF73 /* AssetCreationView.swift in Sources */,
 				96352E6526B3E15A004EE425 /* HomeView.swift in Sources */,
@@ -461,7 +474,9 @@
 				96352E7E26B3E508004EE425 /* Asset.swift in Sources */,
 				96F117FA26B4A552003B21F1 /* Portfolio+DisplayString.swift in Sources */,
 				961B90CF26B460F8001E5CE2 /* AssetPersister.swift in Sources */,
+				964B4D0F26BB262900F69B49 /* Cash.swift in Sources */,
 				96352E6E26B3E2DA004EE425 /* CurrencyPicker.swift in Sources */,
+				964B4D1526BB27C800F69B49 /* Asset+Conformances.swift in Sources */,
 				96352E7126B3E35C004EE425 /* AssetEditingView.swift in Sources */,
 				96EC039826B5C07A00CBF0FA /* TrademateSwiftUI.swift in Sources */,
 				963B484C26B88EBA0063EF73 /* AssetListRowModel.swift in Sources */,
@@ -479,6 +494,7 @@
 				963B484D26B88EBA0063EF73 /* AssetListRowModel.swift in Sources */,
 				96352E7C26B3E4BD004EE425 /* Portfolio.swift in Sources */,
 				96352E6C26B3E288004EE425 /* AssetListRow.swift in Sources */,
+				964B4D1326BB279700F69B49 /* Asset.Properties+Profit.swift in Sources */,
 				96352E6626B3E15A004EE425 /* HomeView.swift in Sources */,
 				963B484726B85FFC0063EF73 /* AssetCreationView.swift in Sources */,
 				961B90CD26B459A7001E5CE2 /* AppSettings.swift in Sources */,
@@ -490,7 +506,9 @@
 				962C26DC26B6BF7000CEE84B /* CoreFoundationToolz.swift in Sources */,
 				96F117FB26B4A552003B21F1 /* Portfolio+DisplayString.swift in Sources */,
 				961B90D026B460F8001E5CE2 /* AssetPersister.swift in Sources */,
+				964B4D1026BB262900F69B49 /* Cash.swift in Sources */,
 				963B484426B85F680063EF73 /* AssetEditingForm.swift in Sources */,
+				964B4D1626BB27C800F69B49 /* Asset+Conformances.swift in Sources */,
 				96352E6F26B3E2DA004EE425 /* CurrencyPicker.swift in Sources */,
 				96352E7226B3E35C004EE425 /* AssetEditingView.swift in Sources */,
 				96EC039926B5C07A00CBF0FA /* TrademateSwiftUI.swift in Sources */,
