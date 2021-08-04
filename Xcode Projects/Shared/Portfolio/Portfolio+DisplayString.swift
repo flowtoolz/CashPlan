@@ -1,6 +1,7 @@
 import Foundation
 
 extension Portfolio {
+    
     var returnPercentageString: String {
         let p = profitLossPercentage
         return (p < 0 ? "" : "+") + p.decimalString() + "%"
