@@ -31,21 +31,17 @@ struct AssetList: View {
                 }
             }
         }
-        .onAppear {
-            // TODO: it's the portfolio's or the view model's responsibility to observe assets and resort them ...
-            Portfolio.shared.assets.sort()
-        }
     }
     
     private var assetCreationView: some View {
         AssetCreationView { newAsset in
             isPresentingAssetCreationView = false
-            Portfolio.shared.assets.insertSorted(newAsset)
+            Portfolio.shared.add(newAsset)
         }
     }
     
     private func delete(at offsets: IndexSet) {
-        portfolio.assets.remove(atOffsets: offsets)
+        portfolio.removeAsset(at: offsets)
     }
     
     @Binding private(set) var isPresentingCurrencyPicker: Bool

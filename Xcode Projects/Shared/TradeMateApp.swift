@@ -6,7 +6,7 @@ import SwiftyToolz
 struct TradeMateApp: App {
     
     init() {
-        Portfolio.shared.assets = AssetPersister.load()
+        Portfolio.shared.resetAssets(with: AssetPersister.load())
         
         // TODO: observe each asset ...
         // persist assets whenever the array changes
