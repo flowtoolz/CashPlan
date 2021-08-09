@@ -70,6 +70,8 @@
 		96F9675826AD991100A1258E /* TradeMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F9672E26AD991000A1258E /* TradeMateApp.swift */; };
 		96F9675B26AD991100A1258E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96F9673026AD991100A1258E /* Assets.xcassets */; };
 		96F9675C26AD991100A1258E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96F9673026AD991100A1258E /* Assets.xcassets */; };
+		96FD648826C189A80007E2D1 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD648726C189A80007E2D1 /* Calculator.swift */; };
+		96FD648926C189A80007E2D1 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FD648726C189A80007E2D1 /* Calculator.swift */; };
 		96FE3C5326AE9A7500B7C230 /* FutureVisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FE3C5226AE9A7500B7C230 /* FutureVisionView.swift */; };
 		96FE3C5426AE9A7500B7C230 /* FutureVisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FE3C5226AE9A7500B7C230 /* FutureVisionView.swift */; };
 /* End PBXBuildFile section */
@@ -133,6 +135,7 @@
 		96F9675026AD991100A1258E /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96F9675426AD991100A1258E /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		96F9675626AD991100A1258E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96FD648726C189A80007E2D1 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		96FE3C5226AE9A7500B7C230 /* FutureVisionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureVisionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -260,6 +263,7 @@
 				96352E6326B3E0F6004EE425 /* Portfolio */,
 				96352E8026B3E5CA004EE425 /* Asset */,
 				961B90CB26B459A7001E5CE2 /* AppSettings.swift */,
+				96FD648726C189A80007E2D1 /* Calculator.swift */,
 				96352E7926B3E466004EE425 /* Currency */,
 				96EC039726B5C07A00CBF0FA /* TrademateSwiftUI.swift */,
 				967B192326AF1A4700214F29 /* TrademateFoundation.swift */,
@@ -495,6 +499,7 @@
 				961B90CC26B459A7001E5CE2 /* AppSettings.swift in Sources */,
 				96CA0AE226B1BEA300670336 /* FutureVision.swift in Sources */,
 				96F9675726AD991100A1258E /* TradeMateApp.swift in Sources */,
+				96FD648826C189A80007E2D1 /* Calculator.swift in Sources */,
 				967B192426AF1A4700214F29 /* TrademateFoundation.swift in Sources */,
 				96352E7426B3E3E1004EE425 /* Currency.swift in Sources */,
 				96352E7E26B3E508004EE425 /* Asset.swift in Sources */,
@@ -531,6 +536,7 @@
 				96CA0AE326B1BEA300670336 /* FutureVision.swift in Sources */,
 				96F9675826AD991100A1258E /* TradeMateApp.swift in Sources */,
 				967B192526AF1A4700214F29 /* TrademateFoundation.swift in Sources */,
+				96FD648926C189A80007E2D1 /* Calculator.swift in Sources */,
 				96352E7526B3E3E1004EE425 /* Currency.swift in Sources */,
 				96352E7F26B3E508004EE425 /* Asset.swift in Sources */,
 				962C26DC26B6BF7000CEE84B /* CoreFoundationToolz.swift in Sources */,
