@@ -8,26 +8,45 @@ class AssetListRowModel {
     
     init(_ asset: Asset) { self.asset = asset }
     
-    // MARK: - Publishers
+    // MARK: - Properties
+    
+    var assetNameInitial: String {
+        asset.properties.name
+    }
     
     lazy private(set) var assetName = asset
         .map { $0.name }
         .publisher()
     
+    var profitPercentageStringInitial: String {
+        Self.profitPercentageString(from: asset.properties)
+    }
+    
     lazy private(set) var profitPercentageString = asset
-        .map { $0.profitPercentage }
-        .map { (profitPercentage: Double?) -> String in
-            guard let percentage = profitPercentage else { return "" }
-            return (percentage > 0 ? "+" : "") + percentage.decimalString() + "%"
-        }
+        .map { Self.profitPercentageString(from: $0) }
         .publisher()
+    
+    private static func profitPercentageString(from properties: Asset.Properties) -> String {
+        guard let percentage = properties.profitPercentage else { return "" }
+        return (percentage > 0 ? "+" : "") + percentage.decimalString() + "%"
+    }
+    
+    var valueStringInitial: String {
+        Self.valueString(from: asset.properties,
+                         in: AppSettings.shared.currency)
+    }
     
     lazy var valueString = asset
         .publisher()
         .combineLatest(AppSettings.shared.$currency)
         .map { assetProperties, currency in
-            assetProperties.balance.in(currency).value.decimalString()
+            Self.valueString(from: assetProperties, in: currency)
         }
+    
+    private static func valueString(from properties: Asset.Properties,
+                                    in currency: Currency) -> String {
+        properties.balance.in(currency).value.decimalString()
+    }
     
     // MARK: - Asset
     
