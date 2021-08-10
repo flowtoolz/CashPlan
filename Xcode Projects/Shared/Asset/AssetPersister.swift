@@ -5,24 +5,24 @@ import SwiftyToolz
 struct AssetPersister {
     
     static func save(_ assets: [Asset]) {
-        guard let assetsData = assets.encode() else {
+        guard let assetsPropertiesData = assets.map({ $0.properties }).encode() else {
             return log(error: "couldn't encode assets")
         }
         
-        storage.set(assetsData, forKey: assetArrayDataKey)
+        storage.set(assetsPropertiesData, forKey: assetArrayDataKey)
     }
     
     static func load() -> [Asset] {
-        guard let assetsData = storage.data(forKey: assetArrayDataKey) else {
+        guard let assetsPropertiesData = storage.data(forKey: assetArrayDataKey) else {
             return []
         }
         
-        guard let assets = [Asset](assetsData) else {
+        guard let assetsProperties = [Asset.Properties](assetsPropertiesData) else {
             log(error: "could not decode assets")
             return []
         }
         
-        return assets
+        return assetsProperties.map(Asset.init(properties:))
     }
     
     private static var storage: UserDefaults { .standard }

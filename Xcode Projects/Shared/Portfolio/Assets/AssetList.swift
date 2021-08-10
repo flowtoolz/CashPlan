@@ -31,7 +31,7 @@ struct AssetList: View {
                 }
             }
         }
-        .bind($currency, to: AppSettings.shared.currency.new())
+        .bind($currency, to: AppSettings.shared.$currency.new())
     }
     
     private var assetCreationView: some View {
@@ -46,7 +46,7 @@ struct AssetList: View {
     }
     
     @State private var isPresentingAssetCreationView = false
-    @State private var currency = AppSettings.shared.currency.value
+    @State private var currency = AppSettings.shared.currency
     
     @Binding private(set) var isPresentingCurrencyPicker: Bool
     

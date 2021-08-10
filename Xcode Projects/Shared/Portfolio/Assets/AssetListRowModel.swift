@@ -10,12 +10,12 @@ class AssetListRowModel {
     
     // MARK: - Properties
     
-    lazy var assetName = asset.properties
+    lazy var assetName = asset.$properties
         .new()
         .map { $0.name }
         .publisher()
     
-    lazy var profitPercentageString = asset.properties
+    lazy var profitPercentageString = asset.$properties
         .new()
         .map { (properties) -> String in
             guard let percentage = properties.profitPercentage else { return "" }
@@ -23,16 +23,16 @@ class AssetListRowModel {
         }
         .publisher()
     
-    lazy var balanceNumericalValueString = asset.properties
+    lazy var balanceNumericalValueString = asset.$properties
         .new()
         .publisher()
-        .combineLatest(AppSettings.shared.currency.new().publisher())
+        .combineLatest(AppSettings.shared.$currency.new().publisher())
         .map { properties, currency in
             properties.balance.in(currency).numericalValue.decimalString()
         }
     
     // MARK: - Asset
     
-    var isLoss: Bool { asset.properties.value.isLoss }
+    var isLoss: Bool { asset.properties.isLoss }
     private let asset: Asset
 }

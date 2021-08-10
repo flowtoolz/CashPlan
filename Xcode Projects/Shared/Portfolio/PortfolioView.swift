@@ -44,7 +44,7 @@ struct PortfolioView: View {
             .accentColor(.trademateAccent(for: colorScheme))
         }
         .onChange(of: currency) { newCurrency in
-            AppSettings.shared.currency <- newCurrency
+            AppSettings.shared.currency = newCurrency
         }
     }
     
@@ -52,5 +52,5 @@ struct PortfolioView: View {
     
     @Environment(\.colorScheme) private var colorScheme
     
-    @State private var currency = AppSettings.shared.currency.value
+    @State private var currency = AppSettings.shared.currency
 }

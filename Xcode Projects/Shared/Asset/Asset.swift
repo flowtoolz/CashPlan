@@ -1,12 +1,12 @@
 import SwiftObserver
 
-class Asset: Codable {
+class Asset {
 
     init(properties: Properties) {
-        self.properties = Var(properties)
+        self.properties = properties
     }
     
-    private(set) var properties: Var<Properties>
+    @Observable var properties: Properties
     
     struct Properties: Codable, Equatable {
         

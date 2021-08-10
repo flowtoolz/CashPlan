@@ -1,9 +1,10 @@
 import FoundationToolz
 import Foundation
+import Combine
 import SwiftObserver
 import SwiftyToolz
 
-class Portfolio: Observer, ObservableObject {
+class Portfolio: Observer, Combine.ObservableObject {
     
     // MARK: - Life Cycle
     
@@ -22,13 +23,13 @@ class Portfolio: Observer, ObservableObject {
     }
     
     func removeAsset(at indices: IndexSet) {
-        indices.compactMap { assets.at($0)?.properties }.forEach(stopObserving)
+        indices.compactMap { assets.at($0)?.$properties }.forEach(stopObserving)
         assets.remove(atOffsets: indices)
         updateMetrics()
     }
     
     func resetAssets(with assets: [Asset]) {
-        self.assets.map { $0.properties }.forEach(stopObserving)
+        self.assets.map { $0.$properties }.forEach(stopObserving)
         self.assets = assets.sorted()
         self.assets.forEach(ensureObservation(of:))
         updateMetrics()
@@ -37,16 +38,16 @@ class Portfolio: Observer, ObservableObject {
     // MARK: - Observe Sources
     
     private func observeUserCurrency() {
-        observe(AppSettings.shared.currency) { [weak self] _ in
+        observe(AppSettings.shared.$currency) { [weak self] _ in
             guard let self = self else { return }
             self.balanceNumericalValue = self.computeBalanceNumericalValue()
         }
     }
     
     private func ensureObservation(of asset: Asset) {
-        guard !isObserving(asset.properties) else { return }
+        guard !isObserving(asset.$properties) else { return }
         
-        observe(asset.properties) { [weak self] _ in
+        observe(asset.$properties) { [weak self] _ in
             self?.updateAssetOrder()
             self?.updateMetrics()
         }
@@ -71,7 +72,7 @@ class Portfolio: Observer, ObservableObject {
     
     private func computeOpeningBalanceNumericalValue() -> Double {
         assets.map {
-            $0.properties.value.openingBalance.in(currency).numericalValue
+            $0.properties.openingBalance.in(currency).numericalValue
         }.reduce(0, +)
     }
     
@@ -81,7 +82,7 @@ class Portfolio: Observer, ObservableObject {
     
     private func computeProfitNumericalValue() -> Double {
         assets.map {
-            $0.properties.value.profit.in(currency).numericalValue
+            $0.properties.profit.in(currency).numericalValue
         }.reduce(0, +)
     }
     
@@ -89,14 +90,12 @@ class Portfolio: Observer, ObservableObject {
     
     private func computeBalanceNumericalValue() -> Double {
         assets.map {
-            $0.properties.value.balance.in(currency).numericalValue
+            $0.properties.balance.in(currency).numericalValue
         }
         .reduce(0, +)
     }
     
-    private var currency: Currency {
-        AppSettings.shared.currency.value
-    }
+    private var currency: Currency { AppSettings.shared.currency }
     
     // MARK: - Assets
     

@@ -4,12 +4,11 @@ import SwiftObserver
 extension AssetEditingState {
     
     init(_ asset: Asset) {
-        let assetProperties = asset.properties.value
-        name = assetProperties.name
-        amountString = "\(assetProperties.amount)"
-        currency = assetProperties.currency
-        openingPriceString = "\(assetProperties.openingPrice)"
-        priceString = "\(assetProperties.price)"
+        name = asset.properties.name
+        amountString = "\(asset.properties.amount)"
+        currency = asset.properties.currency
+        openingPriceString = "\(asset.properties.openingPrice)"
+        priceString = "\(asset.properties.price)"
     }
     
     var asset: Asset? {
@@ -28,27 +27,23 @@ extension AssetEditingState {
     }
     
     func writeValidInputs(to asset: Asset) {
-        var newProperties = asset.properties.value
-        
-        newProperties.currency = currency
+        asset.properties.currency = currency
         
         if !name.isEmpty {
-            newProperties.name = name
+            asset.properties.name = name
         }
         
         if let amount = integer(from: amountString) {
-            newProperties.amount = amount
+            asset.properties.amount = amount
         }
         
         if let buyingPrice = double(from: openingPriceString) {
-            newProperties.openingPrice = buyingPrice
+            asset.properties.openingPrice = buyingPrice
         }
         
         if let currentPrice = double(from: priceString) {
-            newProperties.price = currentPrice
+            asset.properties.price = currentPrice
         }
-        
-        asset.properties <- newProperties
     }
 }
 
