@@ -1,5 +1,6 @@
 import SwiftUIToolz
 import SwiftUI
+import SwiftObserver
 
 struct PortfolioView: View {
     
@@ -19,7 +20,7 @@ struct PortfolioView: View {
                     Button {
                         isPresentingCurrencyPicker = true
                     } label: {
-                        CurrencyView(currency: settings.currency)
+                        CurrencyView(currency: currency)
                     }
                 }
             }
@@ -28,7 +29,7 @@ struct PortfolioView: View {
             NavigationView {
                 CurrencyPicker(title: "My Currency",
                                subtitle: "For Cash Values and Metrics",
-                               selectedCurrency: $settings.currency,
+                               selectedCurrency: $currency,
                                isBeingPresented: $isPresentingCurrencyPicker)
                     .toolbar {
                         ToolbarItem(placement: .cancellationAction) {
@@ -42,11 +43,14 @@ struct PortfolioView: View {
             }
             .accentColor(.trademateAccent(for: colorScheme))
         }
+        .onChange(of: currency) { newCurrency in
+            AppSettings.shared.currency <- newCurrency
+        }
     }
     
     @State private var isPresentingCurrencyPicker = false
     
     @Environment(\.colorScheme) private var colorScheme
     
-    @ObservedObject private(set) var settings = AppSettings.shared
+    @State private var currency = AppSettings.shared.currency.value
 }

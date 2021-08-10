@@ -27,10 +27,11 @@ struct AssetList: View {
                 Button {
                     isPresentingCurrencyPicker = true
                 } label: {
-                    CurrencyView(currency: settings.currency)
+                    CurrencyView(currency: currency)
                 }
             }
         }
+        .bind($currency, to: AppSettings.shared.currency.new())
     }
     
     private var assetCreationView: some View {
@@ -44,8 +45,10 @@ struct AssetList: View {
         portfolio.removeAsset(at: offsets)
     }
     
-    @Binding private(set) var isPresentingCurrencyPicker: Bool
     @State private var isPresentingAssetCreationView = false
+    @State private var currency = AppSettings.shared.currency.value
+    
+    @Binding private(set) var isPresentingCurrencyPicker: Bool
+    
     @ObservedObject private(set) var portfolio = Portfolio.shared
-    @ObservedObject private(set) var settings = AppSettings.shared
 }

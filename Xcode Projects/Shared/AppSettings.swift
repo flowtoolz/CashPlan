@@ -1,13 +1,17 @@
 import Foundation
+import SwiftObserver
 import SwiftyToolz
 
-class AppSettings: ObservableObject {
+class AppSettings: Observer {
     static let shared = AppSettings()
-    private init() {}
     
-    @Published var currency = CurrencyPersister.loadCurrency() {
-        didSet { CurrencyPersister.save(currency) }
+    private init() {
+        observe(currency).new() { CurrencyPersister.save($0) }
     }
+    
+    let currency = Var(CurrencyPersister.loadCurrency())
+    
+    let receiver = Receiver()
 }
 
 private struct CurrencyPersister {

@@ -23,7 +23,7 @@ class FutureVision: ObservableObject {
                      cashflow: resultingCashFlowPerMonth)
     }
     
-    @Published var input = Input(startCash: Portfolio.shared.value,
+    @Published var input = Input(startCash: Portfolio.shared.balanceNumericalValue,
                                  monthlyInvestment: 1000,
                                  annualReturnPercent: 8.5,
                                  years: 5)

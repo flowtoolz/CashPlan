@@ -1,19 +1,22 @@
+import SwiftObserver
+
 /// Create editing state from asset and vice versa
 extension AssetEditingState {
     
     init(_ asset: Asset) {
-        name = asset.properties.name
-        amountString = "\(asset.properties.amount)"
-        currency = asset.properties.currency
-        buyingPriceString = "\(asset.properties.openingPrice)"
-        currentPriceString = "\(asset.properties.price)"
+        let assetProperties = asset.properties.value
+        name = assetProperties.name
+        amountString = "\(assetProperties.amount)"
+        currency = assetProperties.currency
+        openingPriceString = "\(assetProperties.openingPrice)"
+        priceString = "\(assetProperties.price)"
     }
     
     var asset: Asset? {
         guard !name.isEmpty,
               let amount = integer(from: amountString),
-              let openingPrice = double(from: buyingPriceString),
-              let price = double(from: currentPriceString) else {
+              let openingPrice = double(from: openingPriceString),
+              let price = double(from: priceString) else {
             return nil
         }
         
@@ -25,23 +28,27 @@ extension AssetEditingState {
     }
     
     func writeValidInputs(to asset: Asset) {
-        asset.properties.currency = currency
+        var newProperties = asset.properties.value
+        
+        newProperties.currency = currency
         
         if !name.isEmpty {
-            asset.properties.name = name
+            newProperties.name = name
         }
         
         if let amount = integer(from: amountString) {
-            asset.properties.amount = amount
+            newProperties.amount = amount
         }
         
-        if let buyingPrice = double(from: buyingPriceString) {
-            asset.properties.openingPrice = buyingPrice
+        if let buyingPrice = double(from: openingPriceString) {
+            newProperties.openingPrice = buyingPrice
         }
         
-        if let currentPrice = double(from: currentPriceString) {
-            asset.properties.price = currentPrice
+        if let currentPrice = double(from: priceString) {
+            newProperties.price = currentPrice
         }
+        
+        asset.properties <- newProperties
     }
 }
 
@@ -49,6 +56,6 @@ struct AssetEditingState: Equatable {
     var name = ""
     var amountString = ""
     var currency = Currency.usDollar
-    var buyingPriceString = ""
-    var currentPriceString = ""
+    var openingPriceString = ""
+    var priceString = ""
 }

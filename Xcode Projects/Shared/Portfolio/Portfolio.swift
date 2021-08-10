@@ -8,7 +8,10 @@ class Portfolio: Observer, ObservableObject {
     // MARK: - Life Cycle
     
     static let shared = Portfolio()
-    private init() {}
+    
+    private init() {
+        observeUserCurrency()
+    }
     
     // MARK: - Edit Assets
     
@@ -19,24 +22,31 @@ class Portfolio: Observer, ObservableObject {
     }
     
     func removeAsset(at indices: IndexSet) {
-        indices.compactMap { assets.at($0) }.forEach(stopObserving)
+        indices.compactMap { assets.at($0)?.properties }.forEach(stopObserving)
         assets.remove(atOffsets: indices)
         updateMetrics()
     }
     
     func resetAssets(with assets: [Asset]) {
-        self.assets.forEach(stopObserving)
+        self.assets.map { $0.properties }.forEach(stopObserving)
         self.assets = assets.sorted()
         self.assets.forEach(ensureObservation(of:))
         updateMetrics()
     }
     
-    // MARK: - Observe Assets
+    // MARK: - Observe Sources
+    
+    private func observeUserCurrency() {
+        observe(AppSettings.shared.currency) { [weak self] _ in
+            guard let self = self else { return }
+            self.balanceNumericalValue = self.computeBalanceNumericalValue()
+        }
+    }
     
     private func ensureObservation(of asset: Asset) {
-        guard !isObserving(asset) else { return }
+        guard !isObserving(asset.properties) else { return }
         
-        observe(asset) { [weak self] _ in
+        observe(asset.properties) { [weak self] _ in
             self?.updateAssetOrder()
             self?.updateMetrics()
         }
@@ -47,41 +57,45 @@ class Portfolio: Observer, ObservableObject {
     // MARK: - Metrics in Terms of User Currency
     
     private func updateMetrics() {
-        value = computeValue()
-        profit = computeProfit()
+        balanceNumericalValue = computeBalanceNumericalValue()
+        profitNumericalValue = computeProfitNumericalValue()
         profitPercentage = computeProfitPercentage()
     }
     
     @Published private(set) var profitPercentage: Double? = 0
     
     private func computeProfitPercentage() -> Double? {
-        Calculator.profitPercentage(open: computeOpeningValue(),
-                                    close: computeValue())
+        Calculator.profitPercentage(open: computeOpeningBalanceNumericalValue(),
+                                    close: computeBalanceNumericalValue())
     }
     
-    private func computeOpeningValue() -> Double {
+    private func computeOpeningBalanceNumericalValue() -> Double {
         assets.map {
-            $0.properties.openingBalance.in(AppSettings.shared.currency).value
+            $0.properties.value.openingBalance.in(currency).numericalValue
         }.reduce(0, +)
     }
     
-    var isAtALoss: Bool { profit < 0 }
+    var isAtALoss: Bool { profitNumericalValue < 0 }
     
-    @Published private(set) var profit: Double = 0
+    @Published private(set) var profitNumericalValue: Double = 0
     
-    private func computeProfit() -> Double {
+    private func computeProfitNumericalValue() -> Double {
         assets.map {
-            $0.properties.profit.in(AppSettings.shared.currency).value
+            $0.properties.value.profit.in(currency).numericalValue
         }.reduce(0, +)
     }
     
-    @Published private(set) var value: Double = 0
+    @Published private(set) var balanceNumericalValue: Double = 0
     
-    private func computeValue() -> Double {
+    private func computeBalanceNumericalValue() -> Double {
         assets.map {
-            $0.properties.balance.in(AppSettings.shared.currency).value
+            $0.properties.value.balance.in(currency).numericalValue
         }
         .reduce(0, +)
+    }
+    
+    private var currency: Currency {
+        AppSettings.shared.currency.value
     }
     
     // MARK: - Assets

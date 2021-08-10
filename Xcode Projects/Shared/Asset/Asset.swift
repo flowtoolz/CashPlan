@@ -1,20 +1,12 @@
 import SwiftObserver
 
-class Asset: Codable, Observable {
+class Asset: Codable {
 
     init(properties: Properties) {
-        self.properties = properties
+        self.properties = Var(properties)
     }
     
-    enum CodingKeys: CodingKey { case properties }
-    
-    var properties: Properties {
-        didSet {
-            if properties != oldValue { send(properties) }
-        }
-    }
-    
-    let messenger = Messenger<Properties>()
+    private(set) var properties: Var<Properties>
     
     struct Properties: Codable, Equatable {
         
@@ -23,11 +15,11 @@ class Asset: Codable, Observable {
         // MARK: - Opening Balance
         
         var openingBalance: Cash {
-            .init(value: openingValue,
+            .init(numericalValue: openingNumericalValue,
                   currency: currency)
         }
         
-        var openingValue: Double {
+        var openingNumericalValue: Double {
             openingPrice * Double(amount)
         }
         
@@ -37,13 +29,13 @@ class Asset: Codable, Observable {
         // MARK: - Balance
         
         var balance: Cash {
-            .init(value: value,
+            .init(numericalValue: numericalValue,
                   currency: currency)
         }
         
         var currency: Currency
         
-        var value: Double {
+        var numericalValue: Double {
             price * Double(amount)
         }
         

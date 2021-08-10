@@ -40,7 +40,7 @@ struct AssetEditingForm: View {
                     } icon: {
                         Image(systemName: "arrow.up.right")
                     }
-                    TextField("", text: $viewModel.editingState.currentPriceString)
+                    TextField("", text: $viewModel.editingState.priceString)
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
                         .font(.system(.body, design: .monospaced))
@@ -67,7 +67,7 @@ struct AssetEditingForm: View {
                     } icon: {
                         Image(systemName: "arrow.down.left")
                     }
-                    TextField("", text: $viewModel.editingState.buyingPriceString)
+                    TextField("", text: $viewModel.editingState.openingPriceString)
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
                         .font(.system(.body, design: .monospaced))

@@ -3,16 +3,17 @@ extension Asset.Properties {
     // MARK: - Profit Percentage
     
     var profitPercentage: Double? {
-        Calculator.profitPercentage(open: openingValue, close: value)
+        Calculator.profitPercentage(open: openingNumericalValue,
+                                    close: numericalValue)
     }
     
     // MARK: - Profit
     
     var profit: Cash {
-        .init(value: profitValue, currency: currency)
+        .init(numericalValue: profitNumericalValue, currency: currency)
     }
     
-    var profitValue: Double {
+    var profitNumericalValue: Double {
         (price - openingPrice) * Double(amount)
     }
 }

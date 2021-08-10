@@ -84,7 +84,7 @@ struct FutureVisionView: View {
                 Button {
                     isPresentingCurrencyPicker = true
                 } label: {
-                    CurrencyView(currency: settings.currency)
+                    CurrencyView(currency: currency)
                 }
             }
         }
@@ -93,6 +93,7 @@ struct FutureVisionView: View {
                 cashflow.input = $0
             }
         }
+        .bind($currency, to: AppSettings.shared.currency.new())
     }
     
     @State private var inputStrings = CashFlowInputStrings(FutureVision.shared.input)
@@ -126,11 +127,12 @@ struct FutureVisionView: View {
     }
     
     @Binding private(set) var isPresentingCurrencyPicker: Bool
-    @ObservedObject private var settings = AppSettings.shared
+    @State private var currency = AppSettings.shared.currency.value
     
     private var cashString: String { cashflow.output.cash.decimalString(fractionDigits: 0) }
     private var cashflowString: String {
         "+" + cashflow.output.cashflow.decimalString(fractionDigits: 0)
     }
+    
     @ObservedObject private var cashflow = FutureVision.shared
 }

@@ -8,6 +8,6 @@ extension Portfolio {
     }
     
     var valueDisplayString: String {
-        value.decimalString(fractionDigits: 0) //+ " " + currency.symbol
+        balanceNumericalValue.decimalString(fractionDigits: 0) //+ " " + currency.symbol
     }
 }
