@@ -7,13 +7,11 @@ struct AssetListRow: View {
         HStack(alignment: .firstTextBaseline) {
             VStack {
                 HStack {
-                    UpdatingText(viewModel.assetName,
-                                 initialText: viewModel.assetNameInitial) {
+                    UpdatingText(viewModel.$assetName) {
                         $0.fontWeight(.medium)
                     }
                     Spacer()
-                    UpdatingText(viewModel.profitPercentageString,
-                                 initialText: viewModel.profitPercentageStringInitial) { text in
+                    UpdatingText(viewModel.$profitPercentageString) { text in
                         text
                             .font(.system(.body, design: .monospaced))
                             .foregroundColor(viewModel.isLoss ? .trademateRed : .trademateGreen)
@@ -21,8 +19,7 @@ struct AssetListRow: View {
                 }
                 HStack {
                     Spacer()
-                    UpdatingText(viewModel.valueString,
-                                 initialText: viewModel.valueStringInitial) { text in
+                    UpdatingText(viewModel.$valueString) { text in
                         text
                             .font(.system(.body, design: .monospaced))
                             .foregroundColor(.secondary)

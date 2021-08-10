@@ -6,42 +6,52 @@ class AssetListRowModel {
     
     // MARK: - Life Cycle
     
-    init(_ asset: Asset) { self.asset = asset }
+    init(_ asset: Asset) {
+        self.asset = asset
+        
+        assetName = asset.properties.name
+        profitPercentageString = Self.profitPercentageString(from: asset.properties)
+        valueString = Self.valueString(from: asset.properties,
+                                       in: AppSettings.shared.currency)
+        
+        observeSourcesAndUpdate()
+    }
+    
+    // MARK: - Observe Sources
+    
+    private func observeSourcesAndUpdate() {
+        subscriptions += asset.publisher().sink { [weak self] properties in
+            self?.update(with: properties)
+        }
+        
+        subscriptions += AppSettings.shared.$currency.sink { [weak self] newCurrency in
+            guard let self = self else { return }
+            self.valueString = Self.valueString(from: self.asset.properties,
+                                                in: newCurrency)
+        }
+    }
+    
+    private var subscriptions = [AnyCancellable]()
+    
+    private func update(with properties: Asset.Properties) {
+        assetName = properties.name
+        profitPercentageString = Self.profitPercentageString(from: properties)
+        valueString = Self.valueString(from: properties,
+                                       in: AppSettings.shared.currency)
+    }
     
     // MARK: - Properties
     
-    var assetNameInitial: String {
-        asset.properties.name
-    }
+    @Published private(set) var assetName: String
     
-    lazy private(set) var assetName = asset
-        .map { $0.name }
-        .publisher()
-    
-    var profitPercentageStringInitial: String {
-        Self.profitPercentageString(from: asset.properties)
-    }
-    
-    lazy private(set) var profitPercentageString = asset
-        .map { Self.profitPercentageString(from: $0) }
-        .publisher()
+    @Published private(set) var profitPercentageString: String
     
     private static func profitPercentageString(from properties: Asset.Properties) -> String {
         guard let percentage = properties.profitPercentage else { return "" }
         return (percentage > 0 ? "+" : "") + percentage.decimalString() + "%"
     }
     
-    var valueStringInitial: String {
-        Self.valueString(from: asset.properties,
-                         in: AppSettings.shared.currency)
-    }
-    
-    lazy var valueString = asset
-        .publisher()
-        .combineLatest(AppSettings.shared.$currency)
-        .map { assetProperties, currency in
-            Self.valueString(from: assetProperties, in: currency)
-        }
+    @Published private(set) var valueString: String
     
     private static func valueString(from properties: Asset.Properties,
                                     in currency: Currency) -> String {
