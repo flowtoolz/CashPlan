@@ -1,0 +1,99 @@
+{
+    "g0": {
+        "data": {
+            "suggestionTitleAccessor": "symbol",
+            "suggestionMeta": [
+                "symbol",
+                "name",
+                "exch",
+                "type",
+                "exchDisp",
+                "typeDisp"
+            ],
+            "hiConf": false,
+            "items": [
+                {
+                    "symbol": "VXRT",
+                    "name": "Vaxart, Inc.",
+                    "exch": "NMS",
+                    "type": "S",
+                    "exchDisp": "NASDAQ",
+                    "typeDisp": "Equity"
+                },
+                {
+                    "symbol": "VOO",
+                    "name": "Vanguard S&P 500 ETF",
+                    "exch": "PCX",
+                    "type": "E",
+                    "exchDisp": "NYSEArca",
+                    "typeDisp": "ETF"
+                },
+                {
+                    "symbol": "VTI",
+                    "name": "Vanguard Total Stock Market Index Fund ETF Shares",
+                    "exch": "PCX",
+                    "type": "E",
+                    "exchDisp": "NYSEArca",
+                    "typeDisp": "ETF"
+                },
+                {
+                    "symbol": "VLO",
+                    "name": "Valero Energy Corporation",
+                    "exch": "NYQ",
+                    "type": "S",
+                    "exchDisp": "NYSE",
+                    "typeDisp": "Equity"
+                },
+                {
+                    "symbol": "VGT",
+                    "name": "Vanguard Information Technology Index Fund ETF Shares",
+                    "exch": "PCX",
+                    "type": "E",
+                    "exchDisp": "NYSEArca",
+                    "typeDisp": "ETF"
+                },
+                {
+                    "symbol": "VALE",
+                    "name": "Vale S.A.",
+                    "exch": "NYQ",
+                    "type": "S",
+                    "exchDisp": "NYSE",
+                    "typeDisp": "Equity"
+                },
+                {
+                    "symbol": "VYM",
+                    "name": "Vanguard High Dividend Yield Index Fund ETF Shares",
+                    "exch": "PCX",
+                    "type": "E",
+                    "exchDisp": "NYSEArca",
+                    "typeDisp": "ETF"
+                },
+                {
+                    "symbol": "VUG",
+                    "name": "Vanguard Growth Index Fund ETF Shares",
+                    "exch": "PCX",
+                    "type": "E",
+                    "exchDisp": "NYSEArca",
+                    "typeDisp": "ETF"
+                },
+                {
+                    "symbol": "VFIAX",
+                    "name": "Vanguard 500 Index Fund Admiral Shares",
+                    "exch": "NAS",
+                    "type": "M",
+                    "exchDisp": "NASDAQ",
+                    "typeDisp": "Fund"
+                },
+                {
+                    "symbol": "VTSAX",
+                    "name": "Vanguard Total Stock Market Index Fund Admiral Shares",
+                    "exch": "NAS",
+                    "type": "M",
+                    "exchDisp": "NASDAQ",
+                    "typeDisp": "Fund"
+                }
+            ]
+        },
+        "meta": {}
+    }
+}

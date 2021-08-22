@@ -1,0 +1,68 @@
+Summary
+
+URL: https://finance.yahoo.com/_finance_doubledown/api/resource?bkt=xray-finance-saliencemerge-test-2%2Cxray-hyper-finance-test-1%2Ca2-plutus-rr-5%2Cfd-a2-hyperxray-3%2Cxray-us-finance-relatedq-test-4%2Cfinance-us-web-xray-upsell-2&crumb=YyNjqRJqkaY&device=desktop&ecma=modern&feature=adsMigration%2CcanvassOffnet%2CccOnMute%2CdisableCommentsMessage%2Cdebouncesearch100%2CdeferDarla%2CecmaModern%2CemptyServiceWorker%2Cenable3pConsent%2CenableCCPAFooter%2CenableCMP%2CenableConsentData%2CenableFeatureTours%2CenableFinancialsTemplate%2CenableFreeFinRichSearch%2CenableGuceJs%2CenableGuceJsOverlay%2CenableNavFeatureCue%2CenableNewResearchInsights%2CenablePfSummaryForEveryone%2CenablePrivacyUpdate%2CenableRebranding%2CenableStreamDebounce%2CenableTheming%2CenableUpgradeLeafPage%2CenableVideoURL%2CenableXrayCards%2CenableXrayCardsFollowButton%2CenableXrayMiniCards%2CenableXrayMultipleFollowLists%2CenableXrayMultipleFollowListsAsDropdown%2CenableXrayNcp%2CenableXrayNcpInModal%2CenableXrayTickerEntities%2CenableXrayTickerPremiumInsights%2CenableYahooSans%2CenableYodleeErrorMsgCriOS%2CncpListStream%2CncpPortfolioStream%2CncpQspStream%2CncpStream%2CncpStreamIntl%2CncpTopicStream%2CnewContentAttribution%2CnewLogo%2CoathPlayer%2CoptimizeSearch%2CrelatedVideoFeature%2CthreeAmigos%2CwaferHeader%2CuseNextGenHistory%2CvideoNativePlaylist%2CsunsetMotif2%2CenableUserPrefAPI%2Clivecoverage%2CdarlaFirstRenderingVisible%2CenableAdlite%2CenableTradeit%2CenableFeatureBar%2CenableSearchEnhancement%2CenableUserSentiment%2CenableBankrateWidget%2CenableYodlee%2CcanvassReplies%2CenablePremiumFinancials%2CenableNewResearchFilterMW%2CshowExpiredIdeas%2CshowMorningStar%2CenableSEOResearchReport%2CenableSingleRail%2CenableUpgrade%2CenableAmexOffer%2CenableUserInsights%2CenhanceAddToWL%2Carticle2_csn%2CsponsoredAds%2CenableStageAds%2CenableTradeItLinkBrokerSecondaryPromo%2CenableQspPremiumPromoSmall%2CclientDelayNone%2CthreeAmigosMabEnabled%2CthreeAmigosAdsEnabledAndStreamIndex0%2CenableRelatedTickers%2CenableTasteMaker%2CenableNotification%2CenableJSErrorBeacon%2CenableXrayTooltips%2CfinanceRightRailA20%2CenableBrokerCenter%2CenableYahooPlus%2CenablePremiumUpsell&intl=us&lang=en-US&partner=none&prid=2pbr0h9gg4tmu&region=US&site=finance&tz=Europe%2FZurich&ver=0.102.5035
+Status: 200
+Source: Network
+Address: 77.238.180.11:443
+Initiator: 
+main.0af10933e3a2a2bd42e2.modern.js:2:991529
+
+
+Request
+
+:method: POST
+:scheme: https
+:authority: finance.yahoo.com
+:path: /_finance_doubledown/api/resource?bkt=xray-finance-saliencemerge-test-2%2Cxray-hyper-finance-test-1%2Ca2-plutus-rr-5%2Cfd-a2-hyperxray-3%2Cxray-us-finance-relatedq-test-4%2Cfinance-us-web-xray-upsell-2&crumb=YyNjqRJqkaY&device=desktop&ecma=modern&feature=adsMigration%2CcanvassOffnet%2CccOnMute%2CdisableCommentsMessage%2Cdebouncesearch100%2CdeferDarla%2CecmaModern%2CemptyServiceWorker%2Cenable3pConsent%2CenableCCPAFooter%2CenableCMP%2CenableConsentData%2CenableFeatureTours%2CenableFinancialsTemplate%2CenableFreeFinRichSearch%2CenableGuceJs%2CenableGuceJsOverlay%2CenableNavFeatureCue%2CenableNewResearchInsights%2CenablePfSummaryForEveryone%2CenablePrivacyUpdate%2CenableRebranding%2CenableStreamDebounce%2CenableTheming%2CenableUpgradeLeafPage%2CenableVideoURL%2CenableXrayCards%2CenableXrayCardsFollowButton%2CenableXrayMiniCards%2CenableXrayMultipleFollowLists%2CenableXrayMultipleFollowListsAsDropdown%2CenableXrayNcp%2CenableXrayNcpInModal%2CenableXrayTickerEntities%2CenableXrayTickerPremiumInsights%2CenableYahooSans%2CenableYodleeErrorMsgCriOS%2CncpListStream%2CncpPortfolioStream%2CncpQspStream%2CncpStream%2CncpStreamIntl%2CncpTopicStream%2CnewContentAttribution%2CnewLogo%2CoathPlayer%2CoptimizeSearch%2CrelatedVideoFeature%2CthreeAmigos%2CwaferHeader%2CuseNextGenHistory%2CvideoNativePlaylist%2CsunsetMotif2%2CenableUserPrefAPI%2Clivecoverage%2CdarlaFirstRenderingVisible%2CenableAdlite%2CenableTradeit%2CenableFeatureBar%2CenableSearchEnhancement%2CenableUserSentiment%2CenableBankrateWidget%2CenableYodlee%2CcanvassReplies%2CenablePremiumFinancials%2CenableNewResearchFilterMW%2CshowExpiredIdeas%2CshowMorningStar%2CenableSEOResearchReport%2CenableSingleRail%2CenableUpgrade%2CenableAmexOffer%2CenableUserInsights%2CenhanceAddToWL%2Carticle2_csn%2CsponsoredAds%2CenableStageAds%2CenableTradeItLinkBrokerSecondaryPromo%2CenableQspPremiumPromoSmall%2CclientDelayNone%2CthreeAmigosMabEnabled%2CthreeAmigosAdsEnabledAndStreamIndex0%2CenableRelatedTickers%2CenableTasteMaker%2CenableNotification%2CenableJSErrorBeacon%2CenableXrayTooltips%2CfinanceRightRailA20%2CenableBrokerCenter%2CenableYahooPlus%2CenablePremiumUpsell&intl=us&lang=en-US&partner=none&prid=2pbr0h9gg4tmu&region=US&site=finance&tz=Europe%2FZurich&ver=0.102.5035
+Content-Type: application/json
+Accept: */*
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate, br
+Host: finance.yahoo.com
+Origin: https://finance.yahoo.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.1 Safari/605.1.15
+Connection: keep-alive
+Referer: https://finance.yahoo.com/quote/VAR1.DE?p=VAR1.DE
+Content-Length: 2371
+Cookie: A1=d=AQABBCdeAWECEE4mVBSUGJgICgkQkUHNrwcFEgEBAQGvAmELYQAAAAAA_eMAAAcIJ14BYUHNrwc&S=AQAAAixKaD-ZrxTsj9-KXP9R17k; A1S=d=AQABBCdeAWECEE4mVBSUGJgICgkQkUHNrwcFEgEBAQGvAmELYQAAAAAA_eMAAAcIJ14BYUHNrwc&S=AQAAAixKaD-ZrxTsj9-KXP9R17k&j=WORLD; A3=d=AQABBCdeAWECEE4mVBSUGJgICgkQkUHNrwcFEgEBAQGvAmELYQAAAAAA_eMAAAcIJ14BYUHNrwc&S=AQAAAixKaD-ZrxTsj9-KXP9R17k; B=0fbud85gg2nh7&b=3&s=ao; GUC=AQEBAQFhAq9hC0IeSgRM; PRF=t%3DVAR1.DE; cmp=t=1627551456&j=0
+X-Requested-With: XMLHttpRequest
+
+Response
+
+:status: 200
+Content-Type: application/json; charset=utf-8
+Content-Security-Policy: sandbox allow-downloads allow-forms allow-modals allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation allow-presentation;
+Age: 0
+Content-Encoding: gzip
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: no-referrer-when-downgrade
+Date: Thu, 29 Jul 2021 09:41:31 GMT
+X-Content-Type-Options: nosniff
+ETag: W/"57f-blTsvx7c+cbIkm22tLW3t1F3XGA"
+Vary: Accept-Encoding
+Server: ATS
+expect-ct: max-age=31536000, report-uri="http://csp.yahoo.com/beacon/csp?src=yahoocom-expect-ct-report-only"
+Strict-Transport-Security: max-age=15552000
+x-envoy-upstream-service-time: 41
+x-envoy-decorator-operation: finance-nodejs--mtls-production-ir2.finance-k8s.svc.yahoo.local:4080/*
+
+Query String Parameters
+
+bkt: xray-finance-saliencemerge-test-2,xray-hyper-finance-test-1,a2-plutus-rr-5,fd-a2-hyperxray-3,xray-us-finance-relatedq-test-4,finance-us-web-xray-upsell-2
+crumb: YyNjqRJqkaY
+device: desktop
+ecma: modern
+feature: adsMigration,canvassOffnet,ccOnMute,disableCommentsMessage,debouncesearch100,deferDarla,ecmaModern,emptyServiceWorker,enable3pConsent,enableCCPAFooter,enableCMP,enableConsentData,enableFeatureTours,enableFinancialsTemplate,enableFreeFinRichSearch,enableGuceJs,enableGuceJsOverlay,enableNavFeatureCue,enableNewResearchInsights,enablePfSummaryForEveryone,enablePrivacyUpdate,enableRebranding,enableStreamDebounce,enableTheming,enableUpgradeLeafPage,enableVideoURL,enableXrayCards,enableXrayCardsFollowButton,enableXrayMiniCards,enableXrayMultipleFollowLists,enableXrayMultipleFollowListsAsDropdown,enableXrayNcp,enableXrayNcpInModal,enableXrayTickerEntities,enableXrayTickerPremiumInsights,enableYahooSans,enableYodleeErrorMsgCriOS,ncpListStream,ncpPortfolioStream,ncpQspStream,ncpStream,ncpStreamIntl,ncpTopicStream,newContentAttribution,newLogo,oathPlayer,optimizeSearch,relatedVideoFeature,threeAmigos,waferHeader,useNextGenHistory,videoNativePlaylist,sunsetMotif2,enableUserPrefAPI,livecoverage,darlaFirstRenderingVisible,enableAdlite,enableTradeit,enableFeatureBar,enableSearchEnhancement,enableUserSentiment,enableBankrateWidget,enableYodlee,canvassReplies,enablePremiumFinancials,enableNewResearchFilterMW,showExpiredIdeas,showMorningStar,enableSEOResearchReport,enableSingleRail,enableUpgrade,enableAmexOffer,enableUserInsights,enhanceAddToWL,article2_csn,sponsoredAds,enableStageAds,enableTradeItLinkBrokerSecondaryPromo,enableQspPremiumPromoSmall,clientDelayNone,threeAmigosMabEnabled,threeAmigosAdsEnabledAndStreamIndex0,enableRelatedTickers,enableTasteMaker,enableNotification,enableJSErrorBeacon,enableXrayTooltips,financeRightRailA20,enableBrokerCenter,enableYahooPlus,enablePremiumUpsell
+intl: us
+lang: en-US
+partner: none
+prid: 2pbr0h9gg4tmu
+region: US
+site: finance
+tz: Europe/Zurich
+ver: 0.102.5035
+
+Request Data
+
+MIME Type: application/json
+Request Data: 
