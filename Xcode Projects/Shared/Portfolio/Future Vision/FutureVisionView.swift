@@ -79,15 +79,11 @@ struct FutureVisionView: View {
             }
         }
         .navigationTitle("Target")
-        .toolbar {
-            ToolbarItem(placement: .primaryAction) {
-                Button {
-                    isPresentingCurrencyPicker = true
-                } label: {
-                    CurrencyView(currency: currency)
-                }
-            }
-        }
+        .navigationBarItems(trailing: Button {
+            isPresentingCurrencyPicker = true
+        } label: {
+            CurrencyView(currency: currency)
+        })
         .onChange(of: inputStrings) { inputStrings in
             inputStrings.input.forSome {
                 cashflow.input = $0

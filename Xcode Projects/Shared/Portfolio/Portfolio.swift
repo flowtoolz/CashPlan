@@ -28,10 +28,10 @@ class Portfolio: Observer, Combine.ObservableObject {
         updateMetrics()
     }
     
-    func resetAssets(with assets: [Asset]) {
-        self.assets.map { $0.$properties }.forEach(stopObserving)
-        self.assets = assets.sorted()
-        self.assets.forEach(ensureObservation(of:))
+    func resetAssets(with newAssets: [Asset]) {
+        assets.map { $0.$properties }.forEach(stopObserving)
+        assets = newAssets.sorted()
+        assets.forEach(ensureObservation(of:))
         updateMetrics()
     }
     
