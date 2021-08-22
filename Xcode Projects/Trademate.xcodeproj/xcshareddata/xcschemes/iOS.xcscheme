@@ -17,7 +17,7 @@
                BlueprintIdentifier = "96F9673426AD991100A1258E"
                BuildableName = "Cashflow Calculator.app"
                BlueprintName = "Cashflow Calculator (iOS)"
-               ReferencedContainer = "container:CashPlan.xcodeproj">
+               ReferencedContainer = "container:Trademate.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "96F9674426AD991100A1258E"
                BuildableName = "Tests iOS.xctest"
                BlueprintName = "Tests iOS"
-               ReferencedContainer = "container:CashPlan.xcodeproj">
+               ReferencedContainer = "container:Trademate.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,7 +57,7 @@
             BlueprintIdentifier = "96F9673426AD991100A1258E"
             BuildableName = "Cashflow Calculator.app"
             BlueprintName = "Cashflow Calculator (iOS)"
-            ReferencedContainer = "container:CashPlan.xcodeproj">
+            ReferencedContainer = "container:Trademate.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -74,7 +74,7 @@
             BlueprintIdentifier = "96F9673426AD991100A1258E"
             BuildableName = "Cashflow Calculator.app"
             BlueprintName = "Cashflow Calculator (iOS)"
-            ReferencedContainer = "container:CashPlan.xcodeproj">
+            ReferencedContainer = "container:Trademate.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
