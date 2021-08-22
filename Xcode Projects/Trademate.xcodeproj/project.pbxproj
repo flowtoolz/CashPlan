@@ -324,9 +324,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		96F9673426AD991100A1258E /* Cashflow Calculator (iOS) */ = {
+		96F9673426AD991100A1258E /* Trademate (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 96F9675F26AD991100A1258E /* Build configuration list for PBXNativeTarget "Cashflow Calculator (iOS)" */;
+			buildConfigurationList = 96F9675F26AD991100A1258E /* Build configuration list for PBXNativeTarget "Trademate (iOS)" */;
 			buildPhases = (
 				96F9673126AD991100A1258E /* Sources */,
 				96F9673226AD991100A1258E /* Frameworks */,
@@ -336,7 +336,7 @@
 			);
 			dependencies = (
 			);
-			name = "Cashflow Calculator (iOS)";
+			name = "Trademate (iOS)";
 			packageProductDependencies = (
 				967B192726AF2FB900214F29 /* SwiftyToolz */,
 				967B192A26AF324F00214F29 /* FoundationToolz */,
@@ -346,9 +346,9 @@
 			productReference = 96F9673526AD991100A1258E /* Cashflow Calculator.app */;
 			productType = "com.apple.product-type.application";
 		};
-		96F9673C26AD991100A1258E /* Cashflow Calculator (macOS) */ = {
+		96F9673C26AD991100A1258E /* Trademate (macOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 96F9676226AD991100A1258E /* Build configuration list for PBXNativeTarget "Cashflow Calculator (macOS)" */;
+			buildConfigurationList = 96F9676226AD991100A1258E /* Build configuration list for PBXNativeTarget "Trademate (macOS)" */;
 			buildPhases = (
 				96F9673926AD991100A1258E /* Sources */,
 				96F9673A26AD991100A1258E /* Frameworks */,
@@ -358,7 +358,7 @@
 			);
 			dependencies = (
 			);
-			name = "Cashflow Calculator (macOS)";
+			name = "Trademate (macOS)";
 			productName = "Cashflow Calculator (macOS)";
 			productReference = 96F9673D26AD991100A1258E /* Cashflow Calculator.app */;
 			productType = "com.apple.product-type.application";
@@ -442,8 +442,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				96F9673426AD991100A1258E /* Cashflow Calculator (iOS) */,
-				96F9673C26AD991100A1258E /* Cashflow Calculator (macOS) */,
+				96F9673426AD991100A1258E /* Trademate (iOS) */,
+				96F9673C26AD991100A1258E /* Trademate (macOS) */,
 				96F9674426AD991100A1258E /* Tests iOS */,
 				96F9674F26AD991100A1258E /* Tests macOS */,
 			);
@@ -579,12 +579,12 @@
 /* Begin PBXTargetDependency section */
 		96F9674726AD991100A1258E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 96F9673426AD991100A1258E /* Cashflow Calculator (iOS) */;
+			target = 96F9673426AD991100A1258E /* Trademate (iOS) */;
 			targetProxy = 96F9674626AD991100A1258E /* PBXContainerItemProxy */;
 		};
 		96F9675226AD991100A1258E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 96F9673C26AD991100A1258E /* Cashflow Calculator (macOS) */;
+			target = 96F9673C26AD991100A1258E /* Trademate (macOS) */;
 			targetProxy = 96F9675126AD991100A1258E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -899,7 +899,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		96F9675F26AD991100A1258E /* Build configuration list for PBXNativeTarget "Cashflow Calculator (iOS)" */ = {
+		96F9675F26AD991100A1258E /* Build configuration list for PBXNativeTarget "Trademate (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				96F9676026AD991100A1258E /* Debug */,
@@ -908,7 +908,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		96F9676226AD991100A1258E /* Build configuration list for PBXNativeTarget "Cashflow Calculator (macOS)" */ = {
+		96F9676226AD991100A1258E /* Build configuration list for PBXNativeTarget "Trademate (macOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				96F9676326AD991100A1258E /* Debug */,

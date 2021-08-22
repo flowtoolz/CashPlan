@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "96F9673C26AD991100A1258E"
                BuildableName = "Cashflow Calculator.app"
-               BlueprintName = "Cashflow Calculator (macOS)"
+               BlueprintName = "Trademate (macOS)"
                ReferencedContainer = "container:Trademate.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -56,7 +56,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "96F9673C26AD991100A1258E"
             BuildableName = "Cashflow Calculator.app"
-            BlueprintName = "Cashflow Calculator (macOS)"
+            BlueprintName = "Trademate (macOS)"
             ReferencedContainer = "container:Trademate.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -73,7 +73,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "96F9673C26AD991100A1258E"
             BuildableName = "Cashflow Calculator.app"
-            BlueprintName = "Cashflow Calculator (macOS)"
+            BlueprintName = "Trademate (macOS)"
             ReferencedContainer = "container:Trademate.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
