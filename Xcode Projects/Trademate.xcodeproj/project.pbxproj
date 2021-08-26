@@ -110,6 +110,10 @@
 		963B484526B85FFC0063EF73 /* AssetCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCreationView.swift; sourceTree = "<group>"; };
 		963B484826B8693B0063EF73 /* AssetEditingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetEditingState.swift; sourceTree = "<group>"; };
 		963B484B26B88EBA0063EF73 /* AssetListRowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetListRowModel.swift; sourceTree = "<group>"; };
+		96499C5026D75D6100A37C7B /* FoundationToolz */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FoundationToolz; path = ../../FoundationToolz; sourceTree = "<group>"; };
+		96499C5126D75D6C00A37C7B /* SwiftUIToolz */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftUIToolz; path = ../../SwiftUIToolz; sourceTree = "<group>"; };
+		96499C5226D75D7400A37C7B /* SwiftyToolz */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftyToolz; path = ../../SwiftyToolz; sourceTree = "<group>"; };
+		96499C5326D75D8300A37C7B /* SwiftObserver */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftObserver; path = ../../SwiftObserver; sourceTree = "<group>"; };
 		964B4D0E26BB262900F69B49 /* Cash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cash.swift; sourceTree = "<group>"; };
 		964B4D1126BB279700F69B49 /* Asset.Properties+Profit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Asset.Properties+Profit.swift"; sourceTree = "<group>"; };
 		964B4D1426BB27C800F69B49 /* Asset+Conformances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Asset+Conformances.swift"; sourceTree = "<group>"; };
@@ -208,6 +212,17 @@
 			path = Asset;
 			sourceTree = "<group>";
 		};
+		96499C4F26D75D3C00A37C7B /* Local Packages */ = {
+			isa = PBXGroup;
+			children = (
+				96499C5326D75D8300A37C7B /* SwiftObserver */,
+				96499C5226D75D7400A37C7B /* SwiftyToolz */,
+				96499C5126D75D6C00A37C7B /* SwiftUIToolz */,
+				96499C5026D75D6100A37C7B /* FoundationToolz */,
+			);
+			name = "Local Packages";
+			sourceTree = "<group>";
+		};
 		9649F55826B83F6300C44A19 /* Asset Editing */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +258,7 @@
 		96F9672826AD991000A1258E = {
 			isa = PBXGroup;
 			children = (
+				96499C4F26D75D3C00A37C7B /* Local Packages */,
 				96F9672D26AD991000A1258E /* Shared */,
 				96F9673726AD991100A1258E /* iOS */,
 				96F9673E26AD991100A1258E /* macOS */,
