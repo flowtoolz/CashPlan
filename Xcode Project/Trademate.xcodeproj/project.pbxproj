@@ -87,10 +87,10 @@
 		9633394826D76305000F26C2 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9633394C26D76305000F26C2 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		9633394E26D76305000F26C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		966DE7FD26D803FC00CD0055 /* SwiftyToolz */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftyToolz; path = ../../../SwiftyToolz; sourceTree = "<group>"; };
-		966DE7FE26D8041300CD0055 /* SwiftObserver */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftObserver; path = ../../../SwiftObserver; sourceTree = "<group>"; };
-		966DE7FF26D8041300CD0055 /* FoundationToolz */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FoundationToolz; path = ../../../FoundationToolz; sourceTree = "<group>"; };
-		966DE80026D8041300CD0055 /* SwiftUIToolz */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftUIToolz; path = ../../../SwiftUIToolz; sourceTree = "<group>"; };
+		965433BA26D955CE0050CDF5 /* SwiftyToolz */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftyToolz; path = ../../SwiftyToolz; sourceTree = "<group>"; };
+		965433BB26D955D50050CDF5 /* SwiftObserver */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftObserver; path = ../../SwiftObserver; sourceTree = "<group>"; };
+		965433BC26D955DB0050CDF5 /* FoundationToolz */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FoundationToolz; path = ../../FoundationToolz; sourceTree = "<group>"; };
+		965433BD26D955DE0050CDF5 /* SwiftUIToolz */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftUIToolz; path = ../../SwiftUIToolz; sourceTree = "<group>"; };
 		96945DFD26D93BC80091B9CF /* ContentView_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView_macOS.swift; sourceTree = "<group>"; };
 		96945E2026D9505A0091B9CF /* Calculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		96945E2226D9505A0091B9CF /* AlertsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
@@ -239,10 +239,10 @@
 		966DE7FC26D803DD00CD0055 /* Local Packages */ = {
 			isa = PBXGroup;
 			children = (
-				966DE7FF26D8041300CD0055 /* FoundationToolz */,
-				966DE7FE26D8041300CD0055 /* SwiftObserver */,
-				966DE80026D8041300CD0055 /* SwiftUIToolz */,
-				966DE7FD26D803FC00CD0055 /* SwiftyToolz */,
+				965433BD26D955DE0050CDF5 /* SwiftUIToolz */,
+				965433BC26D955DB0050CDF5 /* FoundationToolz */,
+				965433BB26D955D50050CDF5 /* SwiftObserver */,
+				965433BA26D955CE0050CDF5 /* SwiftyToolz */,
 			);
 			name = "Local Packages";
 			sourceTree = "<group>";

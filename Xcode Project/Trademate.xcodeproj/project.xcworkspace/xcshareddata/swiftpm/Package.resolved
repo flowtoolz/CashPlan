@@ -1,0 +1,52 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "FoundationToolz",
+        "repositoryURL": "https://github.com/flowtoolz/FoundationToolz",
+        "state": {
+          "branch": "master",
+          "revision": "7bf041442f3686da2e0fc2d1c26c03180664e986",
+          "version": null
+        }
+      },
+      {
+        "package": "Reachability",
+        "repositoryURL": "https://github.com/ashleymills/Reachability.swift.git",
+        "state": {
+          "branch": null,
+          "revision": "6c8652a8ea35a64cf36367d07b3d6e5e6a24b272",
+          "version": "4.3.1"
+        }
+      },
+      {
+        "package": "SwiftObserver",
+        "repositoryURL": "https://github.com/flowtoolz/SwiftObserver",
+        "state": {
+          "branch": "master",
+          "revision": "33a87d815dfa8e19cf094132ce86189c8e3bb85d",
+          "version": null
+        }
+      },
+      {
+        "package": "SwiftUIToolz",
+        "repositoryURL": "https://github.com/flowtoolz/SwiftUIToolz",
+        "state": {
+          "branch": "master",
+          "revision": "ec671dc614a6b8fc4c89bbd6ae1cd4c83b4ab230",
+          "version": null
+        }
+      },
+      {
+        "package": "SwiftyToolz",
+        "repositoryURL": "https://github.com/flowtoolz/SwiftyToolz",
+        "state": {
+          "branch": "master",
+          "revision": "fea24d506ed7b12c53a1a1216380c766db19e8c1",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
