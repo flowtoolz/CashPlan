@@ -14,18 +14,25 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            NavigationView {
-                Text("Hello, world!")
-                    .navigationTitle("Nav Title")
-            }
-            .padding()
-            .tabItem { Text("Tab 1") }
-            Text("Hello, world!")
-                .padding()
-                .tabItem { Text("Tab 2") }
-            Text("Hello, world!")
-                .padding()
-                .tabItem { Text("Tab 3") }
+            PortfolioView()
+                .tabItem {
+                    Image(systemName: "chart.pie.fill")
+                    Text("Portfolio")
+                }
+            Text("Watchlist")
+                .tabItem {
+                    Image(systemName: "star.fill")
+                    Text("Watchlist")
+                }
+            AlertsView()
+                .tabItem {
+                    Image(systemName: "bell.fill")
+                    Text("Notifications")
+                }
         }
+        .accentColor(.trademateAccent(for: colorScheme))
+        
     }
+    
+    @Environment(\.colorScheme) private var colorScheme
 }

@@ -26,10 +26,8 @@
 		96945E1C26D94B020091B9CF /* SwiftUIToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 96945E1B26D94B020091B9CF /* SwiftUIToolz */; };
 		96945E1E26D94B020091B9CF /* SwiftyToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 96945E1D26D94B020091B9CF /* SwiftyToolz */; };
 		96945E6226D950720091B9CF /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E2226D9505A0091B9CF /* AlertsView.swift */; };
-		96945E6326D950720091B9CF /* TradeMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E2126D9505A0091B9CF /* TradeMateApp.swift */; };
 		96945E6426D950720091B9CF /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E2326D9505A0091B9CF /* AppSettings.swift */; };
 		96945E6526D950720091B9CF /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E2026D9505A0091B9CF /* Calculator.swift */; };
-		96945E6626D9507C0091B9CF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E2F26D9505A0091B9CF /* HomeView.swift */; };
 		96945E6726D9507C0091B9CF /* TrademateSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3026D9505A0091B9CF /* TrademateSwiftUI.swift */; };
 		96945E6826D9507C0091B9CF /* TrademateFoundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3E26D9505A0091B9CF /* TrademateFoundation.swift */; };
 		96945E6926D9507C0091B9CF /* CoreFoundationToolz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3F26D9505A0091B9CF /* CoreFoundationToolz.swift */; };
@@ -95,7 +93,6 @@
 		966DE80026D8041300CD0055 /* SwiftUIToolz */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftUIToolz; path = ../../../SwiftUIToolz; sourceTree = "<group>"; };
 		96945DFD26D93BC80091B9CF /* ContentView_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView_macOS.swift; sourceTree = "<group>"; };
 		96945E2026D9505A0091B9CF /* Calculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
-		96945E2126D9505A0091B9CF /* TradeMateApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeMateApp.swift; sourceTree = "<group>"; };
 		96945E2226D9505A0091B9CF /* AlertsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
 		96945E2326D9505A0091B9CF /* AppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		96945E2526D9505A0091B9CF /* Cash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cash.swift; sourceTree = "<group>"; };
@@ -107,7 +104,6 @@
 		96945E2C26D9505A0091B9CF /* Asset+Conformances.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Asset+Conformances.swift"; sourceTree = "<group>"; };
 		96945E2D26D9505A0091B9CF /* Asset.Properties+Profit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Asset.Properties+Profit.swift"; sourceTree = "<group>"; };
 		96945E2E26D9505A0091B9CF /* Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
-		96945E2F26D9505A0091B9CF /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		96945E3026D9505A0091B9CF /* TrademateSwiftUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrademateSwiftUI.swift; sourceTree = "<group>"; };
 		96945E3226D9505A0091B9CF /* Portfolio+DisplayString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Portfolio+DisplayString.swift"; sourceTree = "<group>"; };
 		96945E3326D9505A0091B9CF /* Portfolio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
@@ -185,10 +181,10 @@
 		9633392526D76304000F26C2 /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				96945E1F26D9505A0091B9CF /* iOS */,
 				9633392626D76304000F26C2 /* TrademateApp.swift */,
-				9633392726D76304000F26C2 /* ContentView_iOS.swift */,
 				96945DFD26D93BC80091B9CF /* ContentView_macOS.swift */,
+				9633392726D76304000F26C2 /* ContentView_iOS.swift */,
+				96945E1F26D9505A0091B9CF /* iOS */,
 				9633392826D76305000F26C2 /* Assets.xcassets */,
 			);
 			path = Code;
@@ -262,11 +258,9 @@
 			isa = PBXGroup;
 			children = (
 				96945E2026D9505A0091B9CF /* Calculator.swift */,
-				96945E2126D9505A0091B9CF /* TradeMateApp.swift */,
 				96945E2226D9505A0091B9CF /* AlertsView.swift */,
 				96945E2326D9505A0091B9CF /* AppSettings.swift */,
 				96945E2426D9505A0091B9CF /* Asset */,
-				96945E2F26D9505A0091B9CF /* HomeView.swift */,
 				96945E3026D9505A0091B9CF /* TrademateSwiftUI.swift */,
 				96945E3126D9505A0091B9CF /* Portfolio */,
 				96945E3E26D9505A0091B9CF /* TrademateFoundation.swift */,
@@ -529,7 +523,6 @@
 				96945E7526D9509D0091B9CF /* Portfolio.swift in Sources */,
 				96945E7A26D950AC0091B9CF /* AssetList.swift in Sources */,
 				96945E7726D950A30091B9CF /* FutureVisionView.swift in Sources */,
-				96945E6626D9507C0091B9CF /* HomeView.swift in Sources */,
 				96945E7026D9508F0091B9CF /* AssetEditingForm.swift in Sources */,
 				96945E6A26D950880091B9CF /* Asset+Conformances.swift in Sources */,
 				96945E7826D950A40091B9CF /* FutureVision.swift in Sources */,
@@ -538,7 +531,6 @@
 				96945E7326D9509D0091B9CF /* Portfolio+DisplayString.swift in Sources */,
 				96945E7126D9508F0091B9CF /* AssetEditingState.swift in Sources */,
 				96945E7926D950AC0091B9CF /* AssetsOverView.swift in Sources */,
-				96945E6326D950720091B9CF /* TradeMateApp.swift in Sources */,
 				96945E7F26D950BA0091B9CF /* CurrencyView.swift in Sources */,
 				96945E6726D9507C0091B9CF /* TrademateSwiftUI.swift in Sources */,
 				9633394F26D76305000F26C2 /* TrademateApp.swift in Sources */,
