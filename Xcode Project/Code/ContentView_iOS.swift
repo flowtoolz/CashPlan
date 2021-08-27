@@ -30,9 +30,5 @@ struct ContentView: View {
                     Text("Notifications")
                 }
         }
-        .accentColor(.trademateAccent(for: colorScheme))
-        
     }
-    
-    @Environment(\.colorScheme) private var colorScheme
 }

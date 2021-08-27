@@ -18,7 +18,7 @@ struct AssetsOverView: View {
                         Spacer()
                         Text(portfolio.returnPercentageString)
                             .font(.system(.title2, design: .monospaced))
-                            .foregroundColor(portfolio.isAtALoss ? .trademateRed : .trademateGreen)
+                            .foregroundColor(portfolio.isAtALoss ? .systemRed : .systemGreen)
                     }
                     HStack(alignment: .firstTextBaseline) {
                         Text("Balance")

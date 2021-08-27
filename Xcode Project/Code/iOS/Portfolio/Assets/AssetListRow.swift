@@ -14,7 +14,7 @@ struct AssetListRow: View {
                     UpdatingText(viewModel.profitPercentageString) { text in
                         text
                             .font(.system(.body, design: .monospaced))
-                            .foregroundColor(viewModel.isLoss ? .trademateRed : .trademateGreen)
+                            .foregroundColor(viewModel.isLoss ? .systemRed : .systemGreen)
                     }
                 }
                 HStack {

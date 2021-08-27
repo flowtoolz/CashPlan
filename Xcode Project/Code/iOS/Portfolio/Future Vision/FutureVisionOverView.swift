@@ -26,7 +26,7 @@ struct FutureVisionOverView: View {
                     Spacer()
                     Text("+" + futureVision.output.cashflow.decimalString(fractionDigits: 0))
                         .font(.system(.title2, design: .monospaced))
-                        .foregroundColor(.trademateGreen)
+                        .foregroundColor(.systemGreen)
                 }
             }
         } icon: {

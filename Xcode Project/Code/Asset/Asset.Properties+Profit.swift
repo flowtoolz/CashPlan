@@ -10,7 +10,8 @@ extension Asset.Properties {
     // MARK: - Profit
     
     var profit: Cash {
-        .init(numericalValue: profitNumericalValue, currency: currency)
+        .init(numericalValue: profitNumericalValue,
+              currency: currency)
     }
     
     var profitNumericalValue: Double {

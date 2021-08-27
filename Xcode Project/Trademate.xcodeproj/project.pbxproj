@@ -14,6 +14,21 @@
 		9633395126D76305000F26C2 /* ContentView_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633392726D76304000F26C2 /* ContentView_iOS.swift */; };
 		9633395326D76305000F26C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9633392826D76305000F26C2 /* Assets.xcassets */; };
 		9633395426D76305000F26C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9633392826D76305000F26C2 /* Assets.xcassets */; };
+		965433BF26D97D6C0050CDF5 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E4126D9505A0091B9CF /* Currency.swift */; };
+		965433C026D97DAD0050CDF5 /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E4226D9505A0091B9CF /* CurrencyView.swift */; };
+		965433C126D97DF10050CDF5 /* CurrencyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E4326D9505A0091B9CF /* CurrencyPicker.swift */; };
+		965433C226D980500050CDF5 /* CoreFoundationToolz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3F26D9505A0091B9CF /* CoreFoundationToolz.swift */; };
+		965433C326D980DC0050CDF5 /* TrademateFoundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3E26D9505A0091B9CF /* TrademateFoundation.swift */; };
+		965433C526D9810C0050CDF5 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E2E26D9505A0091B9CF /* Asset.swift */; };
+		965433C626D981150050CDF5 /* Cash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E2526D9505A0091B9CF /* Cash.swift */; };
+		965433C726D981890050CDF5 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E2026D9505A0091B9CF /* Calculator.swift */; };
+		965433C826D981AE0050CDF5 /* Asset.Properties+Profit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E2D26D9505A0091B9CF /* Asset.Properties+Profit.swift */; };
+		965433C926D981C10050CDF5 /* Asset+Conformances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E2C26D9505A0091B9CF /* Asset+Conformances.swift */; };
+		965433CA26D982CD0050CDF5 /* AssetPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E2626D9505A0091B9CF /* AssetPersister.swift */; };
+		965433CC26D983F40050CDF5 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E2326D9505A0091B9CF /* AppSettings.swift */; };
+		965433CD26D984090050CDF5 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3326D9505A0091B9CF /* Portfolio.swift */; };
+		965433CE26D9841D0050CDF5 /* Portfolio+DisplayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3226D9505A0091B9CF /* Portfolio+DisplayString.swift */; };
+		965433D026D98B0E0050CDF5 /* TrademateSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3026D9505A0091B9CF /* TrademateSwiftUI.swift */; };
 		966DE80526D804CA00CD0055 /* SwiftyToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 966DE80426D804CA00CD0055 /* SwiftyToolz */; };
 		96945DFE26D93BC80091B9CF /* ContentView_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945DFD26D93BC80091B9CF /* ContentView_macOS.swift */; };
 		96945E0E26D94AD20091B9CF /* FoundationToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 96945E0D26D94AD20091B9CF /* FoundationToolz */; };
@@ -185,6 +200,11 @@
 				96945DFD26D93BC80091B9CF /* ContentView_macOS.swift */,
 				9633392726D76304000F26C2 /* ContentView_iOS.swift */,
 				96945E1F26D9505A0091B9CF /* iOS */,
+				96945E2426D9505A0091B9CF /* Asset */,
+				96945E4026D9505A0091B9CF /* Currency */,
+				96945E2326D9505A0091B9CF /* AppSettings.swift */,
+				96945E3E26D9505A0091B9CF /* TrademateFoundation.swift */,
+				96945E3F26D9505A0091B9CF /* CoreFoundationToolz.swift */,
 				9633392826D76305000F26C2 /* Assets.xcassets */,
 			);
 			path = Code;
@@ -257,15 +277,10 @@
 		96945E1F26D9505A0091B9CF /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				96945E2026D9505A0091B9CF /* Calculator.swift */,
 				96945E2226D9505A0091B9CF /* AlertsView.swift */,
-				96945E2326D9505A0091B9CF /* AppSettings.swift */,
-				96945E2426D9505A0091B9CF /* Asset */,
 				96945E3026D9505A0091B9CF /* TrademateSwiftUI.swift */,
 				96945E3126D9505A0091B9CF /* Portfolio */,
-				96945E3E26D9505A0091B9CF /* TrademateFoundation.swift */,
-				96945E3F26D9505A0091B9CF /* CoreFoundationToolz.swift */,
-				96945E4026D9505A0091B9CF /* Currency */,
+				96945E2726D9505A0091B9CF /* Asset Editing */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -273,12 +288,12 @@
 		96945E2426D9505A0091B9CF /* Asset */ = {
 			isa = PBXGroup;
 			children = (
-				96945E2526D9505A0091B9CF /* Cash.swift */,
 				96945E2626D9505A0091B9CF /* AssetPersister.swift */,
-				96945E2726D9505A0091B9CF /* Asset Editing */,
 				96945E2C26D9505A0091B9CF /* Asset+Conformances.swift */,
 				96945E2D26D9505A0091B9CF /* Asset.Properties+Profit.swift */,
 				96945E2E26D9505A0091B9CF /* Asset.swift */,
+				96945E2526D9505A0091B9CF /* Cash.swift */,
+				96945E2026D9505A0091B9CF /* Calculator.swift */,
 			);
 			path = Asset;
 			sourceTree = "<group>";
@@ -287,9 +302,9 @@
 			isa = PBXGroup;
 			children = (
 				96945E2826D9505A0091B9CF /* AssetEditingView.swift */,
-				96945E2926D9505A0091B9CF /* AssetEditingState.swift */,
-				96945E2A26D9505A0091B9CF /* AssetEditingForm.swift */,
 				96945E2B26D9505A0091B9CF /* AssetCreationView.swift */,
+				96945E2A26D9505A0091B9CF /* AssetEditingForm.swift */,
+				96945E2926D9505A0091B9CF /* AssetEditingState.swift */,
 			);
 			path = "Asset Editing";
 			sourceTree = "<group>";
@@ -297,11 +312,11 @@
 		96945E3126D9505A0091B9CF /* Portfolio */ = {
 			isa = PBXGroup;
 			children = (
-				96945E3226D9505A0091B9CF /* Portfolio+DisplayString.swift */,
-				96945E3326D9505A0091B9CF /* Portfolio.swift */,
+				96945E3D26D9505A0091B9CF /* PortfolioView.swift */,
 				96945E3426D9505A0091B9CF /* Future Vision */,
 				96945E3826D9505A0091B9CF /* Assets */,
-				96945E3D26D9505A0091B9CF /* PortfolioView.swift */,
+				96945E3226D9505A0091B9CF /* Portfolio+DisplayString.swift */,
+				96945E3326D9505A0091B9CF /* Portfolio.swift */,
 			);
 			path = Portfolio;
 			sourceTree = "<group>";
@@ -330,9 +345,9 @@
 		96945E4026D9505A0091B9CF /* Currency */ = {
 			isa = PBXGroup;
 			children = (
-				96945E4126D9505A0091B9CF /* Currency.swift */,
-				96945E4226D9505A0091B9CF /* CurrencyView.swift */,
 				96945E4326D9505A0091B9CF /* CurrencyPicker.swift */,
+				96945E4226D9505A0091B9CF /* CurrencyView.swift */,
+				96945E4126D9505A0091B9CF /* Currency.swift */,
 			);
 			path = Currency;
 			sourceTree = "<group>";
@@ -551,8 +566,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				965433C826D981AE0050CDF5 /* Asset.Properties+Profit.swift in Sources */,
+				965433BF26D97D6C0050CDF5 /* Currency.swift in Sources */,
+				965433CC26D983F40050CDF5 /* AppSettings.swift in Sources */,
+				965433C626D981150050CDF5 /* Cash.swift in Sources */,
 				96945DFE26D93BC80091B9CF /* ContentView_macOS.swift in Sources */,
+				965433C726D981890050CDF5 /* Calculator.swift in Sources */,
 				9633395026D76305000F26C2 /* TrademateApp.swift in Sources */,
+				965433C026D97DAD0050CDF5 /* CurrencyView.swift in Sources */,
+				965433C226D980500050CDF5 /* CoreFoundationToolz.swift in Sources */,
+				965433CD26D984090050CDF5 /* Portfolio.swift in Sources */,
+				965433CA26D982CD0050CDF5 /* AssetPersister.swift in Sources */,
+				965433C926D981C10050CDF5 /* Asset+Conformances.swift in Sources */,
+				965433C326D980DC0050CDF5 /* TrademateFoundation.swift in Sources */,
+				965433C526D9810C0050CDF5 /* Asset.swift in Sources */,
+				965433D026D98B0E0050CDF5 /* TrademateSwiftUI.swift in Sources */,
+				965433CE26D9841D0050CDF5 /* Portfolio+DisplayString.swift in Sources */,
+				965433C126D97DF10050CDF5 /* CurrencyPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,11 +6,11 @@ import SwiftyToolz
 struct TrademateApp: App {
     
     init() {
-//        Portfolio.shared.resetAssets(with: AssetPersister.load())
+        Portfolio.shared.resetAssets(with: AssetPersister.load())
         
         // TODO: observe each asset ...
         // persist assets whenever the array changes
-//        observations += Portfolio.shared.$assets.sink(receiveValue: AssetPersister.save)
+        observations += Portfolio.shared.$assets.sink(receiveValue: AssetPersister.save)
     }
     
     private var observations = [AnyCancellable]()
@@ -25,7 +25,7 @@ struct TrademateApp: App {
                 log("app went to background")
             case .inactive:
                 log("app became inactive")
-//                AssetPersister.save(Portfolio.shared.assets)
+                AssetPersister.save(Portfolio.shared.assets)
             case .active:
                 log("app became active")
             @unknown default:

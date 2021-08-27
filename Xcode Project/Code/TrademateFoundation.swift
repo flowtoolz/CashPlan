@@ -9,7 +9,8 @@ func double(from string: String) -> Double? {
 }
 
 extension Double {
-    func decimalString(fractionDigits: Int = 2, separator: String = "'") -> String {
+    func decimalString(fractionDigits: Int = 2,
+                       separator: String = "'") -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.groupingSeparator = separator

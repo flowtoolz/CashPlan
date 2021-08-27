@@ -33,7 +33,6 @@ struct PortfolioView: View {
                         Text("Cancel")
                     })
             }
-            .accentColor(.trademateAccent(for: colorScheme))
         }
         .onChange(of: currency) { newCurrency in
             AppSettings.shared.currency = newCurrency
@@ -41,8 +40,5 @@ struct PortfolioView: View {
     }
     
     @State private var isPresentingCurrencyPicker = false
-    
-    @Environment(\.colorScheme) private var colorScheme
-    
     @State private var currency = AppSettings.shared.currency
 }

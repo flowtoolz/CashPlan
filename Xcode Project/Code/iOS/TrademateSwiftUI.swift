@@ -1,14 +1,28 @@
 import SwiftUI
 
 extension Color {
-    static func trademateAccent(for scheme: ColorScheme) -> Color {
-        scheme == .dark ? trademateAccentDark : trademateAccentLight
+    
+    static var systemRed: Color {
+        #if os(macOS)
+        return Color(NSColor.systemRed)
+        #elseif os(iOS)
+        return Color(UIColor.systemRed)
+        #endif
     }
     
-    static let trademateAccentDark = Color(UIColor.systemYellow)
-    static let trademateAccentLight = Color(UIColor.systemOrange)
-    static let trademateRed = Color(UIColor.systemRed)
-    static let trademateGreen = Color(UIColor.systemGreen)
+    static var systemGreen: Color {
+        #if os(macOS)
+        return Color(NSColor.systemGreen)
+        #elseif os(iOS)
+        return Color(UIColor.systemGreen)
+        #endif
+    }
+    
+    static var grayedOut: Color {
+        #if os(macOS)
+        return Color(NSColor.systemGray)
+        #elseif os(iOS)
+        return Color(UIColor.systemGray3)
+        #endif
+    }
 }
-
-
