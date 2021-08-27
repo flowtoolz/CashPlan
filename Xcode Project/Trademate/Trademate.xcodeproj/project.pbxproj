@@ -14,9 +14,17 @@
 		9633395126D76305000F26C2 /* ContentView_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633392726D76304000F26C2 /* ContentView_iOS.swift */; };
 		9633395326D76305000F26C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9633392826D76305000F26C2 /* Assets.xcassets */; };
 		9633395426D76305000F26C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9633392826D76305000F26C2 /* Assets.xcassets */; };
-		966DE80326D804BE00CD0055 /* SwiftyToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 966DE80226D804BE00CD0055 /* SwiftyToolz */; };
 		966DE80526D804CA00CD0055 /* SwiftyToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 966DE80426D804CA00CD0055 /* SwiftyToolz */; };
 		96945DFE26D93BC80091B9CF /* ContentView_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945DFD26D93BC80091B9CF /* ContentView_macOS.swift */; };
+		96945E0E26D94AD20091B9CF /* FoundationToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 96945E0D26D94AD20091B9CF /* FoundationToolz */; };
+		96945E1026D94AD20091B9CF /* CombineObserver in Frameworks */ = {isa = PBXBuildFile; productRef = 96945E0F26D94AD20091B9CF /* CombineObserver */; };
+		96945E1226D94AD20091B9CF /* SwiftObserver in Frameworks */ = {isa = PBXBuildFile; productRef = 96945E1126D94AD20091B9CF /* SwiftObserver */; };
+		96945E1426D94AD20091B9CF /* SwiftUIToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 96945E1326D94AD20091B9CF /* SwiftUIToolz */; };
+		96945E1626D94B020091B9CF /* FoundationToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 96945E1526D94B020091B9CF /* FoundationToolz */; };
+		96945E1826D94B020091B9CF /* CombineObserver in Frameworks */ = {isa = PBXBuildFile; productRef = 96945E1726D94B020091B9CF /* CombineObserver */; };
+		96945E1A26D94B020091B9CF /* SwiftObserver in Frameworks */ = {isa = PBXBuildFile; productRef = 96945E1926D94B020091B9CF /* SwiftObserver */; };
+		96945E1C26D94B020091B9CF /* SwiftUIToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 96945E1B26D94B020091B9CF /* SwiftUIToolz */; };
+		96945E1E26D94B020091B9CF /* SwiftyToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 96945E1D26D94B020091B9CF /* SwiftyToolz */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +71,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				966DE80326D804BE00CD0055 /* SwiftyToolz in Frameworks */,
+				96945E1A26D94B020091B9CF /* SwiftObserver in Frameworks */,
+				96945E1E26D94B020091B9CF /* SwiftyToolz in Frameworks */,
+				96945E1826D94B020091B9CF /* CombineObserver in Frameworks */,
+				96945E1626D94B020091B9CF /* FoundationToolz in Frameworks */,
+				96945E1C26D94B020091B9CF /* SwiftUIToolz in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,7 +83,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96945E0E26D94AD20091B9CF /* FoundationToolz in Frameworks */,
 				966DE80526D804CA00CD0055 /* SwiftyToolz in Frameworks */,
+				96945E1226D94AD20091B9CF /* SwiftObserver in Frameworks */,
+				96945E1026D94AD20091B9CF /* CombineObserver in Frameworks */,
+				96945E1426D94AD20091B9CF /* SwiftUIToolz in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,7 +214,11 @@
 			);
 			name = "Trademate (iOS)";
 			packageProductDependencies = (
-				966DE80226D804BE00CD0055 /* SwiftyToolz */,
+				96945E1526D94B020091B9CF /* FoundationToolz */,
+				96945E1726D94B020091B9CF /* CombineObserver */,
+				96945E1926D94B020091B9CF /* SwiftObserver */,
+				96945E1B26D94B020091B9CF /* SwiftUIToolz */,
+				96945E1D26D94B020091B9CF /* SwiftyToolz */,
 			);
 			productName = "Trademate (iOS)";
 			productReference = 9633392D26D76305000F26C2 /* Trademate.app */;
@@ -219,6 +239,10 @@
 			name = "Trademate (macOS)";
 			packageProductDependencies = (
 				966DE80426D804CA00CD0055 /* SwiftyToolz */,
+				96945E0D26D94AD20091B9CF /* FoundationToolz */,
+				96945E0F26D94AD20091B9CF /* CombineObserver */,
+				96945E1126D94AD20091B9CF /* SwiftObserver */,
+				96945E1326D94AD20091B9CF /* SwiftUIToolz */,
 			);
 			productName = "Trademate (macOS)";
 			productReference = 9633393526D76305000F26C2 /* Trademate.app */;
@@ -294,6 +318,12 @@
 				Base,
 			);
 			mainGroup = 9633392026D76304000F26C2;
+			packageReferences = (
+				96945DFF26D949B10091B9CF /* XCRemoteSwiftPackageReference "SwiftyToolz" */,
+				96945E0226D949D20091B9CF /* XCRemoteSwiftPackageReference "SwiftObserver" */,
+				96945E0326D949ED0091B9CF /* XCRemoteSwiftPackageReference "FoundationToolz" */,
+				96945E0626D94A020091B9CF /* XCRemoteSwiftPackageReference "SwiftUIToolz" */,
+			);
 			productRefGroup = 9633392E26D76305000F26C2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -743,12 +773,79 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		96945DFF26D949B10091B9CF /* XCRemoteSwiftPackageReference "SwiftyToolz" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/flowtoolz/SwiftyToolz";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		96945E0226D949D20091B9CF /* XCRemoteSwiftPackageReference "SwiftObserver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/flowtoolz/SwiftObserver";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		96945E0326D949ED0091B9CF /* XCRemoteSwiftPackageReference "FoundationToolz" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/flowtoolz/FoundationToolz";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		96945E0626D94A020091B9CF /* XCRemoteSwiftPackageReference "SwiftUIToolz" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/flowtoolz/SwiftUIToolz";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		966DE80226D804BE00CD0055 /* SwiftyToolz */ = {
+		966DE80426D804CA00CD0055 /* SwiftyToolz */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftyToolz;
 		};
-		966DE80426D804CA00CD0055 /* SwiftyToolz */ = {
+		96945E0D26D94AD20091B9CF /* FoundationToolz */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FoundationToolz;
+		};
+		96945E0F26D94AD20091B9CF /* CombineObserver */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CombineObserver;
+		};
+		96945E1126D94AD20091B9CF /* SwiftObserver */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftObserver;
+		};
+		96945E1326D94AD20091B9CF /* SwiftUIToolz */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftUIToolz;
+		};
+		96945E1526D94B020091B9CF /* FoundationToolz */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FoundationToolz;
+		};
+		96945E1726D94B020091B9CF /* CombineObserver */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CombineObserver;
+		};
+		96945E1926D94B020091B9CF /* SwiftObserver */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftObserver;
+		};
+		96945E1B26D94B020091B9CF /* SwiftUIToolz */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftUIToolz;
+		};
+		96945E1D26D94B020091B9CF /* SwiftyToolz */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftyToolz;
 		};

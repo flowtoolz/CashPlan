@@ -1,4 +1,7 @@
 import SwiftUI
+import FoundationToolz
+import CombineObserver
+import SwiftObserver
 import SwiftyToolz
 
 struct ContentView_Previews: PreviewProvider {
@@ -20,12 +23,12 @@ struct ContentView: View {
                 NavigationLink(destination: Text("Watchlist"),
                                tag: Tab.watchlist,
                                selection: $selectedTab) {
-                    Label("Watchlist", systemImage: "star.fill")
+                    Label("Watchlist", systemImage: "star")
                 }
                 NavigationLink(destination: Text("Notifications"),
                                tag: Tab.notifications,
                                selection: $selectedTab) {
-                    Label("Notifications", systemImage: "bell.fill")
+                    Label("Notifications", systemImage: "bell")
                 }
             }
             .listStyle(SidebarListStyle())
