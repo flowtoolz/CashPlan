@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,10 +11,12 @@
 		9633394D26D76305000F26C2 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633394C26D76305000F26C2 /* Tests_macOS.swift */; };
 		9633394F26D76305000F26C2 /* TrademateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633392626D76304000F26C2 /* TrademateApp.swift */; };
 		9633395026D76305000F26C2 /* TrademateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633392626D76304000F26C2 /* TrademateApp.swift */; };
-		9633395126D76305000F26C2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633392726D76304000F26C2 /* ContentView.swift */; };
-		9633395226D76305000F26C2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633392726D76304000F26C2 /* ContentView.swift */; };
+		9633395126D76305000F26C2 /* ContentView_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633392726D76304000F26C2 /* ContentView_iOS.swift */; };
 		9633395326D76305000F26C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9633392826D76305000F26C2 /* Assets.xcassets */; };
 		9633395426D76305000F26C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9633392826D76305000F26C2 /* Assets.xcassets */; };
+		966DE80326D804BE00CD0055 /* SwiftyToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 966DE80226D804BE00CD0055 /* SwiftyToolz */; };
+		966DE80526D804CA00CD0055 /* SwiftyToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 966DE80426D804CA00CD0055 /* SwiftyToolz */; };
+		96945DFE26D93BC80091B9CF /* ContentView_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945DFD26D93BC80091B9CF /* ContentView_macOS.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +38,7 @@
 
 /* Begin PBXFileReference section */
 		9633392626D76304000F26C2 /* TrademateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrademateApp.swift; sourceTree = "<group>"; };
-		9633392726D76304000F26C2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9633392726D76304000F26C2 /* ContentView_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView_iOS.swift; sourceTree = "<group>"; };
 		9633392826D76305000F26C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9633392D26D76305000F26C2 /* Trademate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trademate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9633393026D76305000F26C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +51,11 @@
 		9633394826D76305000F26C2 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9633394C26D76305000F26C2 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		9633394E26D76305000F26C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		966DE7FD26D803FC00CD0055 /* SwiftyToolz */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftyToolz; path = ../../../SwiftyToolz; sourceTree = "<group>"; };
+		966DE7FE26D8041300CD0055 /* SwiftObserver */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftObserver; path = ../../../SwiftObserver; sourceTree = "<group>"; };
+		966DE7FF26D8041300CD0055 /* FoundationToolz */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FoundationToolz; path = ../../../FoundationToolz; sourceTree = "<group>"; };
+		966DE80026D8041300CD0055 /* SwiftUIToolz */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftUIToolz; path = ../../../SwiftUIToolz; sourceTree = "<group>"; };
+		96945DFD26D93BC80091B9CF /* ContentView_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView_macOS.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				966DE80326D804BE00CD0055 /* SwiftyToolz in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				966DE80526D804CA00CD0055 /* SwiftyToolz in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,11 +96,13 @@
 			isa = PBXGroup;
 			children = (
 				9633392526D76304000F26C2 /* Shared */,
+				966DE7FC26D803DD00CD0055 /* Local Packages */,
 				9633392F26D76305000F26C2 /* iOS */,
 				9633393626D76305000F26C2 /* macOS */,
 				9633394026D76305000F26C2 /* Tests iOS */,
 				9633394B26D76305000F26C2 /* Tests macOS */,
 				9633392E26D76305000F26C2 /* Products */,
+				966DE80126D804BE00CD0055 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,7 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				9633392626D76304000F26C2 /* TrademateApp.swift */,
-				9633392726D76304000F26C2 /* ContentView.swift */,
+				9633392726D76304000F26C2 /* ContentView_iOS.swift */,
+				96945DFD26D93BC80091B9CF /* ContentView_macOS.swift */,
 				9633392826D76305000F26C2 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -151,6 +163,24 @@
 			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
+		966DE7FC26D803DD00CD0055 /* Local Packages */ = {
+			isa = PBXGroup;
+			children = (
+				966DE7FF26D8041300CD0055 /* FoundationToolz */,
+				966DE7FE26D8041300CD0055 /* SwiftObserver */,
+				966DE80026D8041300CD0055 /* SwiftUIToolz */,
+				966DE7FD26D803FC00CD0055 /* SwiftyToolz */,
+			);
+			name = "Local Packages";
+			sourceTree = "<group>";
+		};
+		966DE80126D804BE00CD0055 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -167,6 +197,9 @@
 			dependencies = (
 			);
 			name = "Trademate (iOS)";
+			packageProductDependencies = (
+				966DE80226D804BE00CD0055 /* SwiftyToolz */,
+			);
 			productName = "Trademate (iOS)";
 			productReference = 9633392D26D76305000F26C2 /* Trademate.app */;
 			productType = "com.apple.product-type.application";
@@ -184,6 +217,9 @@
 			dependencies = (
 			);
 			name = "Trademate (macOS)";
+			packageProductDependencies = (
+				966DE80426D804CA00CD0055 /* SwiftyToolz */,
+			);
 			productName = "Trademate (macOS)";
 			productReference = 9633393526D76305000F26C2 /* Trademate.app */;
 			productType = "com.apple.product-type.application";
@@ -308,7 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9633395126D76305000F26C2 /* ContentView.swift in Sources */,
+				9633395126D76305000F26C2 /* ContentView_iOS.swift in Sources */,
 				9633394F26D76305000F26C2 /* TrademateApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,7 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9633395226D76305000F26C2 /* ContentView.swift in Sources */,
+				96945DFE26D93BC80091B9CF /* ContentView_macOS.swift in Sources */,
 				9633395026D76305000F26C2 /* TrademateApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -706,6 +742,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		966DE80226D804BE00CD0055 /* SwiftyToolz */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftyToolz;
+		};
+		966DE80426D804CA00CD0055 /* SwiftyToolz */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftyToolz;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9633392126D76304000F26C2 /* Project object */;
 }
