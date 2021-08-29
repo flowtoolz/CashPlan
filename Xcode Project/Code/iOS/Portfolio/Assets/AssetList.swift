@@ -21,6 +21,7 @@ struct AssetList: View {
                 .foregroundColor(.accentColor)
             }
         }
+        .listStyle(PlainListStyle())
         .navigationTitle("Assets")
         .navigationBarItems(trailing: Button {
             isPresentingCurrencyPicker = true

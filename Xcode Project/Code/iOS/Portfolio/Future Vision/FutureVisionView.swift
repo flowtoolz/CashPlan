@@ -2,82 +2,81 @@ import SwiftUI
 
 struct FutureVisionView: View {
     var body: some View {
-        VStack {
-            Form {
-                Section(header: Text("Portfolio in \(inputStrings.yearsString) years")) {
-                    VStack(alignment: .leading, spacing: 12) {
-                        HStack(alignment: .firstTextBaseline) {
-                            Label("Balance", systemImage: "banknote")
-                                .fixedSize(horizontal: true, vertical: false)
-                                .accentColor(.secondary)
-                            Spacer()
-                            Text(cashString)
+        List {
+            Section(header: Text("Portfolio in \(inputStrings.yearsString) years")) {
+                VStack(alignment: .leading, spacing: 12) {
+                    HStack(alignment: .firstTextBaseline) {
+                        Label("Balance", systemImage: "banknote")
+                            .fixedSize(horizontal: true, vertical: false)
+                            .accentColor(.secondary)
+                        Spacer()
+                        Text(cashString)
+                            .font(.system(.body, design: .monospaced))
+                            .foregroundColor(.secondary)
+                    }
+                    HStack(alignment: .firstTextBaseline) {
+                        Label {
+                            Text("Cash Flow")
+                        } icon: {
+                            Image(systemName: "calendar.badge.plus")
+                                .foregroundColor(.secondary)
+                        }
+                        Spacer()
+                        VStack(alignment: .trailing) {
+                            Text(cashflowString)
                                 .font(.system(.body, design: .monospaced))
+                                .foregroundColor(.systemGreen)
+                            Text("per month")
                                 .foregroundColor(.secondary)
+                                .font(.footnote)
                         }
-                        HStack(alignment: .firstTextBaseline) {
-                            Label {
-                                Text("Cash Flow")
-                            } icon: {
-                                Image(systemName: "calendar.badge.plus")
-                                    .foregroundColor(.secondary)
-                            }
-                            Spacer()
-                            VStack(alignment: .trailing) {
-                                Text(cashflowString)
-                                    .font(.system(.body, design: .monospaced))
-                                    .foregroundColor(.systemGreen)
-                                Text("per month")
-                                    .foregroundColor(.secondary)
-                                    .font(.footnote)
-                            }
-                        }
-                    }.padding([.top, .bottom], 6)
+                    }
+                }.padding([.top, .bottom], 6)
+            }
+            Section(header: Text("Trading Target")) {
+                HStack {
+                    Label {
+                        Text("Monthly Investment:")
+                            .foregroundColor(.secondary)
+                            .fixedSize(horizontal: true, vertical: false)
+                    } icon: {
+                        Image(systemName: "calendar.badge.minus")
+                    }
+                    TextField("", text: $inputStrings.monthlyInvestmentString)
+                        .keyboardType(.numberPad)
+                        .multilineTextAlignment(.trailing)
+                        .font(.system(.body, design: .monospaced))
                 }
-                Section(header: Text("Trading Target")) {
-                    HStack {
-                        Label {
-                            Text("Monthly Investment:")
-                                .foregroundColor(.secondary)
-                                .fixedSize(horizontal: true, vertical: false)
-                        } icon: {
-                            Image(systemName: "calendar.badge.minus")
-                        }
-                        TextField("", text: $inputStrings.monthlyInvestmentString)
-                            .keyboardType(.numberPad)
-                            .multilineTextAlignment(.trailing)
-                            .font(.system(.body, design: .monospaced))
+                HStack {
+                    Label {
+                        Text("Annual Return:")
+                            .foregroundColor(.secondary)
+                            .fixedSize(horizontal: true, vertical: false)
+                    } icon: {
+                        Image(systemName: "percent")
                     }
-                    HStack {
-                        Label {
-                            Text("Annual Return:")
-                                .foregroundColor(.secondary)
-                                .fixedSize(horizontal: true, vertical: false)
-                        } icon: {
-                            Image(systemName: "percent")
-                        }
-                        
-                        TextField("", text: $inputStrings.growthPercentString)
-                            .keyboardType(.decimalPad)
-                            .multilineTextAlignment(.trailing)
-                            .font(.system(.body, design: .monospaced))
+                    
+                    TextField("", text: $inputStrings.growthPercentString)
+                        .keyboardType(.decimalPad)
+                        .multilineTextAlignment(.trailing)
+                        .font(.system(.body, design: .monospaced))
+                }
+                HStack {
+                    Label {
+                        Text("Years:")
+                            .foregroundColor(.secondary)
+                            .fixedSize(horizontal: true, vertical: false)
+                    } icon: {
+                        Image(systemName: "hourglass")
                     }
-                    HStack {
-                        Label {
-                            Text("Years:")
-                                .foregroundColor(.secondary)
-                                .fixedSize(horizontal: true, vertical: false)
-                        } icon: {
-                            Image(systemName: "hourglass")
-                        }
-                        TextField("", text: $inputStrings.yearsString)
-                            .keyboardType(.numberPad)
-                            .multilineTextAlignment(.trailing)
-                            .font(.system(.body, design: .monospaced))
-                    }
+                    TextField("", text: $inputStrings.yearsString)
+                        .keyboardType(.numberPad)
+                        .multilineTextAlignment(.trailing)
+                        .font(.system(.body, design: .monospaced))
                 }
             }
         }
+        .listStyle(GroupedListStyle())
         .navigationTitle("Target")
         .navigationBarItems(trailing: Button {
             isPresentingCurrencyPicker = true

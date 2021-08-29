@@ -16,7 +16,7 @@ struct FeatureLabels: View {
         Label {
             VStack(alignment: .leading) {
                 Text("Metrics for Charts and Alerts")
-                Text("Like Volume, RSI and SMA")
+                Text("Like volume, RSI and SMA")
                     .foregroundColor(.secondary)
             }
         } icon: {
@@ -27,7 +27,7 @@ struct FeatureLabels: View {
         Label {
             VStack(alignment: .leading) {
                 Text("Ticker Watchlists")
-                Text("Tag-based, with price targets etc.")
+                Text("Tag-based, price targets etc.")
                     .foregroundColor(.secondary)
             }
         } icon: {
@@ -37,7 +37,7 @@ struct FeatureLabels: View {
         
         Label {
             VStack(alignment: .leading) {
-                Text("Charts (Obviously)")
+                Text("Charts (obviously)")
                 Text("Including unconventional types")
                     .foregroundColor(.secondary)
             }
@@ -60,7 +60,7 @@ struct FeatureLabels: View {
         Label {
             VStack(alignment: .leading) {
                 Text("Test Custom Buy/Sell Signals")
-                Text("See performance on historic data")
+                Text("Performance on historic data")
                     .foregroundColor(.secondary)
             }
         } icon: {
@@ -82,7 +82,7 @@ struct FeatureLabels: View {
         Label {
             VStack(alignment: .leading) {
                 Text("Sync iOS and macOS")
-                Text("Save portfolio, tags etc. to iCloud")
+                Text("Portfolio, tags etc. in iCloud")
                     .foregroundColor(.secondary)
             }
         } icon: {

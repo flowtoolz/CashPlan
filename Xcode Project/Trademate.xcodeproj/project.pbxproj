@@ -332,9 +332,9 @@
 		96945E3426D9505A0091B9CF /* Future Vision */ = {
 			isa = PBXGroup;
 			children = (
-				96945E3526D9505A0091B9CF /* FutureVision.swift */,
-				96945E3626D9505A0091B9CF /* FutureVisionView.swift */,
 				96945E3726D9505A0091B9CF /* FutureVisionOverView.swift */,
+				96945E3626D9505A0091B9CF /* FutureVisionView.swift */,
+				96945E3526D9505A0091B9CF /* FutureVision.swift */,
 			);
 			path = "Future Vision";
 			sourceTree = "<group>";

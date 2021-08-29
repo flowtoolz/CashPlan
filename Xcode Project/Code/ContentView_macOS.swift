@@ -28,7 +28,7 @@ struct ContentView: View {
                 NavigationLink(destination: FeedbackView(),
                                tag: Tab.notifications,
                                selection: $selectedTab) {
-                    Label("About", systemImage: "bubble.left")
+                    Label("Feedback", systemImage: "bubble.left")
                 }
             }
             .listStyle(SidebarListStyle())

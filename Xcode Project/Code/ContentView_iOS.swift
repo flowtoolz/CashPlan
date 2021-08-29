@@ -22,8 +22,8 @@ struct ContentView: View {
             
             FeedbackView()
                 .tabItem {
-                    Image(systemName: "bubble.left.fill")
-                    Text("About")
+                    Image(systemName: "exclamationmark.bubble.fill")
+                    Text("Feedback")
                 }
 //            Text("Watchlist")
 //                .tabItem {

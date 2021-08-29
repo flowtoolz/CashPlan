@@ -7,7 +7,7 @@ struct AssetsOverView: View {
             Label {
                 VStack(alignment: .leading) {
                     HStack(alignment: .firstTextBaseline) {
-                        Text("\(portfolio.assets.count) Asset" + (portfolio.assets.count > 1 ? "s" : ""))
+                        Text("\(portfolio.assets.count) Asset" + (portfolio.assets.count != 1 ? "s" : ""))
                             .font(.body.weight(.medium))
                         Spacer()
                         NavigationChevron()

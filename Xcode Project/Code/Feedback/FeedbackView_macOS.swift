@@ -8,7 +8,7 @@ struct FeedbackView: View {
                 Text("Trademate is at the earliest stage 🚀")
                     .padding(.bottom)
                 
-                Text("Here are some of my plans:")
+                Text("Here are some of my ideas:")
                     .padding(.bottom)
                 
                 VStack(alignment: .leading,
@@ -17,7 +17,7 @@ struct FeedbackView: View {
                 }
                 .padding(.bottom)
                 
-                Text("Shape the app with your ideas:")
+                Text("I'd love to hear your ideas:")
                 
                 FeedbackLink()
                 
