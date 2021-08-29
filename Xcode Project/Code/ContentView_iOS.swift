@@ -19,16 +19,22 @@ struct ContentView: View {
                     Image(systemName: "chart.pie.fill")
                     Text("Portfolio")
                 }
-            Text("Watchlist")
+            
+            FeedbackView()
                 .tabItem {
-                    Image(systemName: "star.fill")
-                    Text("Watchlist")
+                    Image(systemName: "bubble.left.fill")
+                    Text("About")
                 }
-            AlertsView()
-                .tabItem {
-                    Image(systemName: "bell.fill")
-                    Text("Notifications")
-                }
+//            Text("Watchlist")
+//                .tabItem {
+//                    Image(systemName: "star.fill")
+//                    Text("Watchlist")
+//                }
+//            AlertsView()
+//                .tabItem {
+//                    Image(systemName: "bell.fill")
+//                    Text("Notifications")
+//                }
         }
     }
 }

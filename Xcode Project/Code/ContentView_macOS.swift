@@ -15,20 +15,20 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                NavigationLink(destination: Text("Portfolio"),
+                NavigationLink(destination: Text("Assets"),
                                tag: Tab.portfolio,
                                selection: $selectedTab) {
-                    Label("Portfolio", systemImage: "chart.pie")
+                    Label("Assets", systemImage: "building.2")
                 }
-                NavigationLink(destination: Text("Watchlist"),
+                NavigationLink(destination: Text("Target"),
                                tag: Tab.watchlist,
                                selection: $selectedTab) {
-                    Label("Watchlist", systemImage: "star")
+                    Label("Target", systemImage: "target")
                 }
-                NavigationLink(destination: Text("Notifications"),
+                NavigationLink(destination: FeedbackView(),
                                tag: Tab.notifications,
                                selection: $selectedTab) {
-                    Label("Notifications", systemImage: "bell")
+                    Label("About", systemImage: "bubble.left")
                 }
             }
             .listStyle(SidebarListStyle())
@@ -46,7 +46,6 @@ struct ContentView: View {
             }
         }
     }
-    
     
     @State private var selectedTab: Tab? = .portfolio
     

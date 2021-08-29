@@ -14,6 +14,7 @@ struct PortfolioView: View {
                     FutureVisionOverView()
                 }
             }
+            .listStyle(PlainListStyle())
             .navigationTitle("Portfolio")
             .navigationBarItems(trailing: Button {
                 isPresentingCurrencyPicker = true
