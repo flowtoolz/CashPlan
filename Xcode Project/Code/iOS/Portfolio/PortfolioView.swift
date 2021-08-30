@@ -7,12 +7,9 @@ struct PortfolioView: View {
     var body: some View {
         NavigationView {
             List {
-                PlainNavigationLink(destination: AssetList(isPresentingCurrencyPicker: $isPresentingCurrencyPicker)) {
-                    AssetsOverView()
-                }
-                PlainNavigationLink(destination: FutureVisionView(isPresentingCurrencyPicker: $isPresentingCurrencyPicker)) {
-                    FutureVisionOverView()
-                }
+                AssetsOverView(isPresentingCurrencyPicker: $isPresentingCurrencyPicker)
+                
+                FutureVisionOverView(isPresentingCurrencyPicker: $isPresentingCurrencyPicker)
             }
             .listStyle(PlainListStyle())
             .navigationTitle("Portfolio")

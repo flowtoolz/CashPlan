@@ -34,5 +34,5 @@ class AssetListRowModel {
     // MARK: - Asset
     
     var isLoss: Bool { asset.properties.isLoss }
-    private let asset: Asset
+    let asset: Asset
 }
