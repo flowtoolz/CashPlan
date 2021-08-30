@@ -344,8 +344,8 @@
 			isa = PBXGroup;
 			children = (
 				96945E3926D9505A0091B9CF /* AssetsOverView.swift */,
-				96945E3A26D9505A0091B9CF /* AssetListRow.swift */,
 				96945E3B26D9505A0091B9CF /* AssetList.swift */,
+				96945E3A26D9505A0091B9CF /* AssetListRow.swift */,
 				96945E3C26D9505A0091B9CF /* AssetListRowModel.swift */,
 			);
 			path = Assets;

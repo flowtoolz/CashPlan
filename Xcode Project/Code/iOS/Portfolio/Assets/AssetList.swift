@@ -21,11 +21,13 @@ struct AssetList: View {
         }
         .listStyle(PlainListStyle())
         .navigationTitle("Assets")
-        .navigationBarItems(trailing: Button {
-            isPresentingCurrencyPicker = true
-        } label: {
-            CurrencyView(currency: currency)
-        })
+        .toolbar {
+            Button {
+                isPresentingCurrencyPicker = true
+            } label: {
+                CurrencyView(currency: currency)
+            }
+        }
         .bind($currency, to: AppSettings.shared.$currency.new())
     }
     

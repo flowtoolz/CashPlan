@@ -13,11 +13,13 @@ struct PortfolioView: View {
             }
             .listStyle(PlainListStyle())
             .navigationTitle("Portfolio")
-            .navigationBarItems(trailing: Button {
-                isPresentingCurrencyPicker = true
-            } label: {
-                CurrencyView(currency: currency)
-            })
+            .toolbar {
+                Button {
+                    isPresentingCurrencyPicker = true
+                } label: {
+                    CurrencyView(currency: currency)
+                }
+            }
         }
         .sheet(isPresented: $isPresentingCurrencyPicker) {
             NavigationView {
