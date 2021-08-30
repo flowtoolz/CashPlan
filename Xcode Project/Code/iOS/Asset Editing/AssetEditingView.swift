@@ -23,21 +23,13 @@ struct AssetEditingView: View {
 class AssetEditingViewModel {
     
     init(_ asset: Asset) {
-        self.asset = asset
-        self.formModel = AssetEditingFormModel(.init(asset))
-        
-        formObservation = formModel.$editingState.sink { [weak self] newState in
-            guard let self = self,
-                  newState != self.formModel.editingState else { return }
-            newState.writeValidInputs(to: asset)
+        self.formModel = AssetEditingFormModel(.init(asset)) { committedState in
+            committedState.writeValidInputs(to: asset)
         }
     }
     
-    lazy var title = formModel.$editingState.map { $0.name }
+    lazy var title = formModel.$name
     var defaultTitle: String { formModel.editingState.name }
     
-    private var formObservation: AnyCancellable?
     let formModel: AssetEditingFormModel
-    
-    private let asset: Asset
 }

@@ -30,6 +30,7 @@
 		965433CD26D984090050CDF5 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3326D9505A0091B9CF /* Portfolio.swift */; };
 		965433CE26D9841D0050CDF5 /* Portfolio+DisplayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3226D9505A0091B9CF /* Portfolio+DisplayString.swift */; };
 		965433D026D98B0E0050CDF5 /* TrademateSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3026D9505A0091B9CF /* TrademateSwiftUI.swift */; };
+		9663816926DD0E44009413F1 /* AssetEditingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E2926D9505A0091B9CF /* AssetEditingState.swift */; };
 		966DE80526D804CA00CD0055 /* SwiftyToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 966DE80426D804CA00CD0055 /* SwiftyToolz */; };
 		96945DFE26D93BC80091B9CF /* ContentView_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945DFD26D93BC80091B9CF /* ContentView_macOS.swift */; };
 		96945E0E26D94AD20091B9CF /* FoundationToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 96945E0D26D94AD20091B9CF /* FoundationToolz */; };
@@ -589,6 +590,7 @@
 				965433C826D981AE0050CDF5 /* Asset.Properties+Profit.swift in Sources */,
 				965433BF26D97D6C0050CDF5 /* Currency.swift in Sources */,
 				965433CC26D983F40050CDF5 /* AppSettings.swift in Sources */,
+				9663816926DD0E44009413F1 /* AssetEditingState.swift in Sources */,
 				965433C626D981150050CDF5 /* Cash.swift in Sources */,
 				96945DFE26D93BC80091B9CF /* ContentView_macOS.swift in Sources */,
 				965433C726D981890050CDF5 /* Calculator.swift in Sources */,

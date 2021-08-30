@@ -48,8 +48,10 @@ class Portfolio: Observer, Combine.ObservableObject {
         guard !isObserving(asset.$properties) else { return }
         
         observe(asset.$properties) { [weak self] _ in
-            self?.updateAssetOrder()
-            self?.updateMetrics()
+            DispatchQueue.main.async { // ensure exclusive access to Asset.properties
+                self?.updateAssetOrder()
+                self?.updateMetrics()
+            }
         }
     }
     
