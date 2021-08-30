@@ -36,7 +36,7 @@ class AssetCreationViewModel {
     
     static let addButtonTitle = "Add"
     
-    lazy var title = formModel.$name
+    lazy var title = formModel.name
         .map { $0.isEmpty ? Self.defaultTitle : $0 }
     
     static let defaultTitle = "New Asset"

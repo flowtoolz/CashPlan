@@ -94,20 +94,13 @@ class AssetEditingFormModel: ObservableObject {
          handleCommit: @escaping (AssetEditingState) -> Void = { _ in }) {
         self.editingState = editingState
         self.handleCommit = handleCommit
-        name = editingState.name
     }
     
     func commit() { handleCommit(editingState) }
     
     private let handleCommit: (AssetEditingState) -> Void
     
-    var editingState: AssetEditingState {
-        didSet {
-            if name != editingState.name {
-                name = editingState.name
-            }
-        }
-    }
+    lazy var name = $editingState.map { $0.name }
     
-    @Published var name: String
+    @Published var editingState: AssetEditingState
 }

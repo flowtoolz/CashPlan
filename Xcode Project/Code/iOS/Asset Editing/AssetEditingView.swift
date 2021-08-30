@@ -28,7 +28,7 @@ class AssetEditingViewModel {
         }
     }
     
-    lazy var title = formModel.$name
+    lazy var title = formModel.name
     var defaultTitle: String { formModel.editingState.name }
     
     let formModel: AssetEditingFormModel
