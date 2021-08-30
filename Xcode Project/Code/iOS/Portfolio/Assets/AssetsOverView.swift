@@ -17,7 +17,7 @@ struct AssetsOverView: View {
                             .foregroundColor(.secondary)
                         Spacer()
                         Text(portfolio.returnPercentageString)
-                            .font(.system(.title2, design: .monospaced))
+                            .font(.system(.body, design: .monospaced))
                             .foregroundColor(portfolio.isAtALoss ? .systemRed : .systemGreen)
                     }
                     HStack(alignment: .firstTextBaseline) {
@@ -25,7 +25,7 @@ struct AssetsOverView: View {
                             .foregroundColor(.secondary)
                         Spacer()
                         Text(portfolio.valueDisplayString)
-                            .font(.system(.title2, design: .monospaced))
+                            .font(.system(.body, design: .monospaced))
                             .foregroundColor(.secondary)
                     }
                 }

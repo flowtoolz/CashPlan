@@ -17,7 +17,7 @@ struct FutureVisionOverView: View {
                             .foregroundColor(.secondary)
                         Spacer()
                         Text(futureVision.output.cash.decimalString(fractionDigits: 0))
-                            .font(.system(.title2, design: .monospaced))
+                            .font(.system(.body, design: .monospaced))
                             .foregroundColor(.secondary)
                     }
                     HStack(alignment: .firstTextBaseline) {
@@ -25,7 +25,7 @@ struct FutureVisionOverView: View {
                             .foregroundColor(.secondary)
                         Spacer()
                         Text("+" + futureVision.output.cashflow.decimalString(fractionDigits: 0))
-                            .font(.system(.title2, design: .monospaced))
+                            .font(.system(.body, design: .monospaced))
                             .foregroundColor(.systemGreen)
                     }
                 }
