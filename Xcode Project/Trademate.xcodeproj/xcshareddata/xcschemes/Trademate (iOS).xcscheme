@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9633393426D76305000F26C2"
+               BlueprintIdentifier = "9633392C26D76305000F26C2"
                BuildableName = "Trademate.app"
-               BlueprintName = "Trademate (macOS)"
+               BlueprintName = "Trademate (iOS)"
                ReferencedContainer = "container:Trademate.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9633394726D76305000F26C2"
-               BuildableName = "Tests macOS.xctest"
-               BlueprintName = "Tests macOS"
+               BlueprintIdentifier = "9633393C26D76305000F26C2"
+               BuildableName = "Tests iOS.xctest"
+               BlueprintName = "Tests iOS"
                ReferencedContainer = "container:Trademate.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -54,9 +54,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9633393426D76305000F26C2"
+            BlueprintIdentifier = "9633392C26D76305000F26C2"
             BuildableName = "Trademate.app"
-            BlueprintName = "Trademate (macOS)"
+            BlueprintName = "Trademate (iOS)"
             ReferencedContainer = "container:Trademate.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -78,9 +78,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9633393426D76305000F26C2"
+            BlueprintIdentifier = "9633392C26D76305000F26C2"
             BuildableName = "Trademate.app"
-            BlueprintName = "Trademate (macOS)"
+            BlueprintName = "Trademate (iOS)"
             ReferencedContainer = "container:Trademate.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
