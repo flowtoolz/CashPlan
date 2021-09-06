@@ -12,7 +12,9 @@ struct AssetCreationView: View {
         AssetEditingForm(viewModel: viewModel.formModel)
             .navigationTitle(title)
             .navigationBarItems(trailing: Button {
-                viewModel.addButtonWasTapped()
+                viewModel.addButtonWasTapped { shouldDismiss in
+                    if shouldDismiss { dismiss() }
+                }
             } label: {
                 Text(AssetCreationViewModel.addButtonTitle)
             })
@@ -22,6 +24,12 @@ struct AssetCreationView: View {
     @State private var title = AssetCreationViewModel.defaultTitle
     
     private let viewModel: AssetCreationViewModel
+    
+    // programmatic dismissal
+    private func dismiss() {
+        presentationMode.wrappedValue.dismiss()
+    }
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 }
 
 class AssetCreationViewModel {
@@ -30,8 +38,13 @@ class AssetCreationViewModel {
         self.action = action
     }
     
-    func addButtonWasTapped() {
-        formModel.editingState.asset.forSome(action)
+    func addButtonWasTapped(shouldDismiss: (Bool) -> Void) {
+        if let asset = formModel.editingState.asset {
+            action(asset)
+            shouldDismiss(true)
+        } else {
+            shouldDismiss(false)
+        }
     }
     
     static let addButtonTitle = "Add"

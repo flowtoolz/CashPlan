@@ -4,11 +4,11 @@ import SwiftObserver
 extension AssetEditingState {
     
     init(_ asset: Asset) {
-        name = asset.properties.name
-        amountString = "\(asset.properties.amount)"
-        currency = asset.properties.currency
-        openingPriceString = "\(asset.properties.openingPrice)"
-        priceString = "\(asset.properties.price)"
+        self.init(name: asset.properties.name,
+                  amountString: "\(asset.properties.amount)",
+                  currency: asset.properties.currency,
+                  openingPriceString: "\(asset.properties.openingPrice)",
+                  priceString: "\(asset.properties.price)")
     }
     
     var asset: Asset? {
@@ -50,7 +50,7 @@ extension AssetEditingState {
 struct AssetEditingState: Equatable {
     var name = ""
     var amountString = ""
-    var currency = Currency.usDollar
+    var currency = AppSettings.shared.currency
     var openingPriceString = ""
     var priceString = ""
 }

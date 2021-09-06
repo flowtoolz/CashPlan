@@ -10,8 +10,7 @@ struct AssetList: View {
             }
             .onDelete(perform: delete)
 
-            NavigationLink(destination: assetCreationView,
-                           isActive: $isPresentingAssetCreationView) {
+            NavigationLink(destination: assetCreationView) {
                 HStack {
                     Image(systemName: "plus")
                     Text("Add Asset")
@@ -33,8 +32,9 @@ struct AssetList: View {
     
     private var assetCreationView: some View {
         AssetCreationView { newAsset in
-            isPresentingAssetCreationView = false
-            Portfolio.shared.add(newAsset)
+            DispatchQueue.main.async {
+                Portfolio.shared.add(newAsset)
+            }
         }
     }
     
@@ -42,7 +42,6 @@ struct AssetList: View {
         portfolio.removeAsset(at: offsets)
     }
     
-    @State private var isPresentingAssetCreationView = false
     @State private var currency = AppSettings.shared.currency
     
     @Binding private(set) var isPresentingCurrencyPicker: Bool
