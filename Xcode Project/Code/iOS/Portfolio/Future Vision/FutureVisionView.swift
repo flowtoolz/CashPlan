@@ -91,6 +91,9 @@ struct FutureVisionView: View {
             }
         }
         .bind($currency, to: AppSettings.shared.$currency.new())
+        .refreshable {
+            print("✅ REFRESH Future Vision")
+        }
     }
     
     @State private var inputStrings = CashFlowInputStrings(FutureVision.shared.input)

@@ -36,5 +36,8 @@ struct ContentView: View {
 //                    Text("Notifications")
 //                }
         }
+        .refreshable {
+            print("✅ REFRESH Everything")
+        }
     }
 }

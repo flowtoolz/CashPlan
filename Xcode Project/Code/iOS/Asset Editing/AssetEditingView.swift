@@ -13,6 +13,9 @@ struct AssetEditingView: View {
         AssetEditingForm(viewModel: viewModel.formModel)
             .navigationTitle(title)
             .bind($title, to: viewModel.title)
+            .refreshable {
+                print("✅ REFRESH Edited Asset")
+            }
     }
     
     @State private var title: String

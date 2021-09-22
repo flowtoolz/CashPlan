@@ -28,6 +28,9 @@ struct AssetList: View {
             }
         }
         .bind($currency, to: AppSettings.shared.$currency.new())
+        .refreshable {
+            print("✅ REFRESH Asset List")
+        }
     }
     
     private var assetCreationView: some View {
