@@ -14,7 +14,7 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            PortfolioView()
+            PortfolioOverviewView()
                 .tabItem {
                     Image(systemName: "chart.pie.fill")
                     Text("Portfolio")

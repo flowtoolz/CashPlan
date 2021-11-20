@@ -27,11 +27,11 @@
 		965433C926D981C10050CDF5 /* Asset+Conformances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E2C26D9505A0091B9CF /* Asset+Conformances.swift */; };
 		965433CA26D982CD0050CDF5 /* AssetPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E2626D9505A0091B9CF /* AssetPersister.swift */; };
 		965433CC26D983F40050CDF5 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E2326D9505A0091B9CF /* AppSettings.swift */; };
-		965433CD26D984090050CDF5 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3326D9505A0091B9CF /* Portfolio.swift */; };
-		965433CE26D9841D0050CDF5 /* Portfolio+DisplayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3226D9505A0091B9CF /* Portfolio+DisplayString.swift */; };
 		965433D026D98B0E0050CDF5 /* TrademateSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3026D9505A0091B9CF /* TrademateSwiftUI.swift */; };
 		9663816926DD0E44009413F1 /* AssetEditingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E2926D9505A0091B9CF /* AssetEditingState.swift */; };
 		966DE80526D804CA00CD0055 /* SwiftyToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 966DE80426D804CA00CD0055 /* SwiftyToolz */; };
+		96709FA22749255600D246CE /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3326D9505A0091B9CF /* Portfolio.swift */; };
+		96709FA32749257600D246CE /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E2226D9505A0091B9CF /* AlertsView.swift */; };
 		96945DFE26D93BC80091B9CF /* ContentView_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945DFD26D93BC80091B9CF /* ContentView_macOS.swift */; };
 		96945E0E26D94AD20091B9CF /* FoundationToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 96945E0D26D94AD20091B9CF /* FoundationToolz */; };
 		96945E1026D94AD20091B9CF /* CombineObserver in Frameworks */ = {isa = PBXBuildFile; productRef = 96945E0F26D94AD20091B9CF /* CombineObserver */; };
@@ -58,7 +58,7 @@
 		96945E7126D9508F0091B9CF /* AssetEditingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E2926D9505A0091B9CF /* AssetEditingState.swift */; };
 		96945E7226D9508F0091B9CF /* AssetCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E2B26D9505A0091B9CF /* AssetCreationView.swift */; };
 		96945E7326D9509D0091B9CF /* Portfolio+DisplayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3226D9505A0091B9CF /* Portfolio+DisplayString.swift */; };
-		96945E7426D9509D0091B9CF /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3D26D9505A0091B9CF /* PortfolioView.swift */; };
+		96945E7426D9509D0091B9CF /* PortfolioOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3D26D9505A0091B9CF /* PortfolioOverviewView.swift */; };
 		96945E7526D9509D0091B9CF /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3326D9505A0091B9CF /* Portfolio.swift */; };
 		96945E7626D950A30091B9CF /* FutureVisionOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3726D9505A0091B9CF /* FutureVisionOverView.swift */; };
 		96945E7726D950A30091B9CF /* FutureVisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3626D9505A0091B9CF /* FutureVisionView.swift */; };
@@ -135,7 +135,7 @@
 		96945E3A26D9505A0091B9CF /* AssetListRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetListRow.swift; sourceTree = "<group>"; };
 		96945E3B26D9505A0091B9CF /* AssetList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetList.swift; sourceTree = "<group>"; };
 		96945E3C26D9505A0091B9CF /* AssetListRowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetListRowModel.swift; sourceTree = "<group>"; };
-		96945E3D26D9505A0091B9CF /* PortfolioView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioView.swift; sourceTree = "<group>"; };
+		96945E3D26D9505A0091B9CF /* PortfolioOverviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioOverviewView.swift; sourceTree = "<group>"; };
 		96945E3E26D9505A0091B9CF /* TrademateFoundation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrademateFoundation.swift; sourceTree = "<group>"; };
 		96945E3F26D9505A0091B9CF /* CoreFoundationToolz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreFoundationToolz.swift; sourceTree = "<group>"; };
 		96945E4126D9505A0091B9CF /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
@@ -209,9 +209,11 @@
 				96945DFD26D93BC80091B9CF /* ContentView_macOS.swift */,
 				96B73E9A26DBC3D900EE7AC0 /* Feedback */,
 				96945E1F26D9505A0091B9CF /* iOS */,
+				96945E2226D9505A0091B9CF /* AlertsView.swift */,
 				96945E2426D9505A0091B9CF /* Asset */,
 				96945E4026D9505A0091B9CF /* Currency */,
 				96945E2326D9505A0091B9CF /* AppSettings.swift */,
+				96945E3026D9505A0091B9CF /* TrademateSwiftUI.swift */,
 				96945E3E26D9505A0091B9CF /* TrademateFoundation.swift */,
 				96945E3F26D9505A0091B9CF /* CoreFoundationToolz.swift */,
 				9633392826D76305000F26C2 /* Assets.xcassets */,
@@ -286,9 +288,11 @@
 		96945E1F26D9505A0091B9CF /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				96945E2226D9505A0091B9CF /* AlertsView.swift */,
-				96945E3026D9505A0091B9CF /* TrademateSwiftUI.swift */,
-				96945E3126D9505A0091B9CF /* Portfolio */,
+				96945E3D26D9505A0091B9CF /* PortfolioOverviewView.swift */,
+				96945E3426D9505A0091B9CF /* Future Vision */,
+				96945E3826D9505A0091B9CF /* Asset List */,
+				96945E3226D9505A0091B9CF /* Portfolio+DisplayString.swift */,
+				96945E3326D9505A0091B9CF /* Portfolio.swift */,
 				96945E2726D9505A0091B9CF /* Asset Editing */,
 			);
 			path = iOS;
@@ -318,18 +322,6 @@
 			path = "Asset Editing";
 			sourceTree = "<group>";
 		};
-		96945E3126D9505A0091B9CF /* Portfolio */ = {
-			isa = PBXGroup;
-			children = (
-				96945E3D26D9505A0091B9CF /* PortfolioView.swift */,
-				96945E3426D9505A0091B9CF /* Future Vision */,
-				96945E3826D9505A0091B9CF /* Assets */,
-				96945E3226D9505A0091B9CF /* Portfolio+DisplayString.swift */,
-				96945E3326D9505A0091B9CF /* Portfolio.swift */,
-			);
-			path = Portfolio;
-			sourceTree = "<group>";
-		};
 		96945E3426D9505A0091B9CF /* Future Vision */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,7 +332,7 @@
 			path = "Future Vision";
 			sourceTree = "<group>";
 		};
-		96945E3826D9505A0091B9CF /* Assets */ = {
+		96945E3826D9505A0091B9CF /* Asset List */ = {
 			isa = PBXGroup;
 			children = (
 				96945E3926D9505A0091B9CF /* AssetsOverView.swift */,
@@ -348,7 +340,7 @@
 				96945E3A26D9505A0091B9CF /* AssetListRow.swift */,
 				96945E3C26D9505A0091B9CF /* AssetListRowModel.swift */,
 			);
-			path = Assets;
+			path = "Asset List";
 			sourceTree = "<group>";
 		};
 		96945E4026D9505A0091B9CF /* Currency */ = {
@@ -571,7 +563,7 @@
 				9633394F26D76305000F26C2 /* TrademateApp.swift in Sources */,
 				96945E6826D9507C0091B9CF /* TrademateFoundation.swift in Sources */,
 				96945E7C26D950AC0091B9CF /* AssetListRowModel.swift in Sources */,
-				96945E7426D9509D0091B9CF /* PortfolioView.swift in Sources */,
+				96945E7426D9509D0091B9CF /* PortfolioOverviewView.swift in Sources */,
 				96945E6426D950720091B9CF /* AppSettings.swift in Sources */,
 				96945E7D26D950BA0091B9CF /* CurrencyPicker.swift in Sources */,
 				96945E6226D950720091B9CF /* AlertsView.swift in Sources */,
@@ -588,6 +580,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				965433C826D981AE0050CDF5 /* Asset.Properties+Profit.swift in Sources */,
+				96709FA32749257600D246CE /* AlertsView.swift in Sources */,
 				965433BF26D97D6C0050CDF5 /* Currency.swift in Sources */,
 				965433CC26D983F40050CDF5 /* AppSettings.swift in Sources */,
 				9663816926DD0E44009413F1 /* AssetEditingState.swift in Sources */,
@@ -598,14 +591,13 @@
 				965433C026D97DAD0050CDF5 /* CurrencyView.swift in Sources */,
 				965433C226D980500050CDF5 /* CoreFoundationToolz.swift in Sources */,
 				96B73E9626DBA60E00EE7AC0 /* FeedbackContents.swift in Sources */,
-				965433CD26D984090050CDF5 /* Portfolio.swift in Sources */,
 				965433CA26D982CD0050CDF5 /* AssetPersister.swift in Sources */,
+				96709FA22749255600D246CE /* Portfolio.swift in Sources */,
 				96B73E9926DBA63700EE7AC0 /* FeedbackView_macOS.swift in Sources */,
 				965433C926D981C10050CDF5 /* Asset+Conformances.swift in Sources */,
 				965433C326D980DC0050CDF5 /* TrademateFoundation.swift in Sources */,
 				965433C526D9810C0050CDF5 /* Asset.swift in Sources */,
 				965433D026D98B0E0050CDF5 /* TrademateSwiftUI.swift in Sources */,
-				965433CE26D9841D0050CDF5 /* Portfolio+DisplayString.swift in Sources */,
 				965433C126D97DF10050CDF5 /* CurrencyPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

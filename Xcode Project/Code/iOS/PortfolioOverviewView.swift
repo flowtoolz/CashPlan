@@ -2,7 +2,7 @@ import SwiftUIToolz
 import SwiftUI
 import SwiftObserver
 
-struct PortfolioView: View {
+struct PortfolioOverviewView: View {
     
     var body: some View {
         NavigationView {
