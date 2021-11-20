@@ -32,6 +32,7 @@
 		966DE80526D804CA00CD0055 /* SwiftyToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 966DE80426D804CA00CD0055 /* SwiftyToolz */; };
 		96709FA22749255600D246CE /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3326D9505A0091B9CF /* Portfolio.swift */; };
 		96709FA32749257600D246CE /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E2226D9505A0091B9CF /* AlertsView.swift */; };
+		96709FA4274929A600D246CE /* Portfolio+DisplayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3226D9505A0091B9CF /* Portfolio+DisplayString.swift */; };
 		96945DFE26D93BC80091B9CF /* ContentView_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945DFD26D93BC80091B9CF /* ContentView_macOS.swift */; };
 		96945E0E26D94AD20091B9CF /* FoundationToolz in Frameworks */ = {isa = PBXBuildFile; productRef = 96945E0D26D94AD20091B9CF /* FoundationToolz */; };
 		96945E1026D94AD20091B9CF /* CombineObserver in Frameworks */ = {isa = PBXBuildFile; productRef = 96945E0F26D94AD20091B9CF /* CombineObserver */; };
@@ -207,12 +208,13 @@
 				9633392626D76304000F26C2 /* TrademateApp.swift */,
 				9633392726D76304000F26C2 /* ContentView_iOS.swift */,
 				96945DFD26D93BC80091B9CF /* ContentView_macOS.swift */,
-				96B73E9A26DBC3D900EE7AC0 /* Feedback */,
 				96945E1F26D9505A0091B9CF /* iOS */,
 				96945E2226D9505A0091B9CF /* AlertsView.swift */,
+				96709FA5274929E200D246CE /* Portfolio */,
 				96945E2426D9505A0091B9CF /* Asset */,
-				96945E4026D9505A0091B9CF /* Currency */,
 				96945E2326D9505A0091B9CF /* AppSettings.swift */,
+				96945E4026D9505A0091B9CF /* Currency */,
+				96B73E9A26DBC3D900EE7AC0 /* Feedback */,
 				96945E3026D9505A0091B9CF /* TrademateSwiftUI.swift */,
 				96945E3E26D9505A0091B9CF /* TrademateFoundation.swift */,
 				96945E3F26D9505A0091B9CF /* CoreFoundationToolz.swift */,
@@ -285,14 +287,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		96709FA5274929E200D246CE /* Portfolio */ = {
+			isa = PBXGroup;
+			children = (
+				96945E3226D9505A0091B9CF /* Portfolio+DisplayString.swift */,
+				96945E3326D9505A0091B9CF /* Portfolio.swift */,
+			);
+			path = Portfolio;
+			sourceTree = "<group>";
+		};
 		96945E1F26D9505A0091B9CF /* iOS */ = {
 			isa = PBXGroup;
 			children = (
 				96945E3D26D9505A0091B9CF /* PortfolioOverviewView.swift */,
 				96945E3426D9505A0091B9CF /* Future Vision */,
 				96945E3826D9505A0091B9CF /* Asset List */,
-				96945E3226D9505A0091B9CF /* Portfolio+DisplayString.swift */,
-				96945E3326D9505A0091B9CF /* Portfolio.swift */,
 				96945E2726D9505A0091B9CF /* Asset Editing */,
 			);
 			path = iOS;
@@ -597,6 +606,7 @@
 				965433C926D981C10050CDF5 /* Asset+Conformances.swift in Sources */,
 				965433C326D980DC0050CDF5 /* TrademateFoundation.swift in Sources */,
 				965433C526D9810C0050CDF5 /* Asset.swift in Sources */,
+				96709FA4274929A600D246CE /* Portfolio+DisplayString.swift in Sources */,
 				965433D026D98B0E0050CDF5 /* TrademateSwiftUI.swift in Sources */,
 				965433C126D97DF10050CDF5 /* CurrencyPicker.swift in Sources */,
 			);

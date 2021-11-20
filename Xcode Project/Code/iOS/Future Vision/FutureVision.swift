@@ -1,8 +1,15 @@
 import Foundation
+import Combine
 
 class FutureVision: ObservableObject {
     static let shared = FutureVision()
-    private init() {}
+    private init() {
+        observation = Portfolio.shared.$balanceNumericalValue.sink { [weak self] newValue in
+            self?.input.startCash = newValue
+        }
+    }
+    
+    private var observation: AnyCancellable?
     
     var output: Output { Self.output(from: input) }
     
@@ -33,7 +40,7 @@ class FutureVision: ObservableObject {
         var monthProfitFactor: Double { annualProfitFactor / 12.0 }
         var annualProfitFactor: Double { annualReturnPercent / 100.0 }
         
-        let startCash: Double
+        var startCash: Double
         let monthlyInvestment: Double
         let annualReturnPercent: Double
         let years: Int
