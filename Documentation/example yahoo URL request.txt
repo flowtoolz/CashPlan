@@ -1,0 +1,1 @@
+https://query1.finance.yahoo.com/v7/finance/download/AAPL?period1=1630227368&period2=1661763368&interval=1d&events=history&includeAdjustedClose=true
