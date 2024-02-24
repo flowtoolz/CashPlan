@@ -6,7 +6,7 @@ class Asset {
         self.properties = properties
     }
     
-    @Observable var properties: Properties
+    @ObservableVar var properties: Properties
     
     struct Properties: Codable, Equatable {
         

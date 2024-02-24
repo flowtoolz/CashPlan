@@ -6,7 +6,7 @@ class AppSettings {
     static let shared = AppSettings()
     private init() {}
     
-    @Observable var currency = CurrencyPersister.loadCurrency() {
+    @ObservableVar var currency = CurrencyPersister.loadCurrency() {
         willSet { CurrencyPersister.save(newValue) }
     }
 }
