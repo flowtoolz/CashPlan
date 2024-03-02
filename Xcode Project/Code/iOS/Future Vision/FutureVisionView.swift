@@ -101,9 +101,9 @@ struct FutureVisionView: View {
     private struct CashFlowInputStrings: Equatable {
         init(_ input: FutureVision.Input) {
             startCashString = input.startCash.decimalString(separator: "")
-            monthlyInvestmentString = String(input.monthlyInvestment)
-            growthPercentString = String(input.annualReturnPercent)
-            yearsString = String(input.years)
+            monthlyInvestmentString = String(input.investmentAssumption.monthlyInvestment)
+            growthPercentString = String(input.investmentAssumption.annualReturnPercent)
+            yearsString = String(input.investmentAssumption.years)
         }
         
         var input: FutureVision.Input? {
@@ -115,9 +115,9 @@ struct FutureVisionView: View {
             }
             
             return .init(startCash: startCapital,
-                         monthlyInvestment: investmentPerMonth,
-                         annualReturnPercent: growthPerYearInPercent,
-                         years: years)
+                         investmentAssumption: .init(monthlyInvestment: investmentPerMonth,
+                                                     annualReturnPercent: growthPerYearInPercent,
+                                                     years: years))
         }
         
         var startCashString: String

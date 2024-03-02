@@ -8,9 +8,10 @@ struct FutureVisionOverView: View {
             Label {
                 VStack {
                     HStack {
-                        let yearText = Self.makeDisplayText(forNumberOfYears: futureVision.input.years)
+                        let years = futureVision.input.investmentAssumption.years
+                        let yearsText = Self.makeDisplayText(forNumberOfYears: years)
                         
-                        Text(yearText + " Year Target")
+                        Text(yearsText + " Year Target")
                             .font(.body.weight(.medium))
                         Spacer()
                     }
@@ -59,14 +60,12 @@ struct FutureVisionOverView: View {
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = 0 // No minimum fraction digits
         
-        // Check if 'years' is effectively an integer
         if years.truncatingRemainder(dividingBy: 1) == 0 {
             formatter.maximumFractionDigits = 0 // No digits after decimal if round
         } else {
             formatter.maximumFractionDigits = 1 // One digit after decimal if not round
         }
         
-        // Safely unwrap the formatted string; return "Invalid" if nil
         return formatter.string(from: NSNumber(value: years)) ?? "\(years)"
     }
 }
