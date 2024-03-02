@@ -40,7 +40,9 @@ class Portfolio: Observer, Combine.ObservableObject {
     private func observeUserCurrency() {
         observe(AppSettings.shared.$currency) { [weak self] _ in
             guard let self = self else { return }
-            self.balanceNumericalValue = self.computeBalanceNumericalValue()
+            DispatchQueue.main.async {
+                self.balanceNumericalValue = self.computeBalanceNumericalValue()
+            }
         }
     }
     
