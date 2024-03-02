@@ -110,7 +110,7 @@ struct FutureVisionView: View {
             guard let growthPerYearInPercent = double(from: growthPercentString),
                   let startCapital = double(from: startCashString),
                   let investmentPerMonth = double(from: monthlyInvestmentString),
-                  let years = integer(from: yearsString) else {
+                  let years = double(from: yearsString) else {
                 return nil
             }
             

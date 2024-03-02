@@ -8,7 +8,9 @@ struct FutureVisionOverView: View {
             Label {
                 VStack {
                     HStack {
-                        Text("\(futureVision.input.years) Year Target")
+                        let yearText = Self.makeDisplayText(forNumberOfYears: futureVision.input.years)
+                        
+                        Text(yearText + " Year Target")
                             .font(.body.weight(.medium))
                         Spacer()
                     }
@@ -52,4 +54,19 @@ struct FutureVisionOverView: View {
     @Binding private(set) var isPresentingCurrencyPicker: Bool
     
     @ObservedObject private(set) var futureVision = FutureVision.shared
+    
+    private static func makeDisplayText(forNumberOfYears years: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.minimumFractionDigits = 0 // No minimum fraction digits
+        
+        // Check if 'years' is effectively an integer
+        if years.truncatingRemainder(dividingBy: 1) == 0 {
+            formatter.maximumFractionDigits = 0 // No digits after decimal if round
+        } else {
+            formatter.maximumFractionDigits = 1 // One digit after decimal if not round
+        }
+        
+        // Safely unwrap the formatted string; return "Invalid" if nil
+        return formatter.string(from: NSNumber(value: years)) ?? "\(years)"
+    }
 }

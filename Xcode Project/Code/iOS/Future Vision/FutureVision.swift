@@ -13,8 +13,9 @@ class FutureVision: ObservableObject {
     
     var output: Output { Self.output(from: input) }
     
+    // TODO: write unit tests for simple base cases to ensure there is no "off by one" issue going on
     static func output(from input: Input) -> Output {
-        let months = input.years * 12
+        let months = Int(input.years * 12)
         let growthPerMonth = pow(input.annualGrowthFactor, 1.0 / 12.0)
         
         var resultingCapital = input.startCash
@@ -43,8 +44,10 @@ class FutureVision: ObservableObject {
         var startCash: Double
         let monthlyInvestment: Double
         let annualReturnPercent: Double
-        let years: Int
+        let years: Double
     }
+    
+    
     
     struct Output {
         let cash: Double
