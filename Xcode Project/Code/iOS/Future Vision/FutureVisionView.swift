@@ -16,24 +16,19 @@ struct FutureVisionView: View {
                     }
                     HStack(alignment: .firstTextBaseline) {
                         Label {
-                            Text("Cash Flow")
+                            Text("Monthly Return")
                         } icon: {
                             Image(systemName: "calendar.badge.plus")
-                                .foregroundColor(.secondary)
                         }
                         Spacer()
-                        VStack(alignment: .trailing) {
-                            Text(cashflowString)
-                                .font(.system(.body, design: .monospaced))
-                                .foregroundColor(.systemGreen)
-                            Text("per month")
-                                .foregroundColor(.secondary)
-                                .font(.footnote)
-                        }
+                        Text(cashflowString)
+                            .font(.system(.body, design: .monospaced))
+                            .foregroundColor(.systemGreen)
                     }
+                    .padding(.top, 12)
                 }.padding([.top, .bottom], 6)
             }
-            Section(header: Text("Trading Target")) {
+            Section(header: Text("Investment Target")) {
                 HStack {
                     Label {
                         Text("Monthly Investment:")

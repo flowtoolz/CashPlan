@@ -53,7 +53,7 @@ struct AssetEditingForm: View {
             Section(header: Text("My Position")) {
                 HStack {
                     Label {
-                        Text("Amount:")
+                        Text("Quantity:")
                             .foregroundColor(.secondary)
                     } icon: {
                         Image(systemName: "number")
@@ -67,7 +67,7 @@ struct AssetEditingForm: View {
                 }
                 HStack {
                     Label {
-                        Text("Opening Price:")
+                        Text("Open Price:")
                             .foregroundColor(.secondary)
                             .fixedSize(horizontal: true, vertical: false)
                     } icon: {

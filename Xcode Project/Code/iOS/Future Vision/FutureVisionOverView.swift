@@ -24,7 +24,7 @@ struct FutureVisionOverView: View {
                             .foregroundColor(.secondary)
                     }
                     HStack(alignment: .firstTextBaseline) {
-                        Text("Cash Flow")
+                        Text("Monthly Return")
                             .foregroundColor(.secondary)
                         Spacer()
                         Text("+" + futureVision.output.cashflow.decimalString(fractionDigits: 0))
