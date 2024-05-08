@@ -108,5 +108,5 @@ struct FeedbackLink: View {
         }
     }
     
-    private let emailAddress = "contact@flowtoolz.com"
+    private let emailAddress = "hello@codeface.io"
 }
