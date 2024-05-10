@@ -4,35 +4,25 @@ struct ProjectionView: View {
     var body: some View {
         List {
             Section(header: Text("Portfolio in " + makeYearsString() + " years")) {
-                VStack(alignment: .leading, spacing: 12) {
-                    HStack(alignment: .firstTextBaseline) {
-                        Label("Portfolio Balance", systemImage: "banknote")
-                            .fixedSize(horizontal: true, vertical: false)
-                            .accentColor(.secondary)
-                        Spacer()
-                        Text(cashString)
-                            .font(.system(.body, design: .monospaced))
-                            .foregroundColor(.secondary)
-                    }
-                    HStack(alignment: .firstTextBaseline) {
-                        Label {
-                            Text("Monthly Return")
-                        } icon: {
-                            Image(systemName: "calendar.badge.plus")
-                        }
-                        Spacer()
-                        Text(cashflowString)
-                            .font(.system(.body, design: .monospaced))
-                            .foregroundColor(.systemGreen)
-                    }
-                    .padding(.top, 12)
-                }.padding([.top, .bottom], 6)
+                HStack(alignment: .firstTextBaseline) {
+                    Label("Portfolio Balance", systemImage: "banknote")
+                    Spacer()
+                    Text(cashString)
+                        .foregroundStyle(.secondary)
+                        .font(.system(.body, design: .monospaced))
+                }
+                HStack(alignment: .firstTextBaseline) {
+                    Label("Monthly Return", systemImage: "calendar.badge.plus")
+                    Spacer()
+                    Text(cashflowString)
+                        .font(.system(.body, design: .monospaced))
+                        .foregroundColor(.systemGreen)
+                }
             }
             Section(header: Text("Assumptions")) {
                 HStack {
                     Label {
-                        Text("Years:")
-                            .foregroundColor(.secondary)
+                        Text("Years")
                             .fixedSize(horizontal: true, vertical: false)
                     } icon: {
                         Image(systemName: "hourglass")
@@ -44,8 +34,7 @@ struct ProjectionView: View {
                 }
                 HStack {
                     Label {
-                        Text("Annual Return:")
-                            .foregroundColor(.secondary)
+                        Text("Annual Return")
                             .fixedSize(horizontal: true, vertical: false)
                     } icon: {
                         Image(systemName: "percent")
@@ -58,8 +47,7 @@ struct ProjectionView: View {
                 }
                 HStack {
                     Label {
-                        Text("Monthly Investment:")
-                            .foregroundColor(.secondary)
+                        Text("Monthly Investment")
                             .fixedSize(horizontal: true, vertical: false)
                     } icon: {
                         Image(systemName: "calendar.badge.minus")
