@@ -2,11 +2,11 @@ import FoundationToolz
 import Foundation
 import Combine
 
-class FutureVision: ObservableObject {
+class Projection: ObservableObject {
     
     // MARK: - Singleton Instance
     
-    static let shared = FutureVision()
+    static let shared = Projection()
     
     private init() {
         updateStartCashWheneverPortfolioBalanceChanges()
@@ -39,7 +39,7 @@ class FutureVision: ObservableObject {
         let cashflow: Double
     }
     
-    // MARK: - Observable Input (Input = Start Cash + Investment Assumption)
+    // MARK: - Observable Input (input = Start Cash + Investment Assumption)
     
     private func updateStartCashWheneverPortfolioBalanceChanges() {
         portfolioBalanceObservation = Portfolio.shared.$balanceNumericalValue.sink { [weak self] newBalance in

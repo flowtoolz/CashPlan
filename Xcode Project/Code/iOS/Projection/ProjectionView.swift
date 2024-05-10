@@ -1,12 +1,12 @@
 import SwiftUI
 
-struct FutureVisionView: View {
+struct ProjectionView: View {
     var body: some View {
         List {
-            Section(header: Text("Portfolio in \(inputStrings.yearsString) years")) {
+            Section(header: Text("Portfolio in " + makeYearsString() + " years")) {
                 VStack(alignment: .leading, spacing: 12) {
                     HStack(alignment: .firstTextBaseline) {
-                        Label("Balance", systemImage: "banknote")
+                        Label("Portfolio Balance", systemImage: "banknote")
                             .fixedSize(horizontal: true, vertical: false)
                             .accentColor(.secondary)
                         Spacer()
@@ -28,16 +28,16 @@ struct FutureVisionView: View {
                     .padding(.top, 12)
                 }.padding([.top, .bottom], 6)
             }
-            Section(header: Text("Investment Target")) {
+            Section(header: Text("Assumptions")) {
                 HStack {
                     Label {
-                        Text("Monthly Investment:")
+                        Text("Years:")
                             .foregroundColor(.secondary)
                             .fixedSize(horizontal: true, vertical: false)
                     } icon: {
-                        Image(systemName: "calendar.badge.minus")
+                        Image(systemName: "hourglass")
                     }
-                    TextField("", text: $inputStrings.monthlyInvestmentString)
+                    TextField("", text: $inputStrings.yearsString)
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.trailing)
                         .font(.system(.body, design: .monospaced))
@@ -58,13 +58,13 @@ struct FutureVisionView: View {
                 }
                 HStack {
                     Label {
-                        Text("Years:")
+                        Text("Monthly Investment:")
                             .foregroundColor(.secondary)
                             .fixedSize(horizontal: true, vertical: false)
                     } icon: {
-                        Image(systemName: "hourglass")
+                        Image(systemName: "calendar.badge.minus")
                     }
-                    TextField("", text: $inputStrings.yearsString)
+                    TextField("", text: $inputStrings.monthlyInvestmentString)
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.trailing)
                         .font(.system(.body, design: .monospaced))
@@ -72,7 +72,7 @@ struct FutureVisionView: View {
             }
         }
         .listStyle(GroupedListStyle())
-        .navigationTitle("Target")
+        .navigationTitle(Text(makeYearsString() + " Year Projection"))
         .toolbar {
             Button {
                 isPresentingCurrencyPicker = true
@@ -81,53 +81,60 @@ struct FutureVisionView: View {
             }
         }
         .onChange(of: inputStrings) { inputStrings in
-            inputStrings.input.forSome {
-                cashflow.input = $0
+            inputStrings.projectionInput.forSome {
+                projection.input = $0
             }
         }
         .bind($currency, to: AppSettings.shared.$currency.new())
         .refreshable {
-            print("✅ REFRESH Future Vision")
+            print("✅ REFRESH Projection")
         }
     }
     
-    @State private var inputStrings = CashFlowInputStrings(FutureVision.shared.input)
-    
-    private struct CashFlowInputStrings: Equatable {
-        init(_ input: FutureVision.Input) {
-            startCashString = input.startCash.decimalString(separator: "")
-            monthlyInvestmentString = String(input.investmentAssumption.monthlyInvestment)
-            growthPercentString = String(input.investmentAssumption.annualReturnPercent)
-            yearsString = String(input.investmentAssumption.years)
-        }
-        
-        var input: FutureVision.Input? {
-            guard let growthPerYearInPercent = double(from: growthPercentString),
-                  let startCapital = double(from: startCashString),
-                  let investmentPerMonth = double(from: monthlyInvestmentString),
-                  let years = double(from: yearsString) else {
-                return nil
-            }
-            
-            return .init(startCash: startCapital,
-                         investmentAssumption: .init(monthlyInvestment: investmentPerMonth,
-                                                     annualReturnPercent: growthPerYearInPercent,
-                                                     years: years))
-        }
-        
-        var startCashString: String
-        var monthlyInvestmentString: String
-        var growthPercentString: String
-        var yearsString: String
+    private func makeYearsString() -> String {
+        makeDisplayText(forNumberOfYears: projection.input.investmentAssumption.years)
     }
     
+    @State private var inputStrings = ProjectionInputStrings(Projection.shared.input)
     @Binding private(set) var isPresentingCurrencyPicker: Bool
     @State private var currency = AppSettings.shared.currency
     
-    private var cashString: String { cashflow.output.cash.decimalString(fractionDigits: 0) }
+    private var cashString: String { projection.output.cash.decimalString(fractionDigits: 0) }
     private var cashflowString: String {
-        "+" + cashflow.output.cashflow.decimalString(fractionDigits: 0)
+        "+" + projection.output.cashflow.decimalString(fractionDigits: 0)
     }
     
-    @ObservedObject private var cashflow = FutureVision.shared
+    @ObservedObject private var projection = Projection.shared
+}
+
+private func integerString(fromDoubleString doubleString: String) -> String {
+    String(double(from: doubleString) ?? 0.0)
+}
+
+private struct ProjectionInputStrings: Equatable {
+    init(_ input: Projection.Input) {
+        startCashString = input.startCash.decimalString(separator: "")
+        monthlyInvestmentString = String(input.investmentAssumption.monthlyInvestment)
+        growthPercentString = String(input.investmentAssumption.annualReturnPercent)
+        yearsString = String(input.investmentAssumption.years)
+    }
+    
+    var projectionInput: Projection.Input? {
+        guard let growthPerYearInPercent = double(from: growthPercentString),
+              let startCapital = double(from: startCashString),
+              let investmentPerMonth = double(from: monthlyInvestmentString),
+              let years = double(from: yearsString) else {
+            return nil
+        }
+        
+        return .init(startCash: startCapital,
+                     investmentAssumption: .init(monthlyInvestment: investmentPerMonth,
+                                                 annualReturnPercent: growthPerYearInPercent,
+                                                 years: years))
+    }
+    
+    var startCashString: String
+    var monthlyInvestmentString: String
+    var growthPercentString: String
+    var yearsString: String
 }

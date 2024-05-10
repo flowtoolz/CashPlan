@@ -9,7 +9,7 @@ struct PortfolioOverviewView: View {
             List {
                 AssetsOverView(isPresentingCurrencyPicker: $isPresentingCurrencyPicker)
                 
-                FutureVisionOverView(isPresentingCurrencyPicker: $isPresentingCurrencyPicker)
+                ProjectionOverView(isPresentingCurrencyPicker: $isPresentingCurrencyPicker)
             }
             .listStyle(PlainListStyle())
             .navigationTitle("Portfolio")

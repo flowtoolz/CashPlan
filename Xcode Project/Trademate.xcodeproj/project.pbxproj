@@ -53,9 +53,9 @@
 		96945E7326D9509D0091B9CF /* Portfolio+DisplayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3226D9505A0091B9CF /* Portfolio+DisplayString.swift */; };
 		96945E7426D9509D0091B9CF /* PortfolioOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3D26D9505A0091B9CF /* PortfolioOverviewView.swift */; };
 		96945E7526D9509D0091B9CF /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3326D9505A0091B9CF /* Portfolio.swift */; };
-		96945E7626D950A30091B9CF /* FutureVisionOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3726D9505A0091B9CF /* FutureVisionOverView.swift */; };
-		96945E7726D950A30091B9CF /* FutureVisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3626D9505A0091B9CF /* FutureVisionView.swift */; };
-		96945E7826D950A40091B9CF /* FutureVision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3526D9505A0091B9CF /* FutureVision.swift */; };
+		96945E7626D950A30091B9CF /* ProjectionOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3726D9505A0091B9CF /* ProjectionOverView.swift */; };
+		96945E7726D950A30091B9CF /* ProjectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3626D9505A0091B9CF /* ProjectionView.swift */; };
+		96945E7826D950A40091B9CF /* Projection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3526D9505A0091B9CF /* Projection.swift */; };
 		96945E7926D950AC0091B9CF /* AssetsOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3926D9505A0091B9CF /* AssetsOverView.swift */; };
 		96945E7A26D950AC0091B9CF /* AssetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3B26D9505A0091B9CF /* AssetList.swift */; };
 		96945E7B26D950AC0091B9CF /* AssetListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96945E3A26D9505A0091B9CF /* AssetListRow.swift */; };
@@ -123,9 +123,9 @@
 		96945E3026D9505A0091B9CF /* TrademateSwiftUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrademateSwiftUI.swift; sourceTree = "<group>"; };
 		96945E3226D9505A0091B9CF /* Portfolio+DisplayString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Portfolio+DisplayString.swift"; sourceTree = "<group>"; };
 		96945E3326D9505A0091B9CF /* Portfolio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
-		96945E3526D9505A0091B9CF /* FutureVision.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FutureVision.swift; sourceTree = "<group>"; };
-		96945E3626D9505A0091B9CF /* FutureVisionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FutureVisionView.swift; sourceTree = "<group>"; };
-		96945E3726D9505A0091B9CF /* FutureVisionOverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FutureVisionOverView.swift; sourceTree = "<group>"; };
+		96945E3526D9505A0091B9CF /* Projection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projection.swift; sourceTree = "<group>"; };
+		96945E3626D9505A0091B9CF /* ProjectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectionView.swift; sourceTree = "<group>"; };
+		96945E3726D9505A0091B9CF /* ProjectionOverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectionOverView.swift; sourceTree = "<group>"; };
 		96945E3926D9505A0091B9CF /* AssetsOverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetsOverView.swift; sourceTree = "<group>"; };
 		96945E3A26D9505A0091B9CF /* AssetListRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetListRow.swift; sourceTree = "<group>"; };
 		96945E3B26D9505A0091B9CF /* AssetList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetList.swift; sourceTree = "<group>"; };
@@ -280,7 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				96945E3D26D9505A0091B9CF /* PortfolioOverviewView.swift */,
-				96945E3426D9505A0091B9CF /* Future Vision */,
+				96945E3426D9505A0091B9CF /* Projection */,
 				96945E3826D9505A0091B9CF /* Asset List */,
 				96945E2726D9505A0091B9CF /* Asset Editing */,
 			);
@@ -311,14 +311,14 @@
 			path = "Asset Editing";
 			sourceTree = "<group>";
 		};
-		96945E3426D9505A0091B9CF /* Future Vision */ = {
+		96945E3426D9505A0091B9CF /* Projection */ = {
 			isa = PBXGroup;
 			children = (
-				96945E3726D9505A0091B9CF /* FutureVisionOverView.swift */,
-				96945E3626D9505A0091B9CF /* FutureVisionView.swift */,
-				96945E3526D9505A0091B9CF /* FutureVision.swift */,
+				96945E3726D9505A0091B9CF /* ProjectionOverView.swift */,
+				96945E3626D9505A0091B9CF /* ProjectionView.swift */,
+				96945E3526D9505A0091B9CF /* Projection.swift */,
 			);
-			path = "Future Vision";
+			path = Projection;
 			sourceTree = "<group>";
 		};
 		96945E3826D9505A0091B9CF /* Asset List */ = {
@@ -536,10 +536,10 @@
 				9633395126D76305000F26C2 /* ContentView_iOS.swift in Sources */,
 				96945E7526D9509D0091B9CF /* Portfolio.swift in Sources */,
 				96945E7A26D950AC0091B9CF /* AssetList.swift in Sources */,
-				96945E7726D950A30091B9CF /* FutureVisionView.swift in Sources */,
+				96945E7726D950A30091B9CF /* ProjectionView.swift in Sources */,
 				96945E7026D9508F0091B9CF /* AssetEditingForm.swift in Sources */,
 				96945E6A26D950880091B9CF /* Asset+Conformances.swift in Sources */,
-				96945E7826D950A40091B9CF /* FutureVision.swift in Sources */,
+				96945E7826D950A40091B9CF /* Projection.swift in Sources */,
 				96945E7E26D950BA0091B9CF /* Currency.swift in Sources */,
 				96B73E9526DBA60E00EE7AC0 /* FeedbackContents.swift in Sources */,
 				96945E6B26D950880091B9CF /* Cash.swift in Sources */,
@@ -557,7 +557,7 @@
 				96945E6226D950720091B9CF /* AlertsView.swift in Sources */,
 				96945E6526D950720091B9CF /* Calculator.swift in Sources */,
 				96945E7B26D950AC0091B9CF /* AssetListRow.swift in Sources */,
-				96945E7626D950A30091B9CF /* FutureVisionOverView.swift in Sources */,
+				96945E7626D950A30091B9CF /* ProjectionOverView.swift in Sources */,
 				964A09EA26DAC5B500D5E76D /* FeedbackView_iOS.swift in Sources */,
 				96945E6E26D950880091B9CF /* Asset.Properties+Profit.swift in Sources */,
 			);

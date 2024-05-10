@@ -46,7 +46,7 @@ struct AssetsOverView: View {
         }
     }
     
-    private let symbolName = "chart.pie.fill"
+    private let symbolName = "chart.pie"
     
     @Binding private(set) var isPresentingCurrencyPicker: Bool
     
