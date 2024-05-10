@@ -1,11 +1,11 @@
 import Foundation
 
-func integer(from string: String) -> Int? {
-    string.isEmpty ? 0 : Int(string)
+func integer(from string: String, defaultValue: Int = 0) -> Int {
+    (string.isEmpty ? 0 : Int(string)) ?? defaultValue
 }
 
-func double(from string: String) -> Double? {
-    string.isEmpty ? 0.0 : Double(string.replacingOccurrences(of: ",", with: "."))
+func double(from string: String, defaultValue: Double = 0) -> Double {
+    (string.isEmpty ? 0.0 : Double(string.replacingOccurrences(of: ",", with: "."))) ?? defaultValue
 }
 
 extension Double {

@@ -12,12 +12,11 @@ extension AssetEditingState {
     }
     
     var asset: Asset? {
-        guard !name.isEmpty,
-              let amount = integer(from: amountString),
-              let openingPrice = double(from: openingPriceString),
-              let price = double(from: priceString) else {
-            return nil
-        }
+        guard !name.isEmpty else { return nil }
+        
+        let amount = integer(from: amountString)
+        let openingPrice = double(from: openingPriceString)
+        let price = double(from: priceString)
         
         return .init(properties: .init(name: name,
                                        openingPrice: openingPrice,
@@ -33,17 +32,9 @@ extension AssetEditingState {
             asset.properties.name = name
         }
         
-        if let amount = integer(from: amountString) {
-            asset.properties.amount = amount
-        }
-        
-        if let buyingPrice = double(from: openingPriceString) {
-            asset.properties.openingPrice = buyingPrice
-        }
-        
-        if let currentPrice = double(from: priceString) {
-            asset.properties.price = currentPrice
-        }
+        asset.properties.amount = integer(from: amountString)
+        asset.properties.openingPrice = double(from: openingPriceString)
+        asset.properties.price = double(from: priceString)
     }
 }
 

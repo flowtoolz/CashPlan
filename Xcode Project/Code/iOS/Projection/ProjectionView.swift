@@ -80,10 +80,8 @@ struct ProjectionView: View {
                 CurrencyView(currency: currency)
             }
         }
-        .onChange(of: inputStrings) { inputStrings in
-            inputStrings.projectionInput.forSome {
-                projection.input = $0
-            }
+        .onChange(of: inputStrings) {
+            projection.input = $0.projectionInput
         }
         .bind($currency, to: AppSettings.shared.$currency.new())
         .refreshable {
@@ -108,7 +106,7 @@ struct ProjectionView: View {
 }
 
 private func integerString(fromDoubleString doubleString: String) -> String {
-    String(double(from: doubleString) ?? 0.0)
+    String(double(from: doubleString))
 }
 
 private struct ProjectionInputStrings: Equatable {
@@ -119,13 +117,11 @@ private struct ProjectionInputStrings: Equatable {
         yearsString = String(input.investmentAssumption.years)
     }
     
-    var projectionInput: Projection.Input? {
-        guard let growthPerYearInPercent = double(from: growthPercentString),
-              let startCapital = double(from: startCashString),
-              let investmentPerMonth = double(from: monthlyInvestmentString),
-              let years = double(from: yearsString) else {
-            return nil
-        }
+    var projectionInput: Projection.Input {
+        let growthPerYearInPercent = double(from: growthPercentString)
+        let startCapital = double(from: startCashString)
+        let investmentPerMonth = double(from: monthlyInvestmentString)
+        let years = double(from: yearsString)
         
         return .init(startCash: startCapital,
                      investmentAssumption: .init(monthlyInvestment: investmentPerMonth,
