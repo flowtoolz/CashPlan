@@ -28,7 +28,7 @@ struct ProjectionView: View {
                         Image(systemName: "hourglass")
                     }
                     TextField("", text: $inputStrings.yearsString)
-                        .keyboardType(.numberPad)
+                        .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
                         .font(.system(.body, design: .monospaced))
                 }
@@ -53,7 +53,7 @@ struct ProjectionView: View {
                         Image(systemName: "calendar.badge.minus")
                     }
                     TextField("", text: $inputStrings.monthlyInvestmentString)
-                        .keyboardType(.numberPad)
+                        .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
                         .font(.system(.body, design: .monospaced))
                 }
