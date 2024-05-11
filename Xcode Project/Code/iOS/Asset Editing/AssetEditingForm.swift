@@ -6,12 +6,7 @@ struct AssetEditingForm: View {
         Form {
             Section(header: Text("Asset")) {
                 HStack {
-                    Label {
-                        Text("Name:")
-                            .foregroundColor(.secondary)
-                    } icon: {
-                        Image(systemName: "building.2")
-                    }
+                    Label("Name", systemImage: "building.2")
                     TextField("",
                               text: $viewModel.editingState.name,
                               onEditingChanged: { if !$0 { viewModel.commit() } })
@@ -25,7 +20,6 @@ struct AssetEditingForm: View {
                     HStack {
                         Label {
                             Text("Currency")
-                                .fixedSize(horizontal: true, vertical: false)
                         } icon: {
                             CurrencyView(currency: viewModel.editingState.currency)
                         }
@@ -35,13 +29,7 @@ struct AssetEditingForm: View {
                     }
                 }
                 HStack {
-                    Label {
-                        Text("Current Price:")
-                            .foregroundColor(.secondary)
-                            .fixedSize(horizontal: true, vertical: false)
-                    } icon: {
-                        Image(systemName: "arrow.up.right")
-                    }
+                    Label("Current Price", systemImage: "arrow.up.right")
                     TextField("",
                               text: $viewModel.editingState.priceString,
                               onEditingChanged: { if !$0 { viewModel.commit() } })
@@ -52,12 +40,7 @@ struct AssetEditingForm: View {
             }
             Section(header: Text("My Position")) {
                 HStack {
-                    Label {
-                        Text("Quantity:")
-                            .foregroundColor(.secondary)
-                    } icon: {
-                        Image(systemName: "number")
-                    }
+                    Label("Quantity", systemImage: "number")
                     TextField("",
                               text: $viewModel.editingState.amountString,
                               onEditingChanged: { if !$0 { viewModel.commit() } })
@@ -66,13 +49,7 @@ struct AssetEditingForm: View {
                         .font(.system(.body, design: .monospaced))
                 }
                 HStack {
-                    Label {
-                        Text("Open Price:")
-                            .foregroundColor(.secondary)
-                            .fixedSize(horizontal: true, vertical: false)
-                    } icon: {
-                        Image(systemName: "arrow.down.left")
-                    }
+                    Label("Open Price", systemImage: "arrow.down.left")
                     TextField("",
                               text: $viewModel.editingState.openingPriceString,
                               onEditingChanged: { if !$0 { viewModel.commit() } })
