@@ -42,7 +42,7 @@ struct FeatureLabels: View {
                     .foregroundColor(.secondary)
             }
         } icon: {
-            Image("chart.xyaxis.line")
+            Image(systemName: "chart.xyaxis.line")
                 .foregroundColor(.accentColor)
         }
         
@@ -53,7 +53,7 @@ struct FeatureLabels: View {
                     .foregroundColor(.secondary)
             }
         } icon: {
-            Image("brain")
+            Image(systemName: "brain")
                 .foregroundColor(.accentColor)
         }
         
@@ -64,7 +64,7 @@ struct FeatureLabels: View {
                     .foregroundColor(.secondary)
             }
         } icon: {
-            Image("testtube.2")
+            Image(systemName: "testtube.2")
                 .foregroundColor(.accentColor)
         }
         
