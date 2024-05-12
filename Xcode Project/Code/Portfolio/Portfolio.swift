@@ -16,6 +16,48 @@ class Portfolio: Observer, Combine.ObservableObject {
     
     // MARK: - Edit Assets
     
+    func resetWithDemoAssets() {
+        let demoAssetProperties: [Asset.Properties] = [
+            .init(name: "Tesla",
+                  openingPrice: 14.07,
+                  currency: .usDollar,
+                  amount: 17,
+                  price: 168.47),
+            .init(name: "Microsoft",
+                  openingPrice: 127.13,
+                  currency: .usDollar,
+                  amount: 17,
+                  price: 414.74),
+            .init(name: "Walt Disney",
+                  openingPrice: 134.04,
+                  currency: .usDollar,
+                  amount: 27,
+                  price: 105.79),
+            .init(name: "NVidia",
+                  openingPrice: 42.21,
+                  currency: .usDollar,
+                  amount: 7,
+                  price: 898.78),
+            .init(name: "Apple",
+                  openingPrice: 49.3,
+                  currency: .usDollar,
+                  amount: 27,
+                  price: 183.05),
+            .init(name: "Alphabet",
+                  openingPrice: 58.21,
+                  currency: .usDollar,
+                  amount: 37,
+                  price: 170.29),
+            .init(name: "Vanguard S&P 500 ETF",
+                  openingPrice: 264.52,
+                  currency: .usDollar,
+                  amount: 27,
+                  price: 478.74),
+        ]
+        
+        resetAssets(with: demoAssetProperties.map(Asset.init))
+    }
+    
     func add(_ asset: Asset) {
         ensureObservation(of: asset)
         assets.insertSorted(asset)

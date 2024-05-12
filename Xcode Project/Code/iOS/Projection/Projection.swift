@@ -96,8 +96,8 @@ class Projection: ObservableObject {
 struct InvestmentAssumption: Codable {
     static var `default`: InvestmentAssumption {
         .init(monthlyInvestment: 1000,
-              annualReturnPercent: 8.5,
-              years: 5)
+              annualReturnPercent: 10,
+              years: 20)
     }
     
     var annualGrowthFactor: Double { 1.0 + annualProfitFactor }

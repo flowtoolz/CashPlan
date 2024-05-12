@@ -6,7 +6,12 @@ import SwiftyToolz
 struct TrademateApp: App {
     
     init() {
+        #if targetEnvironment(simulator)
+        Portfolio.shared.resetWithDemoAssets()
+        Projection.shared.input.investmentAssumption = .default
+        #else
         Portfolio.shared.resetAssets(with: AssetPersister.load())
+        #endif
         
         // TODO: observe each asset ...
         // persist assets whenever the array changes
