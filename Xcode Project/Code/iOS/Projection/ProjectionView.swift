@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ProjectionView: View {
     var body: some View {
-        List {
+        Form {
             Section(header: Text("Portfolio in " + makeYearsString() + " years")) {
                 HStack(alignment: .firstTextBaseline) {
                     Label("Portfolio Balance", systemImage: "banknote")
@@ -34,7 +34,7 @@ struct ProjectionView: View {
                 }
                 HStack {
                     Label {
-                        Text("Annual Return")
+                        Text("Annual Return (%)")
                             .fixedSize(horizontal: true, vertical: false)
                     } icon: {
                         Image(systemName: "percent")
