@@ -5,7 +5,7 @@ struct FeedbackView: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("Trademate is at the earliest stage 🚀")) {
+                Section(header: Text("This app is at the earliest stage 🚀")) {
                     NavigationLink(destination:
                                     List {
                                         FeatureLabels()
