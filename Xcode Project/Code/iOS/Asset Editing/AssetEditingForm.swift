@@ -12,11 +12,14 @@ struct AssetEditingForm: View {
                               onEditingChanged: { if !$0 { viewModel.commit() } })
                         .multilineTextAlignment(.trailing)
                 }
-                NavigationLink(destination: CurrencyPicker(title: "Asset Currency",
-                                                           subtitle: "How the Asset is Priced and Traded",
-                                                           selectedCurrency: $viewModel.editingState.currency,
-                                                           isBeingPresented: $isPresentingCurrencyPicker),
-                               isActive: $isPresentingCurrencyPicker) {
+                
+                // TODO: close (pop?) currency selector using latest navigation types
+                NavigationLink {
+                    CurrencyPicker(title: "Asset Currency",
+                                   subtitle: "How the Asset is Priced and Traded",
+                                   selectedCurrency: $viewModel.editingState.currency,
+                                   isBeingPresented: $isPresentingCurrencyPicker)
+                } label: {
                     HStack {
                         Label {
                             Text("Currency")
@@ -28,6 +31,7 @@ struct AssetEditingForm: View {
                             .foregroundColor(.secondary)
                     }
                 }
+                
                 HStack {
                     Label("Current Price", systemImage: "arrow.up.right")
                     TextField("",
