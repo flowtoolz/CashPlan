@@ -33,7 +33,7 @@ class Portfolio: Observer, Combine.ObservableObject {
                   currency: .usDollar,
                   amount: 27,
                   price: 105.79),
-            .init(name: "NVidia",
+            .init(name: "NVIDIA",
                   openingPrice: 42.21,
                   currency: .usDollar,
                   amount: 7,
