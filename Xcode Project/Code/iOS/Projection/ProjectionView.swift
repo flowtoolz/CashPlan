@@ -72,9 +72,9 @@ struct ProjectionView: View {
             projection.input = $0.projectionInput
         }
         .bind($currency, to: AppSettings.shared.$currency.new())
-        .refreshable {
-            print("✅ REFRESH Projection")
-        }
+//        .refreshable {
+//            print("✅ REFRESH Projection")
+//        }
     }
     
     private func makeYearsString() -> String {

@@ -19,9 +19,9 @@ struct AssetCreationView: View {
                 Text(AssetCreationViewModel.addButtonTitle)
             })
             .bind($title, to: viewModel.title)
-            .refreshable {
-                print("✅ REFRESH New Asset")
-            }
+//            .refreshable {
+//                print("✅ REFRESH New Asset")
+//            }
     }
     
     @State private var title = AssetCreationViewModel.defaultTitle
