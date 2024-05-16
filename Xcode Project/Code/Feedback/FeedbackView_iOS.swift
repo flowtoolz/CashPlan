@@ -4,7 +4,7 @@ struct FeedbackView: View {
     
     var body: some View {
         NavigationView {
-            List {
+            Form {
                 Section(header: Text("This app is at the earliest stage 🚀")) {
                     NavigationLink(destination:
                                     List {
