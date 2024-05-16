@@ -5,7 +5,7 @@ struct ProjectionView: View {
         Form {
             Section(header: Text("Portfolio in " + makeYearsString() + " years")) {
                 HStack(alignment: .firstTextBaseline) {
-                    Label("Portfolio Balance", systemImage: "banknote")
+                    Label("Balance", systemImage: "banknote")
                     Spacer()
                     Text(cashString)
                         .foregroundStyle(.secondary)
