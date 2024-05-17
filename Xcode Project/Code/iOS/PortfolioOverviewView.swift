@@ -5,7 +5,7 @@ import SwiftObserver
 struct PortfolioOverviewView: View {
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 AssetsOverView(isPresentingCurrencyPicker: $isPresentingCurrencyPicker)
                 
