@@ -8,7 +8,7 @@ extension Asset: Identifiable, Comparable, Hashable {
     
     // TODO: this is rather view model specific ...
     static func < (lhs: Asset, rhs: Asset) -> Bool {
-        abs(lhs.properties.profitNumericalValue) > abs(rhs.properties.profitNumericalValue)
+        lhs.properties.balance.in(.usDollar).numericalValue > rhs.properties.balance.in(.usDollar).numericalValue
     }
     
     func hash(into hasher: inout Hasher) {
