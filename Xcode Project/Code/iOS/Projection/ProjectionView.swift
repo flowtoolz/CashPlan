@@ -78,7 +78,7 @@ struct ProjectionView: View {
     }
     
     private func makeYearsString() -> String {
-        makeDisplayText(forNumberOfYears: projection.input.investmentAssumption.years)
+        projection.input.investmentAssumption.years.displayText
     }
     
     @State private var inputStrings = ProjectionInputStrings(Projection.shared.input)

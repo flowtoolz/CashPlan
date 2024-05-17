@@ -9,7 +9,7 @@ struct ProjectionOverView: View {
                 VStack {
                     HStack {
                         let years = projection.input.investmentAssumption.years
-                        let yearsText = makeDisplayText(forNumberOfYears: years)
+                        let yearsText = years.displayText
                         
                         Text(yearsText + " Year Projection")
                             .font(.body.weight(.medium))

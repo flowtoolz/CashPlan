@@ -20,17 +20,17 @@ extension Double {
         let number = NSNumber(floatLiteral: self)
         return formatter.string(from: number) ?? String(format: "%.\(fractionDigits)f", self)
     }
-}
-
-func makeDisplayText(forNumberOfYears years: Double) -> String {
-    let formatter = NumberFormatter()
-    formatter.minimumFractionDigits = 0 // No minimum fraction digits
     
-    if years.truncatingRemainder(dividingBy: 1) == 0 {
-        formatter.maximumFractionDigits = 0 // No digits after decimal if round
-    } else {
-        formatter.maximumFractionDigits = 1 // One digit after decimal if not round
+    var displayText: String {
+        let formatter = NumberFormatter()
+        formatter.minimumFractionDigits = 0 // No minimum fraction digits
+        
+        if truncatingRemainder(dividingBy: 1) == 0 {
+            formatter.maximumFractionDigits = 0 // No digits after decimal if round
+        } else {
+            formatter.maximumFractionDigits = 1 // One digit after decimal if not round
+        }
+        
+        return formatter.string(from: NSNumber(value: self)) ?? "\(self)"
     }
-    
-    return formatter.string(from: NSNumber(value: years)) ?? "\(years)"
 }
