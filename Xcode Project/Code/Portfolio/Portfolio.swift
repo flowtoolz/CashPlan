@@ -48,7 +48,7 @@ class Portfolio: Observer, Combine.ObservableObject {
                   currency: .usDollar,
                   amount: 37,
                   price: 170.29),
-            .init(name: "Vanguard S&P 500 ETF",
+            .init(name: "S&P 500 ETF",
                   openingPrice: 264.52,
                   currency: .usDollar,
                   amount: 27,
