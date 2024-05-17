@@ -7,7 +7,7 @@ struct Calculator {
     }
     
     static func profitPercentage(fromFactor factor: Double?) -> Double? {
-        guard let factor = factor else { return nil }
+        guard let factor else { return nil }
         return (factor - 1.0) * 100.0
     }
     
