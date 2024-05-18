@@ -68,8 +68,8 @@ struct ProjectionView: View {
                 CurrencyView(currency: currency)
             }
         }
-        .onChange(of: inputStrings) {
-            projection.input = $0.projectionInput
+        .onChange(of: inputStrings) { _, newInputStrings in
+            projection.input = newInputStrings.projectionInput
         }
         .bind($currency, to: AppSettings.shared.$currency.new())
 //        .refreshable {

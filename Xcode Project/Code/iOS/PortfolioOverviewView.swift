@@ -33,7 +33,7 @@ struct PortfolioOverviewView: View {
                     })
             }
         }
-        .onChange(of: currency) { newCurrency in
+        .onChange(of: currency) { _, newCurrency in
             AppSettings.shared.currency = newCurrency
         }
     }

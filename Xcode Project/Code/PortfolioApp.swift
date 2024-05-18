@@ -24,7 +24,7 @@ struct PortfolioApp: App {
         WindowGroup {
             ContentView()
         }
-        .onChange(of: scenePhase) { newScenePhase in
+        .onChange(of: scenePhase) { _, newScenePhase in
             switch newScenePhase {
             case .background:
                 log("app went to background")
