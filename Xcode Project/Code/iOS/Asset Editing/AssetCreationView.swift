@@ -7,11 +7,18 @@ struct AssetCreationView: View {
         AssetEditingForm(viewModel: viewModel.formModel)
             .navigationTitle(title)
             .toolbar {
-                Button(AssetCreationViewModel.addButtonTitle) {
-                    viewModel.addButtonWasTapped { shouldDismiss in
-                        if shouldDismiss {
-                            isPresentingAssetCreationForm = false
+                ToolbarItem(placement: .confirmationAction) {
+                    Button(AssetCreationViewModel.addButtonTitle) {
+                        viewModel.addButtonWasTapped { shouldDismiss in
+                            if shouldDismiss {
+                                isPresentingAssetCreationForm = false
+                            }
                         }
+                    }
+                }
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        isPresentingAssetCreationForm = false
                     }
                 }
             }
