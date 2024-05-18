@@ -22,16 +22,14 @@ struct PortfolioOverviewView: View {
             }
         }
         .sheet(isPresented: $isPresentingCurrencyPicker) {
-            NavigationView {
-                CurrencyPicker(title: "My Currency",
-                               subtitle: "For Cash Values and Metrics",
-                               selectedCurrency: $currency)
-                    .navigationBarItems(leading: Button {
-                        isPresentingCurrencyPicker = false
-                    } label: {
-                        Text("Cancel")
-                    })
-            }
+            CurrencyPicker(title: "My Currency",
+                           subtitle: "For Cash Values and Metrics",
+                           selectedCurrency: $currency)
+            .navigationBarItems(leading: Button {
+                isPresentingCurrencyPicker = false
+            } label: {
+                Text("Cancel")
+            })
         }
         .onChange(of: currency) { _, newCurrency in
             AppSettings.shared.currency = newCurrency
