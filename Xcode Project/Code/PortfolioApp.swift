@@ -3,7 +3,7 @@ import Combine
 import SwiftyToolz
 
 @main
-struct TrademateApp: App {
+struct PortfolioApp: App {
     
     init() {
         #if targetEnvironment(simulator)

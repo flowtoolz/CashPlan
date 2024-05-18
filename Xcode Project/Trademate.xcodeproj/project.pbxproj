@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		9633394226D76305000F26C2 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633394126D76305000F26C2 /* Tests_iOS.swift */; };
 		9633394D26D76305000F26C2 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633394C26D76305000F26C2 /* Tests_macOS.swift */; };
-		9633394F26D76305000F26C2 /* TrademateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633392626D76304000F26C2 /* TrademateApp.swift */; };
-		9633395026D76305000F26C2 /* TrademateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633392626D76304000F26C2 /* TrademateApp.swift */; };
+		9633394F26D76305000F26C2 /* PortfolioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633392626D76304000F26C2 /* PortfolioApp.swift */; };
+		9633395026D76305000F26C2 /* PortfolioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633392626D76304000F26C2 /* PortfolioApp.swift */; };
 		9633395126D76305000F26C2 /* ContentView_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633392726D76304000F26C2 /* ContentView_iOS.swift */; };
 		9633395326D76305000F26C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9633392826D76305000F26C2 /* Assets.xcassets */; };
 		9633395426D76305000F26C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9633392826D76305000F26C2 /* Assets.xcassets */; };
@@ -92,7 +92,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9633392626D76304000F26C2 /* TrademateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrademateApp.swift; sourceTree = "<group>"; };
+		9633392626D76304000F26C2 /* PortfolioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioApp.swift; sourceTree = "<group>"; };
 		9633392726D76304000F26C2 /* ContentView_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView_iOS.swift; sourceTree = "<group>"; };
 		9633392826D76305000F26C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9633392D26D76305000F26C2 /* Portfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Portfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,7 +196,7 @@
 		9633392526D76304000F26C2 /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				9633392626D76304000F26C2 /* TrademateApp.swift */,
+				9633392626D76304000F26C2 /* PortfolioApp.swift */,
 				9633392726D76304000F26C2 /* ContentView_iOS.swift */,
 				96945DFD26D93BC80091B9CF /* ContentView_macOS.swift */,
 				96945E1F26D9505A0091B9CF /* iOS */,
@@ -548,7 +548,7 @@
 				96945E7926D950AC0091B9CF /* AssetsOverView.swift in Sources */,
 				96945E7F26D950BA0091B9CF /* CurrencyView.swift in Sources */,
 				96945E6726D9507C0091B9CF /* TrademateSwiftUI.swift in Sources */,
-				9633394F26D76305000F26C2 /* TrademateApp.swift in Sources */,
+				9633394F26D76305000F26C2 /* PortfolioApp.swift in Sources */,
 				96945E6826D9507C0091B9CF /* TrademateFoundation.swift in Sources */,
 				96945E7C26D950AC0091B9CF /* AssetListRowModel.swift in Sources */,
 				96945E7426D9509D0091B9CF /* PortfolioOverviewView.swift in Sources */,
@@ -575,7 +575,7 @@
 				965433C626D981150050CDF5 /* Cash.swift in Sources */,
 				96945DFE26D93BC80091B9CF /* ContentView_macOS.swift in Sources */,
 				965433C726D981890050CDF5 /* Calculator.swift in Sources */,
-				9633395026D76305000F26C2 /* TrademateApp.swift in Sources */,
+				9633395026D76305000F26C2 /* PortfolioApp.swift in Sources */,
 				965433C026D97DAD0050CDF5 /* CurrencyView.swift in Sources */,
 				965433C226D980500050CDF5 /* CoreFoundationToolz.swift in Sources */,
 				96B73E9626DBA60E00EE7AC0 /* FeedbackContents.swift in Sources */,
