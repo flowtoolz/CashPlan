@@ -33,7 +33,9 @@ struct AssetsOverView: View {
                 Image(systemName: symbolName)
                     .imageScale(.large)
             }
-            NavigationLink(destination: AssetList(isPresentingCurrencyPicker: $isPresentingCurrencyPicker)) {
+            NavigationLink {
+                AssetList(isPresentingCurrencyPicker: $isPresentingCurrencyPicker)
+            } label: {
                 // TODO: Instead of using this dummy label for layouting, vertically align the link with the first base line of the title text, using some SwiftUI alignment magic with GeometryReader or so
                 Label {
                     Text("Dummy")

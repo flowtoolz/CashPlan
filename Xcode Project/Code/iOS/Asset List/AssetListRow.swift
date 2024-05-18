@@ -29,10 +29,13 @@ struct AssetListRow: View {
                 }
                 NavigationChevron().hidden()
             }
-            NavigationLink(destination: AssetEditingView(.init(viewModel.asset))) {
+            NavigationLink {
+                AssetEditingView(.init(viewModel.asset))
+            } label: {
                 // TODO: Instead of using this dummy Text for layouting, vertically align the link with the first base line of the title text, using some SwiftUI alignment magic with GeometryReader or so
-                Text("Dummy").hidden()
-            }
+                Text("Dummy")
+                    .hidden()
+            }  
         }
     }
     

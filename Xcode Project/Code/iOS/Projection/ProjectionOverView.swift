@@ -37,7 +37,9 @@ struct ProjectionOverView: View {
                     .imageScale(.large)
             }
             
-            NavigationLink(destination: ProjectionView(isPresentingCurrencyPicker: $isPresentingCurrencyPicker)) {
+            NavigationLink {
+                ProjectionView(isPresentingCurrencyPicker: $isPresentingCurrencyPicker)
+            } label: {
                 // TODO: Instead of using this dummy label for layouting, vertically align the link with the first base line of the title text, using some SwiftUI alignment magic with GeometryReader or so
                 Label {
                     Text("Dummy")

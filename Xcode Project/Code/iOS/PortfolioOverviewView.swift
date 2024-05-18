@@ -25,8 +25,7 @@ struct PortfolioOverviewView: View {
             NavigationView {
                 CurrencyPicker(title: "My Currency",
                                subtitle: "For Cash Values and Metrics",
-                               selectedCurrency: $currency,
-                               isBeingPresented: $isPresentingCurrencyPicker)
+                               selectedCurrency: $currency)
                     .navigationBarItems(leading: Button {
                         isPresentingCurrencyPicker = false
                     } label: {

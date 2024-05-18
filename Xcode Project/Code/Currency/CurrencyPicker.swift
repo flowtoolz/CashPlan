@@ -7,7 +7,7 @@ struct CurrencyPicker: View {
                 ForEach(Currency.all) { currency in
                     Button {
                         selectedCurrency = currency
-                        isBeingPresented = false
+                        presentationMode.wrappedValue.dismiss()
                     } label: {
                         HStack {
                             Text(currency.name)
@@ -26,8 +26,9 @@ struct CurrencyPicker: View {
         .navigationTitle(title)
     }
     
+    @Environment(\.presentationMode) private var presentationMode
+    
     let title: String
     let subtitle: String
     @Binding var selectedCurrency: Currency
-    @Binding var isBeingPresented: Bool
 }

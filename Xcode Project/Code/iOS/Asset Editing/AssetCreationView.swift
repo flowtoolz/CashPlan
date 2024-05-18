@@ -5,7 +5,7 @@ import SwiftyToolz
 struct AssetCreationView: View {
     
     init(action: @escaping (Asset) -> Void) {
-        viewModel = AssetCreationViewModel(action: action)
+        _viewModel = State(wrappedValue: AssetCreationViewModel(action: action))
     }
     
     var body: some View {
@@ -25,8 +25,7 @@ struct AssetCreationView: View {
     }
     
     @State private var title = AssetCreationViewModel.defaultTitle
-    
-    private let viewModel: AssetCreationViewModel
+    @State private var viewModel: AssetCreationViewModel
     
     // programmatic dismissal
     private func dismiss() {

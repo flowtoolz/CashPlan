@@ -19,17 +19,20 @@ struct AssetEditingView: View {
     }
     
     @State private var title: String
-    
-    private let viewModel: AssetEditingViewModel
+    @State private var viewModel: AssetEditingViewModel
 }
 
 class AssetEditingViewModel {
     
     init(_ asset: Asset) {
-        self.formModel = AssetEditingFormModel(.init(asset)) { committedState in
-            committedState.writeValidInputs(to: asset)
+        self.formModel = AssetEditingFormModel(.init(asset))
+        
+        editingObservation = formModel.$editingState.sink { editingState in
+            editingState.writeValidInputs(to: asset)
         }
     }
+    
+    private var editingObservation: AnyCancellable?
     
     lazy var title = formModel.name
     var defaultTitle: String { formModel.editingState.name }
