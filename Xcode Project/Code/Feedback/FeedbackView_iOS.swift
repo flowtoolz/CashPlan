@@ -3,15 +3,15 @@ import SwiftUI
 struct FeedbackView: View {
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section(header: Text("This app is at the earliest stage 🚀")) {
-                    NavigationLink(destination:
-                                    List {
-                                        FeatureLabels()
-                                    }
-                                    .navigationTitle("Ideas")
-                    ) {
+                    NavigationLink {
+                        List {
+                            FeatureLabels()
+                        }
+                        .navigationTitle("Ideas")
+                    } label: {
                         Label {
                             Text("See Some Feature Ideas")
                         } icon: {
