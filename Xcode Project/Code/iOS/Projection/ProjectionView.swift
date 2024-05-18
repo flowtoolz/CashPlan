@@ -59,7 +59,6 @@ struct ProjectionView: View {
                 }
             }
         }
-        .listStyle(GroupedListStyle())
         .navigationTitle(Text(makeYearsString() + " Year Target"))
         .toolbar {
             Button {

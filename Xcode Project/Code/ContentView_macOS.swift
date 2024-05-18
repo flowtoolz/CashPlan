@@ -31,7 +31,7 @@ struct ContentView: View {
                     Label("Feedback", systemImage: "bubble.left")
                 }
             }
-            .listStyle(SidebarListStyle())
+            .listStyle(.sidebar)
             .toolbar {
                 ToolbarItem {
                     Button {

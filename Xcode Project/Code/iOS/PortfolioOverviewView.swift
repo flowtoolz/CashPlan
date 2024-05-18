@@ -11,7 +11,6 @@ struct PortfolioOverviewView: View {
                 
                 ProjectionOverView(isPresentingCurrencyPicker: $isPresentingCurrencyPicker)
             }
-            .listStyle(PlainListStyle())
             .navigationTitle("Portfolio")
             .toolbar {
                 Button {

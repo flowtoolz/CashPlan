@@ -18,7 +18,6 @@ struct AssetList: View {
                 .foregroundColor(.accentColor)
             }
         }
-        .listStyle(PlainListStyle())
         .navigationTitle("Assets")
         .toolbar {
             Button {

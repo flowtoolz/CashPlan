@@ -4,7 +4,7 @@ struct FeedbackView: View {
     
     var body: some View {
         NavigationStack {
-            Form {
+            List {
                 Section(header: Text("This app is at the earliest stage 🚀")) {
                     NavigationLink {
                         List {
@@ -24,7 +24,6 @@ struct FeedbackView: View {
                     FeedbackLink()
                 }
             }
-            .listStyle(GroupedListStyle())
             .navigationTitle("Feedback")
         }
     }
