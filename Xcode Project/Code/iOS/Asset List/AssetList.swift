@@ -8,31 +8,30 @@ struct AssetList: View {
                 AssetListRow(viewModel: AssetListRowModel(asset))
             }
             .onDelete(perform: delete)
-
-            Button {
-                isPresentingAssetCreationForm = true
-            } label: {
-                HStack {
-                    Image(systemName: "plus")
-                    Text("Add Asset")
-                }
-                .foregroundColor(.accentColor)
-            }
-            .sheet(isPresented: $isPresentingAssetCreationForm) {
-                NavigationStack {
-                    AssetCreationView(
-                        viewModel: AssetCreationViewModel(action: { newAsset in
-                            DispatchQueue.main.async {
-                                Portfolio.shared.add(newAsset)
-                            }
-                        }),
-                        isPresentingAssetCreationForm: $isPresentingAssetCreationForm
-                    )
-                }
-            }
         }
         .listStyle(.plain)
         .navigationTitle("Assets")
+        .sheet(isPresented: $isPresentingAssetCreationForm) {
+            NavigationStack {
+                AssetCreationView(
+                    viewModel: AssetCreationViewModel(action: { newAsset in
+                        DispatchQueue.main.async {
+                            Portfolio.shared.add(newAsset)
+                        }
+                    }),
+                    isPresentingAssetCreationForm: $isPresentingAssetCreationForm
+                )
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    isPresentingAssetCreationForm = true
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
+        }
 //        .refreshable {
 //            print("✅ REFRESH Asset List")
 //        }
