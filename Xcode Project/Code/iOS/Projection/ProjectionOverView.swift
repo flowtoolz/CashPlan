@@ -11,7 +11,7 @@ struct ProjectionOverView: View {
                         let years = projection.input.investmentAssumption.years
                         let yearsText = years.displayText
                         
-                        Text(yearsText + " Year Projection")
+                        Text(yearsText + " Year Target")
                             .font(.body.weight(.medium))
                         Spacer()
                     }

@@ -34,7 +34,7 @@ struct ProjectionView: View {
                 }
                 HStack {
                     Label {
-                        Text("Annual Return (%)")
+                        Text("Annual Return")
                             .fixedSize(horizontal: true, vertical: false)
                     } icon: {
                         Image(systemName: "percent")
@@ -60,7 +60,7 @@ struct ProjectionView: View {
             }
         }
         .listStyle(GroupedListStyle())
-        .navigationTitle(Text(makeYearsString() + " Year Projection"))
+        .navigationTitle(Text(makeYearsString() + " Year Target"))
         .toolbar {
             Button {
                 isPresentingCurrencyPicker = true
@@ -73,7 +73,7 @@ struct ProjectionView: View {
         }
         .bind($currency, to: AppSettings.shared.$currency.new())
 //        .refreshable {
-//            print("✅ REFRESH Projection")
+//            print("✅ REFRESH Target")
 //        }
     }
     
