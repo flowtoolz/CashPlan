@@ -26,8 +26,10 @@ struct PortfolioOverviewView: View {
                                subtitle: "For Cash Values and Metrics",
                                selectedCurrency: $currency)
                 .toolbar {
-                    Button("Done") {
-                        isPresentingCurrencyPicker = false
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button("Done") {
+                            isPresentingCurrencyPicker = false
+                        }
                     }
                 }
             }

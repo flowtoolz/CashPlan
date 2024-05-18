@@ -33,8 +33,10 @@ struct AssetListRow: View {
             NavigationStack {
                 AssetEditingView(.init(viewModel.asset))
                     .toolbar {
-                        Button("Done") {
-                            isPresentingEditor = false
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("Done") {
+                                isPresentingEditor = false
+                            }
                         }
                     }
             }
