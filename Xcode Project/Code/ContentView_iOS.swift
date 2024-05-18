@@ -20,11 +20,12 @@ struct ContentView: View {
                     Text("Portfolio")
                 }
             
-            FeedbackView()
+            SettingsView()
                 .tabItem {
-                    Image(systemName: "exclamationmark.bubble.fill")
-                    Text("Feedback")
+                    Image(systemName: "gear")
+                    Text("Settings")
                 }
+            
 //            Text("Watchlist")
 //                .tabItem {
 //                    Image(systemName: "star.fill")

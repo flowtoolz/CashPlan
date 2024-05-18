@@ -60,17 +60,9 @@ struct ProjectionView: View {
             }
         }
         .navigationTitle(Text(makeYearsString() + " Year Target"))
-        .toolbar {
-            Button {
-                isPresentingCurrencyPicker = true
-            } label: {
-                CurrencyView(currency: currency)
-            }
-        }
         .onChange(of: inputStrings) { _, newInputStrings in
             projection.input = newInputStrings.projectionInput
         }
-        .bind($currency, to: AppSettings.shared.$currency.new())
 //        .refreshable {
 //            print("✅ REFRESH Target")
 //        }
@@ -81,8 +73,6 @@ struct ProjectionView: View {
     }
     
     @State private var inputStrings = ProjectionInputStrings(Projection.shared.input)
-    @Binding private(set) var isPresentingCurrencyPicker: Bool
-    @State private var currency = AppSettings.shared.currency
     
     private var cashString: String { projection.output.cash.decimalString(fractionDigits: 0) }
     private var cashflowString: String {

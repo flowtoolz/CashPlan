@@ -33,14 +33,6 @@ struct AssetList: View {
         }
         .listStyle(.plain)
         .navigationTitle("Assets")
-        .toolbar {
-            Button {
-                isPresentingCurrencyPicker = true
-            } label: {
-                CurrencyView(currency: currency)
-            }
-        }
-        .bind($currency, to: AppSettings.shared.$currency.new())
 //        .refreshable {
 //            print("✅ REFRESH Asset List")
 //        }
@@ -49,10 +41,6 @@ struct AssetList: View {
     private func delete(at offsets: IndexSet) {
         portfolio.removeAsset(at: offsets)
     }
-    
-    @State private var currency = AppSettings.shared.currency
-    
-    @Binding private(set) var isPresentingCurrencyPicker: Bool
     
     @State private var isPresentingAssetCreationForm = false
     

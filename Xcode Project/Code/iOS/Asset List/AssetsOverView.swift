@@ -34,7 +34,7 @@ struct AssetsOverView: View {
                     .imageScale(.large)
             }
             NavigationLink {
-                AssetList(isPresentingCurrencyPicker: $isPresentingCurrencyPicker)
+                AssetList()
             } label: {
                 // TODO: Instead of using this dummy label for layouting, vertically align the link with the first base line of the title text, using some SwiftUI alignment magic with GeometryReader or so
                 Label {
@@ -49,8 +49,6 @@ struct AssetsOverView: View {
     }
     
     private let symbolName = "chart.pie"
-    
-    @Binding private(set) var isPresentingCurrencyPicker: Bool
     
     @ObservedObject private(set) var portfolio = Portfolio.shared
 }
