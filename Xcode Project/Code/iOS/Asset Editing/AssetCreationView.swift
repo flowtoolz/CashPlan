@@ -1,23 +1,20 @@
-import SwiftUIToolzOLD
 import SwiftUI
 import SwiftyToolz
 
 struct AssetCreationView: View {
     
-    init(action: @escaping (Asset) -> Void) {
-        _viewModel = State(wrappedValue: AssetCreationViewModel(action: action))
-    }
-    
     var body: some View {
         AssetEditingForm(viewModel: viewModel.formModel)
             .navigationTitle(title)
-            .navigationBarItems(trailing: Button {
-                viewModel.addButtonWasTapped { shouldDismiss in
-                    if shouldDismiss { dismiss() }
+            .toolbar {
+                Button(AssetCreationViewModel.addButtonTitle) {
+                    viewModel.addButtonWasTapped { shouldDismiss in
+                        if shouldDismiss {
+                            isPresentingAssetCreationForm = false
+                        }
+                    }
                 }
-            } label: {
-                Text(AssetCreationViewModel.addButtonTitle)
-            })
+            }
             .bind($title, to: viewModel.title)
 //            .refreshable {
 //                print("✅ REFRESH New Asset")
@@ -25,13 +22,8 @@ struct AssetCreationView: View {
     }
     
     @State private var title = AssetCreationViewModel.defaultTitle
-    @State private var viewModel: AssetCreationViewModel
-    
-    // programmatic dismissal
-    private func dismiss() {
-        presentationMode.wrappedValue.dismiss()
-    }
-    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+    @State var viewModel: AssetCreationViewModel
+    @Binding var isPresentingAssetCreationForm: Bool
 }
 
 class AssetCreationViewModel {

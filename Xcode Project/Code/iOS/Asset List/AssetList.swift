@@ -1,4 +1,3 @@
-import SwiftUIToolzOLD
 import SwiftUI
 import SwiftyToolz
 
@@ -10,14 +9,29 @@ struct AssetList: View {
             }
             .onDelete(perform: delete)
 
-            NavigationLink(destination: assetCreationView) {
+            Button {
+                isPresentingAssetCreationForm = true
+            } label: {
                 HStack {
                     Image(systemName: "plus")
                     Text("Add Asset")
                 }
                 .foregroundColor(.accentColor)
             }
+            .sheet(isPresented: $isPresentingAssetCreationForm) {
+                NavigationStack {
+                    AssetCreationView(
+                        viewModel: AssetCreationViewModel(action: { newAsset in
+                            DispatchQueue.main.async {
+                                Portfolio.shared.add(newAsset)
+                            }
+                        }),
+                        isPresentingAssetCreationForm: $isPresentingAssetCreationForm
+                    )
+                }
+            }
         }
+        .listStyle(.plain)
         .navigationTitle("Assets")
         .toolbar {
             Button {
@@ -32,14 +46,6 @@ struct AssetList: View {
 //        }
     }
     
-    private var assetCreationView: some View {
-        AssetCreationView { newAsset in
-            DispatchQueue.main.async {
-                Portfolio.shared.add(newAsset)
-            }
-        }
-    }
-    
     private func delete(at offsets: IndexSet) {
         portfolio.removeAsset(at: offsets)
     }
@@ -47,6 +53,8 @@ struct AssetList: View {
     @State private var currency = AppSettings.shared.currency
     
     @Binding private(set) var isPresentingCurrencyPicker: Bool
+    
+    @State private var isPresentingAssetCreationForm = false
     
     @ObservedObject private(set) var portfolio = Portfolio.shared
 }

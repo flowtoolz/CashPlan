@@ -25,11 +25,11 @@ struct PortfolioOverviewView: View {
                 CurrencyPicker(title: "My Currency",
                                subtitle: "For Cash Values and Metrics",
                                selectedCurrency: $currency)
-                .navigationBarItems(leading: Button {
-                    isPresentingCurrencyPicker = false
-                } label: {
-                    Text("Cancel")
-                })
+                .toolbar {
+                    Button("Done") {
+                        isPresentingCurrencyPicker = false
+                    }
+                }
             }
         }
         .onChange(of: currency) { _, newCurrency in
